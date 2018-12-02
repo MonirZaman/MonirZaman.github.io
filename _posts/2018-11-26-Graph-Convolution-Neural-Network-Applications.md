@@ -4,6 +4,7 @@ GCN is a supervised learning method combining graph theory and Convolution neura
 
 ## Example
 We will first take a look at the citation network. There is a big cluster of nodes that are well connected to each other. On the other hand, there is another set of nodes representing the outer circle in the network with less inter-connectedness (aka low value for clustering coefficients).  
+![citeseer_network]({{ site.baseurl }}/images/citeseer_network.png)
 
 Now we will look at the node with most connections to the network. 
 
