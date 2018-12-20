@@ -22,6 +22,7 @@ def process (self, batch_df, res_queue):
 
 Finally, process can be executed in different CPU cores in parallel.
 ```python
+import multiprocessing
 poolSize = multiprocessing.cpu_count()
 my_pool = multiprocessing.Pool(processes=poolSize)
 
