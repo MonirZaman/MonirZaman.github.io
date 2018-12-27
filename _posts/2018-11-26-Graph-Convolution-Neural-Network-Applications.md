@@ -1,5 +1,15 @@
 # (In progress)
 # Relational Machine Learning
+![Data in non-Euclidean space](/images/manifold.png)
+
+In real work data often live in non-euclidean space. Examples include social networks, point clouds, etc. Such data contains topological information and are non-linear in nature. Typical machine learning models treat data point as independent to each other. In this post we will look at a model that exploits the inter-relationship of the data points and apply them to perform machine learning task such classification. First we look at some non-euclidean data 
+
+1. Manifold:  
+2D shapes that exists in a 3D space in a twisted form. Example includes point clouds. In [another example](https://jakevdp.github.io/PythonDataScienceHandbook/05.10-manifold-learning.html), consider a sheet of paper which is a 2D object which can be rolled and be embedded into a 3D space. Although the paper is still a 2D object, its embedding into high dimensional space is not linear.
+
+2. Graph:  
+Social networks among people
+
 
 ## Graph convolution neural network (GCN)
 GCN is a semi-supervised learning method combining graph theory and Convolution neural networks. We will be using `citeseer` dataset. It is a citation network among academic publications. When a publication cites a another, there is an edge between them. Each publication acts as a node in the network. Node has their attributes which are binary features with values 0/1. Each publication belongs to one of the 7 classes. These classes represent research areas. Using graph convolution neural networks, these classes are inferred.   
