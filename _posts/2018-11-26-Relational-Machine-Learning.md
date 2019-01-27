@@ -1,5 +1,5 @@
+([Colab Notebook for the blog post](https://colab.research.google.com/drive/1ZdAud95PK8nKp8eHjQk9WI8ypGyZAFG5))
 ![Data in non-Euclidean space](/images/manifold.png)
-
 In real work data often live in non-euclidean space. Examples include social networks, point clouds, etc. Such data contains topological information and are non-linear in nature. Typical machine learning models treat data point as independent to each other. In this post we will look at a model that exploits the inter-relationship of the data points and apply them to perform machine learning task such classification. First we look at some non-euclidean data 
 
 1. Manifold:  
@@ -8,9 +8,10 @@ In real work data often live in non-euclidean space. Examples include social net
 2. Graph:  
 Social networks among people
 
-
 ## Graph convolution neural network (GCN)
 GCN is a semi-supervised learning method combining graph theory and Convolution neural networks. We will be using `citeseer` dataset. It is a citation network among academic publications. When a publication cites a another, there is an edge between them. Each publication acts as a node in the network. Node has their attributes which are binary features with values 0/1. Each publication belongs to one of the 7 classes. These classes represent research areas. Using graph convolution neural networks, these classes are inferred.   
+
+([Colab Notebook for the blog post](https://colab.research.google.com/drive/1ZdAud95PK8nKp8eHjQk9WI8ypGyZAFG5))
 
 ## Network architecture
 There are two hidden layers that perform two rounds of information propagation. In the first round, a node receives information about its neighbors. In the second round, neighbors' information of a node is propagated to its neighbors. After the first pass, we can say, a node has up-to-date information about its neighbors. When we want to classify a node, a second round of information passing provides the most up-to-date information about the node's neighbors. 
