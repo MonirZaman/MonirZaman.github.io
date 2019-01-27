@@ -1,5 +1,3 @@
-# (In progress)
-# Relational Machine Learning
 ![Data in non-Euclidean space](/images/manifold.png)
 
 In real work data often live in non-euclidean space. Examples include social networks, point clouds, etc. Such data contains topological information and are non-linear in nature. Typical machine learning models treat data point as independent to each other. In this post we will look at a model that exploits the inter-relationship of the data points and apply them to perform machine learning task such classification. First we look at some non-euclidean data 
@@ -25,7 +23,7 @@ Now we will look at the node with most connections to the network.
 
 ## Classification performance:
 A confusion matrix is N by N table comparing model's prediction against true values. It shows how often labels are correctly classified as well as misclassified. GCN confusion matrix is the following. 
+![citeseer_network](/images/confusion_matrix.png)
 
-GCN is able to correctly classify most of the labels except for label <> which represents <>. Looking back on the histogram of the train records with this label is the least among all the categories. Accuracy of the GCN is <>%. 
-
-This concludes demonstration of GCN on a graph-based dataset. If you have any questions or comments, feel free to reach out to me  through linked-in.  
+GCN is able to correctly classify most of the labels with an accuracy of 71% on the test test. Macro F1 score is 0.68 which shows a balance between precision and recall. Model performs best in identifying class 5 while misclassifying only 18% of the samples belong to this class. Misclassification rate in all the classes are [0.55, 0.39, 0.28, 0.29, 0.2, 0.18].  
+This concludes demonstration of GCN on a graph-based dataset. If you have any questions or comments, feel free to reach out to me  through [Linked-in](https://www.linkedin.com/in/monir1/).  
