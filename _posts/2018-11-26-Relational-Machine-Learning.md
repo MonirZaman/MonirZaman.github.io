@@ -8,22 +8,20 @@ In real work data often live in non-euclidean space. Examples include social net
 2. Graph:  
 Social networks among people
 
-Machine learning on such data requires a model that captures inherent structures among data items. We will look at one such model called Graph Convolutional Network. Inference task is to classify node in a network dataset. 
+Machine learning on such data requires a model that captures inherent structures among data items. We will look at one such model called Graph Convolutional Network. Inference task is to classify node on the Citeseer network dataset. 
 
 ## Overview of the Citeseer dataset
-[Overview of Citeseer dataset](http://csxstatic.ist.psu.edu/downloads/data)  
+[Citeseer](http://csxstatic.ist.psu.edu/downloads/data) is an academic publication citation network. A publication is considered as a node while a connection between nodes is defined by a publication citing another publication.  
 
-| Classes        | Nodes           | Edges   | Features    |
-|: ------------- |:-------------|: -----|:--------------|
-| 6     | 3327 | 4732 | 3703|
+| Classes        | Nodes           | Edges   | Features    |  
+|: ------------- |:-------------|: -----|:--------------|  
+| 6     | 3327 | 4732 | 3703|  
 
 We will first take a look at the citation network. There is a big cluster of nodes that are well connected to each other. On the other hand, there is another set of nodes representing the outer circle in the network with less inter-connectedness (aka low value for clustering coefficients).  
 ![citeseer_network](/images/citeseer_network.png)
 
-Now we will look at the node with most connections to the network. 
-
 ## Graph convolution neural network (GCN)
-GCN is a semi-supervised learning method combining graph theory and Convolution neural networks. We will be using `citeseer` dataset. It is a citation network among academic publications. When a publication cites a another, there is an edge between them. Each publication acts as a node in the network. Node has their attributes which are binary features with values 0/1. Each publication belongs to one of the 7 classes. These classes represent research areas. Using graph convolution neural networks, these classes are inferred.   
+GCN is a semi-supervised learning method combining graph theory and Convolution neural networks. We will be using `citeseer` dataset. It is a citation network among academic publications. When a publication cites a another, there is an edge between them. Each publication acts as a node in the network. Node has their attributes which are binary features with values 0/1. Each publication belongs to one of the 6 classes. These classes represent research areas. Using graph convolution neural networks, these classes are inferred.   
 
 ([Colab Notebook for the blog post](https://colab.research.google.com/drive/1ZdAud95PK8nKp8eHjQk9WI8ypGyZAFG5))
 
@@ -35,4 +33,5 @@ A confusion matrix is N by N table comparing model's prediction against true val
 ![citeseer_network](/images/confusion_matrix.png)
 
 GCN is able to correctly classify most of the labels with an accuracy of 71% on the test test. Macro F1 score is 0.68 which shows a balance between precision and recall. Model performs best in identifying class 5 while misclassifying only 18% of the samples belong to this class. Misclassification rate in all the classes are [0.55, 0.39, 0.28, 0.29, 0.2, 0.18].  
+
 This concludes demonstration of GCN on a graph-based dataset. If you have any questions or comments, feel free to reach out to me  through [Linked-in](https://www.linkedin.com/in/monir1/).  
