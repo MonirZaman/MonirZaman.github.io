@@ -34,3 +34,7 @@ A confusion matrix is N by N table comparing model's prediction against true val
 GCN is able to correctly classify most of the labels with an accuracy of 71% on the test test. Macro F1 score is 0.68 which shows a balance between precision and recall. Model performs best in identifying class 5 while misclassifying only 18% of the samples belong to this class. Misclassification rate in all the classes are [0.55, 0.39, 0.28, 0.29, 0.2, 0.18].  
 
 This concludes demonstration of GCN on a graph-based dataset. If you have any questions or comments, feel free to reach out to me  through [Linked-in](https://www.linkedin.com/in/monir1/).  
+
+References:  
+* [Graph Convolutional Networks](https://tkipf.github.io/graph-convolutional-networks/)
+* [Deep learning on Graph: A Survey](https://www.arxiv-vanity.com/papers/1812.04202/)
