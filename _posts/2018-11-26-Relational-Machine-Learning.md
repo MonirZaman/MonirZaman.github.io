@@ -13,17 +13,16 @@ Machine learning on such data requires a model that captures inherent structures
 ## Overview of the Citeseer dataset
 [Citeseer](http://csxstatic.ist.psu.edu/downloads/data) is an academic publication citation network. A publication is considered as a node while a connection between nodes is defined by a publication citing another publication.  
 
-| Classes        | Nodes           | Edges   | Features    |  
-|: ------------- |:-------------|: -----|:--------------|  
-| 6     | 3327 | 4732 | 3703|  
+* Classes: 6        
+* Nodes: 3327  
+* Edges: 4732  
+* Features: 3703  
 
 We will first take a look at the citation network. There is a big cluster of nodes that are well connected to each other. On the other hand, there is another set of nodes representing the outer circle in the network with less inter-connectedness (aka low value for clustering coefficients).  
 ![citeseer_network](/images/citeseer_network.png)
 
 ## Graph convolution neural network (GCN)
-GCN is a semi-supervised learning method combining graph theory and Convolution neural networks. We will be using `citeseer` dataset. It is a citation network among academic publications. When a publication cites a another, there is an edge between them. Each publication acts as a node in the network. Node has their attributes which are binary features with values 0/1. Each publication belongs to one of the 6 classes. These classes represent research areas. Using graph convolution neural networks, these classes are inferred.   
-
-([Colab Notebook for the blog post](https://colab.research.google.com/drive/1ZdAud95PK8nKp8eHjQk9WI8ypGyZAFG5))
+GCN is a semi-supervised learning method combining graph theory and Convolution neural networks. In the `citeseer` dataset, each publication acts as a node in the network with binary features with values 0/1. Each publication belongs to one of the 6 classes representing research areas. Using GCN, these classes are inferred. Code for the inference is provided in this [Colab notebook](https://colab.research.google.com/drive/1ZdAud95PK8nKp8eHjQk9WI8ypGyZAFG5).
 
 ## Network architecture
 There are two hidden layers that perform two rounds of information propagation. In the first round, a node receives information about its neighbors. In the second round, neighbors' information of a node is propagated to its neighbors. After the first pass, we can say, a node has up-to-date information about its neighbors. When we want to classify a node, a second round of information passing provides the most up-to-date information about the node's neighbors. 
