@@ -1,16 +1,23 @@
-class: middle, center, title-slide
+---
+layout: presentation
+title: Default Presentation
+permalink: /default-presentation/
+---
 
-# Multivariate Feature Selection
-## using Recursive Feature Elimination with Cross Validation (RFECV)
-<br><br>
-Monir Zaman<br>
+# My Awesome Presentation
 
 ---
-# Feature selection  
-Feature selection is an important step in the machine learning workflow. It is process of identifying important predictors and remove unnecessary features.
 
-## Why needed:
-* Feature selection useful to prevent overfitting 
-* Reduce dimensions
-* Helps to understand the data
+# Agenda
+
+1. Introduction
+2. Deep-dive
+3. ...
+
+[NOTE]: Note that you need active internet connection to access remark.js script file
+
 ---
+
+# Introduction
+
+Hello world!
