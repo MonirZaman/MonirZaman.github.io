@@ -9,6 +9,7 @@ Typically, first step is to run a profiler to see how much time different parts 
 `pip install snakeviz`
 3. Visualize profiler's output  
 `snakeviz profile_output`
+![profile_output](/images/profile_output.png)
 
 ## Partition a Pandas Data Frame
 One technique that enables parallelization is to divide input data into partitions or batches. Then processing can be done in parallel on each partition.
