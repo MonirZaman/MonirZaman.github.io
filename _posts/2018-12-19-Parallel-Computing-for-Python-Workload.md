@@ -1,6 +1,15 @@
 ## Parallel computation
 Moder day's computer processor comes with multiple cores. Utilizing different cores often vastly reduces runtime of programs. This is helpful in the context where program manipulates large of amount of data. This tutorial will list out some ways to enable parallelization of Python code involving Pandas data frame.
 
+## Profile code
+Typically, first step is to run a profiler to see how much time different parts of the code base are taking. I use `cProfile` for this purpose. `snakeviz` can be used to visualize the output of the profiler.  
+1. Profile a script using the following command:  
+`python -m cProfile -s time -o profile_output YOUR_SCRIPT.py ARGUMENT`
+2. Install `snakeviz`  
+`pip install snakeviz`
+3. Visualize profiler's output  
+`snakeviz profile_output`
+
 ## Partition a Pandas Data Frame
 One technique that enables parallelization is to divide input data into partitions or batches. Then processing can be done in parallel on each partition.
 
