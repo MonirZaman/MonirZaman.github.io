@@ -32,17 +32,13 @@ def process (self, batch_df, res_queue):
 Finally, process can be executed in different CPU cores in parallel.
 ```python
 import multiprocessing
-poolSize = multiprocessing.cpu_count()
-my_pool = multiprocessing.Pool(processes=poolSize)
 
-manager = multiprocessing.Manager()
-res_queue = manager.Queue()
+all_results = []
+poolSize = multiprocessing.cpu_count() - 2
 
-for a_df in self.data_provider(df):
-  my_pool.apply_async(process, (a_df, res_queue))
-
-my_pool.close()
-my_pool.join()
+with multiprocessing.Pool(processes=poolSize) as a_pool:
+    for current_result in a_pool.map(process, data_provider(df)):
+        all_results.extend(current_result)
 ```
 
 ## Dask Data Frame
