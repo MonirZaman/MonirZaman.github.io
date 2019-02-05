@@ -1,4 +1,3 @@
-## Parallel computation
 Moder day's computer processor comes with multiple cores. Utilizing different cores often vastly reduces runtime of programs. This is helpful in the context where program manipulates large of amount of data. This tutorial will list out some ways to enable parallelization of Python code involving Pandas data frame.
 
 ## Profile code
@@ -9,9 +8,10 @@ Typically, first step is to run a profiler to see how much time different parts 
 `pip install snakeviz`
 3. Visualize profiler's output  
 `snakeviz profile_output`
-![profile_output](/images/profile_output.png)
+![profile_output](/images/profile_output.png)  
 
-## Partition a Pandas Data Frame
+## Parallel computation
+### Partition a Pandas Data Frame
 One technique that enables parallelization is to divide input data into partitions or batches. Then processing can be done in parallel on each partition.
 
 Here input data frame is divided into 100 partitions.
@@ -20,14 +20,17 @@ NUM_PARTITIONS = 100
 def data_provider(self, df):
     for pi in range(NUM_PARTITIONS):
         yield df.loc[df.index.values % NUM_PARTITIONS == pi]
-```
-These partitions can be processed in parallel. Python's Multiprocessing Module offers easy to use interfaces for parallel execution and reducing different partitions' results. A simple process is defined that performs average operation on each item in the data frame.
+```  
+### Parallel Processing
+Data partitions can be processed in parallel. Python's Multiprocessing Module offers easy to use interfaces for parallel execution and reducing different partitions' results. A simple process is defined that performs average operation on each item in the data frame.
 
 ```python
-def process (self, batch_df, res_queue):
+def process (self, batch_df):
+    results = []
     for i, id in enumerate(batch_df[ID].unique()):
         a_df = batch_df[ batch_df[ID] == id]
-        res_queue.put({id: a_df[VALUE].mean()})
+        results.append({id: a_df[VALUE].mean()})
+    return results
 ```
 
 Finally, process can be executed in different CPU cores in parallel.
