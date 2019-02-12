@@ -5,7 +5,7 @@ Supervised learning can be divided into Classification and Regression.
 * Regression is supervised learning where target variable is numeric
 
 ## Dataset
-[image of dataset](/images/rf/dataset.png)  
+![image of dataset](/images/rf/dataset.png)  
 A model is trained to learn relation mapping between a set of input features and target feature on a given dataset. Hyperparameters define various characteristics of the model ranging from complexity, learning rate of the model. These are set by taking best performance measured on the validation dataset. Model's final performance is reported on the test dataset.  
 
 ## Classification
@@ -13,7 +13,7 @@ A toy classification task will be used to present the material. Given color and 
 ![](images/rf/classification-data.png)
 
 I will explain how a decision tree can be used to perform classification. Decision is also the building block of Random forest. Decision tree progressively asks questions with binary (Yes/No) answers. 
-![](images/rf/decision-tree.png)
+![](/images/rf/decision-tree.png)
 
 Records for which answer is No are separated into a (left) group and records with answers Yes are separated into another (right) group. Process of grouping records continues untill one of the following:
 * One record left in a group
@@ -24,7 +24,7 @@ By now you may have realized that the goal is to separate records with mixed lab
 
 ### Gini impurity (GI)
 GI measures how mixed the labels are. It is 0 when all records have the same label and the highest when all records have distinct labels. 
-![](images/rf/GI.png)
-![](images/rf/IG.png)
+![](/images/rf/GI.png)
+![](/images/rf/IG.png)
 
 
