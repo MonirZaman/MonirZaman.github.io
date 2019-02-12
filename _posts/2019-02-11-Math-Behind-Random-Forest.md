@@ -15,3 +15,9 @@ I will explain how a decision tree can be used to perform classification. Decisi
 * Group does not have any mixed labels. For example, all fruits are grapes
 * There is no question left that can separate records into two groups by unmixing label.
 
+By now you may have realized that the goal is to separate records with mixed lables so that in sub groups there are as little mixing in labels as possible. Mixing of labels are measured using Gini impurity and Entropy. I will explain Gini impurity. However, Entropy also works in a similar fashion. 
+
+### Gini impurity (GI)
+GI measures how mixed the labels are. It is 0 when all records have the same label and the highest when all records have distinct labels. 
+$E = mc^2$
+
