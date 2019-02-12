@@ -11,7 +11,7 @@ A model is trained to learn relation mapping between a set of input features and
 ## Classification
 A toy classification task will be used to present the material. Given color and diameters of different fruits, classification task is to determine exact fruit label: grape, lemon, apple. 
 ![](/images/rf/classification-data.png)
-*https://www.youtube.com/watch?v=LDRbO9a6XPU&t=85s*
+*<font size="1">https://www.youtube.com/watch?v=LDRbO9a6XPU&t=85s</font>*
 
 I will explain how a decision tree can be used to perform classification. Decision is also the building block of Random forest. Decision tree progressively asks questions with binary (Yes/No) answers. 
 ![](/images/rf/decision-tree.png)
