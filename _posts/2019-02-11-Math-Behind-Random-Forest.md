@@ -27,7 +27,17 @@ GI measures how mixed the labels are. It is 0 when all records have the same lab
 ![](/images/rf/GI.png)
 
 GI of the sub groups can also be measured. Let the summation of the GI of the subgroups be denoted by GI<sub>split</sub>
-
 ![](/images/rf/IG.png)
+Impurity of the subgroups can be measured in the following way.
+![](/images/rf/GI-split.png)
 
+Reduction in impurity as a result of separating records is the information gain. 
+![](/images/rf/IG-value.png)
 
+### Inference
+Once the tree is build, it can be used to label a record. Based on different attributes' value of the record, one path is followed in the tree. Majority of the labels at the leaf node determines the final output of the record.  
+![](/images/rf/dt-inference.png)
+
+### Ensemble of trees: Random Forest
+A Random forest is a collection of trees that are grown independent of each other by taking random subsamples of records and features. Inference is done by taking a majority vote among the trees. 
+![](/images/rf/rf-classification.png)
