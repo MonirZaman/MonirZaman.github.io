@@ -11,11 +11,11 @@ A model is trained to learn relation mapping between a set of input features and
 ## Classification
 A toy classification task will be used to present the material. Given color and diameters of different fruits, classification task is to determine exact fruit label: grape, lemon, apple. 
 ![](/images/rf/classification-data.png)
-*<font size="1">https://www.youtube.com/watch?v=LDRbO9a6XPU&t=85s</font>*
-<font size="+1">Description</font>
+*<font size="1">Image courtesy: https://www.youtube.com/watch?v=LDRbO9a6XPU&t=85s</font>*
 
 I will explain how a decision tree can be used to perform classification. Decision is also the building block of Random forest. Decision tree progressively asks questions with binary (Yes/No) answers. 
 ![](/images/rf/decision-tree.png)
+*<font size="1">Image courtesy: https://www.youtube.com/watch?v=LDRbO9a6XPU&t=85s</font>*
 
 Records for which answer is No are separated into a (left) group and records with answers Yes are separated into another (right) group. Process of grouping records continues untill one of the following:
 * One record left in a group
@@ -39,6 +39,7 @@ Reduction in impurity as a result of separating records is the information gain.
 ### Inference
 Once the tree is build, it can be used to label a record. Based on different attributes' value of the record, one path is followed in the tree. Majority of the labels at the leaf node determines the final output of the record.  
 ![](/images/rf/dt-inference.png)
+*<font size="1">Image courtesy: https://www.youtube.com/watch?v=LDRbO9a6XPU&t=85s</font>*
 
 ### Ensemble of trees: Random Forest
 A Random forest is a collection of trees that are grown independent of each other by taking random subsamples of records and features. Inference is done by taking a majority vote among the trees. 
