@@ -10,7 +10,7 @@ A model is trained to learn relation mapping between a set of input features and
 
 ## Classification
 A toy classification task will be used to present the material. Given color and diameters of different fruits, classification task is to determine exact fruit label: grape, lemon, apple. 
-![](images/rf/classification-data.png)
+![](/images/rf/classification-data.png)
 
 I will explain how a decision tree can be used to perform classification. Decision is also the building block of Random forest. Decision tree progressively asks questions with binary (Yes/No) answers. 
 ![](/images/rf/decision-tree.png)
@@ -23,8 +23,11 @@ Records for which answer is No are separated into a (left) group and records wit
 By now you may have realized that the goal is to separate records with mixed lables so that in sub groups there are as little mixing in labels as possible. Mixing of labels are measured using Gini impurity and Entropy. I will explain Gini impurity. However, Entropy also works in a similar fashion. 
 
 ### Gini impurity (GI)
-GI measures how mixed the labels are. It is 0 when all records have the same label and the highest when all records have distinct labels. 
+GI measures how mixed the labels are. It is 0 when all records have the same label and the highest when all records have distinct labels. GI of the dataset is calculated in the following. Let it be denoted by GI<sub>parent-node</sub>
 ![](/images/rf/GI.png)
+
+GI of the sub groups can also be measured. Let the summation of the GI of the subgroups be denoted by GI<sub>split</sub>
+
 ![](/images/rf/IG.png)
 
 
