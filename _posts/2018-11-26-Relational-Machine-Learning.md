@@ -1,6 +1,6 @@
 ([Colab Notebook for the blog post](https://colab.research.google.com/drive/1ZdAud95PK8nKp8eHjQk9WI8ypGyZAFG5))
 ![Data in non-Euclidean space](/images/manifold.png)  
-In real word data often live in non-euclidean space. Examples include social networks, point clouds, etc. Such data contains topological information and are non-linear in nature. Typical machine learning models treat data point as independent to each other. In this post we will look at a model that exploits the inter-relationship of the data points and apply them to perform machine learning task such classification. First we look at some non-euclidean data 
+In real world data often live in non-euclidean space. Examples include social networks, point clouds, etc. Such data contains topological information and are non-linear in nature. Typical machine learning models treat data point as independent to each other. In this post we will look at a model that exploits the inter-relationship of the data points and apply them to perform machine learning task such classification. First we look at some non-euclidean data 
 
 1. Manifold:  
 2D shapes that exists in a 3D space in a twisted form. Example includes point clouds. In [another example](https://jakevdp.github.io/PythonDataScienceHandbook/05.10-manifold-learning.html), consider a sheet of paper which is a 2D object which can be rolled and be embedded into a 3D space. Although the paper is still a 2D object, its embedding into high dimensional space is not linear.
