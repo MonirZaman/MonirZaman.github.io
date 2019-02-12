@@ -58,9 +58,9 @@ Goals in Regression are the following:
 * Reduction in variance in target variable Y
 * Variance defines how scattered Y is
 * Applies Mean squared error (MSE) with mean as output value (𝑌)
-* Given s is a cut-point for a feature f
-![](/images/rf/regression-eq.png)
+* Given s is a cut-point for a feature f  
+![](/images/rf/regression-eq.png)  
 Example:  
-![](/images/rf/regression-plot.png)
+![](/images/rf/regression-plot.png)  
 * Random forest performs average of the individual predictions.
 ![](/images/rf/rf-regression.png)
