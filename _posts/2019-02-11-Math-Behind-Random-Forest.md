@@ -1,4 +1,4 @@
-Random forest is one of the widely used machine learning models for supervised inference task. It is robust to missing values in dataset as well as outliers. It is an ensemble of many decision trees. Therefore, it achieves good accuracy in practice. In this post, I will present detail mathematics of how a Random forest works.
+Random forest is one of the widely used machine learning models for supervised learning task. It is robust to missing values in dataset as well as to outliers. It is an ensemble of many decision trees. Therefore, it achieves good accuracy in practice. In this post, I will present detail mathematics of how a Random forest works.
 
 Supervised learning can be divided into Classification and Regression. 
 * Classification is supervised learning where target variable is categorical
