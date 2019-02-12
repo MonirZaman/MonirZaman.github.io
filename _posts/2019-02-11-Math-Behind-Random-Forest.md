@@ -5,7 +5,7 @@ Supervised learning can be divided into Classification and Regression.
 * Regression is supervised learning where target variable is numeric
 
 ## Dataset
-[image of dataset](images/rf/dataset.png)  
+[image of dataset](images/dataset.png)  
 A model is trained to learn relation mapping between a set of input features and target feature on a given dataset. Hyperparameters define various characteristics of the model ranging from complexity, learning rate of the model. These are set by taking best performance measured on the validation dataset. Model's final performance is reported on the test dataset.  
 
 ## Classification
