@@ -1,6 +1,6 @@
 ([Colab Notebook for the blog post](https://colab.research.google.com/drive/1ZdAud95PK8nKp8eHjQk9WI8ypGyZAFG5))
-![Data in non-Euclidean space](/images/manifold.png)
-In real work data often live in non-euclidean space. Examples include social networks, point clouds, etc. Such data contains topological information and are non-linear in nature. Typical machine learning models treat data point as independent to each other. In this post we will look at a model that exploits the inter-relationship of the data points and apply them to perform machine learning task such classification. First we look at some non-euclidean data 
+![Data in non-Euclidean space](/images/manifold.png)  
+In real word data often live in non-euclidean space. Examples include social networks, point clouds, etc. Such data contains topological information and are non-linear in nature. Typical machine learning models treat data point as independent to each other. In this post we will look at a model that exploits the inter-relationship of the data points and apply them to perform machine learning task such classification. First we look at some non-euclidean data 
 
 1. Manifold:  
 2D shapes that exists in a 3D space in a twisted form. Example includes point clouds. In [another example](https://jakevdp.github.io/PythonDataScienceHandbook/05.10-manifold-learning.html), consider a sheet of paper which is a 2D object which can be rolled and be embedded into a 3D space. Although the paper is still a 2D object, its embedding into high dimensional space is not linear.
@@ -21,8 +21,10 @@ Machine learning on such data requires a model that captures inherent structures
 We will first take a look at the citation network. There is a big cluster of nodes that are well connected to each other. On the other hand, there is another set of nodes representing the outer circle in the network with less inter-connectedness (aka low value for clustering coefficients).  
 ![citeseer_network](/images/citeseer_network.png)
 
+In the `citeseer` dataset, each publication acts as a node in the network with binary features with values 0/1. Each publication belongs to one of the 6 classes representing research areas. Using GCN, these classes are inferred. Code for the inference is provided in this [Colab notebook](https://colab.research.google.com/drive/1ZdAud95PK8nKp8eHjQk9WI8ypGyZAFG5).
+
 ## Graph convolution neural network (GCN)
-GCN is a semi-supervised learning method combining graph theory and Convolution neural networks. In the `citeseer` dataset, each publication acts as a node in the network with binary features with values 0/1. Each publication belongs to one of the 6 classes representing research areas. Using GCN, these classes are inferred. Code for the inference is provided in this [Colab notebook](https://colab.research.google.com/drive/1ZdAud95PK8nKp8eHjQk9WI8ypGyZAFG5).
+GCN is a semi-supervised learning method combining graph theory and Convolution neural networks. It leverages information from neighboring nodes to infer about a given node in a graph. It works by doing several rounds of covolution. In each round, a node receives information about its neighbors. After two rounds of convolution, a node receives information about neighbors that are two hops away. I have applied GCN to predict research area of publications in the `citeseer` dataset. I have provided the implementation in the associated Colab notebook. Architecture of GCN and results are discussed here. 
 
 ## Network architecture
 There are two hidden layers that perform two rounds of information propagation. In the first round, a node receives information about its neighbors. In the second round, neighbors' information of a node is propagated to its neighbors. After the first pass, we can say, a node has up-to-date information about its neighbors. When we want to classify a node, a second round of information passing provides the most up-to-date information about the node's neighbors. 
