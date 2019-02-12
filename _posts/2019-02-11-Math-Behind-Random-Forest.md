@@ -41,3 +41,33 @@ Once the tree is build, it can be used to label a record. Based on different att
 ### Ensemble of trees: Random Forest
 A Random forest is a collection of trees that are grown independent of each other by taking random subsamples of records and features. Inference is done by taking a majority vote among the trees. 
 ![](/images/rf/rf-classification.png)
+
+### Feature importance
+Defines how much impurity a feature reduces in the forest
+
+* Sum of reduction of Gini impurity when a feature is used to split  a node in a tree
+* Calculate weighted reduction by using the number of records reaching the node
+* Take average over all the trees 
+* Normalize the scores across features from 0 to 100 to produce a relative ranking among features
+
+## Regression 
+Regress is supervised learning where target variable is numeric.
+![](/images/rf/regression-problem.png)
+
+Goals in Regression are the following:  
+* Reduction in variance in target variable Y
+* Variance defines how scattered Y is
+* Applies Mean squared error (MSE) with mean as output value (𝑌)
+* Given s is a cut-point for a feature f
+![](/images/rf/regression-eq.png)
+* Random forest performs average of the individual predictions.
+![](/images/rf/regression-plot.png)
+
+ 
+
+
+
+
+
+
+
