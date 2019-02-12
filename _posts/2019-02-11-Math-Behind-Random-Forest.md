@@ -51,7 +51,7 @@ Defines how much impurity a feature reduces in the forest
 * Normalize the scores across features from 0 to 100 to produce a relative ranking among features
 
 ## Regression 
-Regress is supervised learning where target variable is numeric.
+Regress is supervised learning where target variable is numeric. For example, predicting house price is a regression problem.
 ![](/images/rf/regression-problem.png)
 
 Goals in Regression are the following:  
@@ -60,14 +60,7 @@ Goals in Regression are the following:
 * Applies Mean squared error (MSE) with mean as output value (𝑌)
 * Given s is a cut-point for a feature f
 ![](/images/rf/regression-eq.png)
-* Random forest performs average of the individual predictions.
+Example:  
 ![](/images/rf/regression-plot.png)
-
- 
-
-
-
-
-
-
-
+* Random forest performs average of the individual predictions.
+![](/images/rf/rf-regression.png)
