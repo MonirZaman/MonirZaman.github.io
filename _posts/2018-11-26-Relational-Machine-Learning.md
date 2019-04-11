@@ -26,6 +26,11 @@ In the `citeseer` dataset, each publication acts as a node in the network with b
 ## Graph convolution neural network (GCN)
 GCN is a semi-supervised learning method combining graph theory and Convolution neural networks. It leverages information from neighboring nodes to infer about a given node in a graph. It works by doing several rounds of covolution. In each round, a node receives information about its neighbors. After two rounds of convolution, a node receives information about neighbors that are two hops away. I have applied GCN to predict research area of publications in the `citeseer` dataset. I have provided the implementation in the associated Colab notebook. Architecture of GCN and results are discussed here. 
 
+Feature representation in a GCN model can be summarized by the formulation
+`a(D^-1 A H^l W^l)`
+where `a` is activation, `D^-1` is degree based normalizer, `H^l` is input at layer `l` and `W^l` is the weights at layer `l`. Note at layer `0`, `H^0` is the input feature matrix. 
+We can further apply the feature representation for classification.
+
 ## Network architecture
 There are two hidden layers that perform two rounds of information propagation. In the first round, a node receives information about its neighbors. In the second round, neighbors' information of a node is propagated to its neighbors. After the first pass, we can say, a node has up-to-date information about its neighbors. When we want to classify a node, a second round of information passing provides the most up-to-date information about the node's neighbors. 
 
