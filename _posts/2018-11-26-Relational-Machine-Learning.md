@@ -28,7 +28,7 @@ GCN is a semi-supervised learning method combining graph theory and Convolution 
 
 Feature representation in a GCN model can be summarized by the formulation
 `a(D^-1 A H^l W^l)`
-where `a` is activation, `D^-1` is degree based normalizer, `H^l` is input at layer `l` and `W^l` is the weights at layer `l`. Note at layer `0`, `H^0` is the input feature matrix. 
+where `a` is activation being applied on the matrix multiplication of these terms: `D^-1` is degree based normalizer, `H^l` is input at layer `l` and `W^l` is the weights at layer `l`. Note at layer `0`, `H^0` is the input feature matrix. 
 We can further apply the feature representation for classification.
 
 ## Network architecture
@@ -45,3 +45,4 @@ This concludes demonstration of GCN on a graph-based dataset. If you have any qu
 References:  
 * [Graph Convolutional Networks](https://tkipf.github.io/graph-convolutional-networks/)
 * [Deep learning on Graph: A Survey](https://www.arxiv-vanity.com/papers/1812.04202/)
+* [GCN Basics](https://towardsdatascience.com/how-to-do-deep-learning-on-graphs-with-graph-convolutional-networks-7d2250723780)
