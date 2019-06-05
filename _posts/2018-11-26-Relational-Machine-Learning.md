@@ -28,7 +28,8 @@ GCN is a semi-supervised learning method combining graph theory and Convolution 
 
 Feature representation in a GCN model can be summarized by the formulation
 `a(D^-1 A H^l W^l)`
-where `a` is activation being applied on the matrix multiplication of these terms: `D^-1` is degree based normalizer, `H^l` is input at layer `l` and `W^l` is the weights at layer `l`. Note at layer `0`, `H^0` is the input feature matrix. 
+where `a` is activation being applied on the matrix multiplication of these terms: `D^-1` is degree based normalizer, `A` is the adjacency matrix, `H^l` is input at layer `l` and `W^l` is the weights at layer `l`. Note at layer `0`, `H^0` is the input feature matrix. It is equivalent of one round of information propagation in the graph. An additional round of information propagation will allow a node receive update from the neighbors of its immediate neighbors. It is best described visually by the following image:
+![gcn-mean-pooling](/images/gcn-mean-pooling.png)  
 We can further apply the feature representation for classification.
 
 ## Network architecture
