@@ -19,6 +19,13 @@ weights that are stored at the server.
 * Delay compensation technique allows a server to store a backup of each worker weights. When a worker sends its gradient, it
 corrects the gradient based on an approximate Hessian matrix as well as considering the difference between the fresh weights 
 of the parameter server and the possibly stale weights of the worker by using the backup. 
+
+* Vanilla ASGD consider 0th term in the Taylor Series Expansion to approaximate a fresh gradient of the parameter server at a given time step. Vanilla ASGD ignores all the higher order term in the expansion series. If it considers the higher order term during the update, the optimization will converge. However, applying higher order term of the Taylor series is computation intensive.
+
+* It is possible to show that element wise product of gradients becomes close to the Hessian matrix when iteration number t approaches infinity. Intuitively, after training for sufficient epoch or iteration, a neural network can approaximate any function. Let denote lambda * g(t) DOT g(t) as the term to approaximate the Hessian matrix. 
+
+* When the parameter server updates the global gradient by adding the stale gradient from the slow worker, it approximates the slow worker's gradient as if it were fresh. The approximation is the correction. It replaces stale g(t) by g(t) + lambda * g(t) DOT g(t) DOT (w(t+p)-w(t)) where w(t+p) is the fresh weight of the parameter server and w(t) the last fresh update of the slowest worker from the backup stored at the parameter server.
+
 * Zheng et al. show the delay compensated method performs close to Synchonous SGD on ImageNet dataset
 
 
