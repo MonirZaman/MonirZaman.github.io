@@ -7,7 +7,9 @@ Zheng, Shuxin, et al. "Asynchronous stochastic gradient descent with delay compe
 Proceedings of the 34th International Conference on Machine Learning-Volume 70. JMLR. org, 2017.
 ```
 
-* Setup involves a parameter server and many workers. 
+* Setup involves a parameter server and many workers as outlined in the figure
+![image](images/ps-worker.png)
+
 * Workers receive a chunk of the training dataset and compute gradient on them. They send the computed gradient to the 
 parameter serve
 * Parameter server who maintains the global gradient by aggregating gradients from all the worker nodes. However, it does not
