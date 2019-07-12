@@ -8,7 +8,7 @@ Proceedings of the 34th International Conference on Machine Learning-Volume 70. 
 ```
 
 * Setup involves a parameter server and many workers as outlined in the figure
-![image](images/ps-worker.png)
+![image](/images/ps-worker.png)
 
 * Workers receive a chunk of the training dataset and compute gradient on them. They send the computed gradient to the 
 parameter serve
