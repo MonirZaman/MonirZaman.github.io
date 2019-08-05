@@ -1,7 +1,7 @@
 # SMAC
 
 
-* Applies Random Forest as acquisition function
+* Applies Random Forest as acquisition function with runtime as objective 
 * Use computation graph feature such as mean, number of nodes, etc as features
 * Use Sample size, number of configurations 
 * Apply all these features through RF model and predict runtime
