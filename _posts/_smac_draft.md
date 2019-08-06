@@ -1,4 +1,9 @@
-# SMAC
+# Tutorial: Sequential model-based optimization for general algorithm configuration (SMAC)
+
+```
+Hutter, Frank, Holger H. Hoos, and Kevin Leyton-Brown. "Sequential model-based optimization for general algorithm configuration." International conference on learning and intelligent optimization. Springer, Berlin, Heidelberg, 2011.
+```
+
 Hyperparameter optimization can be defined as as follows: given an algorithm A (the target algorithm), a set (or distribution) of problem instances I and a cost metric c, find Hyperparameter settings of A that minimize c on I.  
 It has following three steps  
 [1]. It starts by running the target algorithm with some initial parameter configurations.   
