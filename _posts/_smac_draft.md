@@ -1,5 +1,12 @@
 # SMAC
-Hyperparameter optimization can be defined as as follows: given an algorithm A (the target algorithm), a set (or distribution) of problem instances I and a cost metric c, find Hyperparameter settings of A that minimize c on I.
+Hyperparameter optimization can be defined as as follows: given an algorithm A (the target algorithm), a set (or distribution) of problem instances I and a cost metric c, find Hyperparameter settings of A that minimize c on I.  
+It has following three steps
+[1]. It starts by running the target algorithm with some initial parameter configurations . 
+[2]. Fitting a surrogate model / response surface model using the existing data .
+[3]. Selecting a list of promising configurations . 
+[4 . Running the target algorithm on (some of) the selected configurations until a given time bound is reached. 
+
+
 
 * Applies Random Forest as acquisition function with runtime as objective 
 * Use computation graph feature such as mean, number of nodes, etc as features
