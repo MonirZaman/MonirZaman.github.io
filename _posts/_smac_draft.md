@@ -6,6 +6,14 @@ It has following three steps
 [3]. Selecting a list of promising configurations.  
 [4]. Running the target algorithm on (some of) the selected configurations until a given time bound is reached. 
 
+A core part of the SMAC algorithm is the intensify of a configuration. A summary of the intensify operations are given below:  
+* Takes a set of promising configurations and incumbent configurations that were chosen before
+* For each promising configuration, perform the following steps
+ * Few random instances (few of the many multi-task learning problems) are randomly selected and incumbent configuration are run against these instances to increase confidence on the incumbent. Incumbent is the parameter configurations that were previously chosen
+ 
+ * A new sets of problem instances are taken where the incumbent ran but promising config did not run. when we compare the empirical cost statistics of two parameter configurations across multiple instances, the variance in this comparison is lower if we use the same N instances to compute both estimates.
+ * Run the promising configuration on the sampled problem instances for the target algorithm
+ * When promising configurations ran as many rounds as the incumbent and still as good as the incumbent, then it becomes the incumbent.
 
 
 * Applies Random Forest as acquisition function with runtime as objective 
