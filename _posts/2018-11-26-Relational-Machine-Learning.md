@@ -1,7 +1,3 @@
-<script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
 ([Colab Notebook for the blog post](https://colab.research.google.com/drive/1ZdAud95PK8nKp8eHjQk9WI8ypGyZAFG5))
 ![Data in non-Euclidean space](/images/manifold.png)  
 In real world data often live in non-euclidean space. Examples include social networks, point clouds, etc. Such data contains topological information and are non-linear in nature. Typical machine learning models treat data point as independent to each other. In this post we will look at a model that exploits the inter-relationship of the data points and apply them to perform machine learning task such classification. First we look at some non-euclidean data 
@@ -11,9 +7,6 @@ In real world data often live in non-euclidean space. Examples include social ne
 
 2. Graph:  
 Social networks among people
-{% raw %}
-  $$a^2 + b^2 = c^2$$ --> note that all equations between these tags will not need escaping! 
- {% endraw %}
 
 Machine learning on such data requires a model that captures inherent structures among data items. We will look at one such model called Graph Convolutional Network. Inference task is to classify node on the Citeseer network dataset. 
 
