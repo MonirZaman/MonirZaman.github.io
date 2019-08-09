@@ -5,10 +5,8 @@
 Training a neural network may take days or weeks. A faster training method will save researcher and practitioner's time. 
 There are various methods to train a neural network in a distributed manner. These methods distribute the Stochastic Gradient Descent (SGD) optimization over multiple compute nodes. These methods are outlined here:  
 
-# Distributed SGD methods
-
 1. Parameter server method  
-2. Parallel Allreduce method   
+2. Parallel Allreduce method  
 3. Ring Allreduce method  
 
 1. Parameter server method:  
