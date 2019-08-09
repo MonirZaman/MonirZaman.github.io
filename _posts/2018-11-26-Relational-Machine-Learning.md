@@ -7,7 +7,9 @@ In real world data often live in non-euclidean space. Examples include social ne
 
 2. Graph:  
 Social networks among people
-$\sum_{i=1}^m y^{(i)}$
+{% raw %}
+  $$a^2 + b^2 = c^2$$ --> note that all equations between these tags will not need escaping! 
+ {% endraw %}
 
 Machine learning on such data requires a model that captures inherent structures among data items. We will look at one such model called Graph Convolutional Network. Inference task is to classify node on the Citeseer network dataset. 
 
