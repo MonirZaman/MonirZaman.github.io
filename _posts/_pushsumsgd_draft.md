@@ -17,3 +17,4 @@ If a node is passed tou iterations but still has not received gradients from all
   
   
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" />
+$\sum_{i=1}^m y^{(i)}$
