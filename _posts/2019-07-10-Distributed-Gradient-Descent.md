@@ -23,10 +23,10 @@ In this method, compute node uses both upload and download bandwidth during comm
 # Latest research works
 
 ## Delay compensated Asynchronous Stochastic Gradient Descent
-```
+``
 Zheng, Shuxin, et al. "Asynchronous stochastic gradient descent with delay compensation." 
 Proceedings of the 34th International Conference on Machine Learning-Volume 70. JMLR. org, 2017.
-```
+``
 
 * Setup involves a parameter server and many workers as outlined in the figure
 ![image](/images/ps-worker.png)
