@@ -62,17 +62,19 @@ computation to avoid communication bottle neck. Their work is faster than ALLRED
 every other worker. In a setting where communication is a bottleneck, allreduce approach is not feasible. Parameter server
 is asynchronous but poses a single source of failure risk. Push sum SGD have been benched marked against existing distributed training method which show it achieves similar accuracy on validation set but on a significantly less time. A simple summary of the SGP algorithm is given below
 
-![image-of-graph](/image/sgp-dag.png)
+![image-of-graph](/images/sgp-dag.png)
 *Directed communication graph denoting node 0's neighbors [Assran et al. 2019]*
 
-* SGP maintains a communication mixing matrix that determines which compute node communicates with what other nodes. It is a weighted adjacency matrix. In a parallel SGD, each entry is $$\frac{1}{n}$$. In SGP, each node choose its own weights for its neighbors independent of other nodes in a given iteration. When a node sends its gradient to a neighbor, it also sends the weight along with the gradient. The neighbor, upon receiving the gradient and the weight, add the weighted gradient to its own gradient.   
+* SGP maintains a communication mixing matrix that determines which compute node communicates with what other nodes. It is a weighted adjacency matrix. In a parallel SGD, each entry is $$\frac{1}{n}$$. In SGP, each node choose its own weights for its neighbors independent of other nodes in a given iteration. When a node sends its parameters to a neighbor, it also sends the communication weight along with the parameter values. The neighbor, upon receiving, add the weighted parameter value to its own value.   
 Idea of mixing weight matrix denotes communication topology among nodes. From Markov Chain literature, it can be shown that after doing some rounds of communication, a gradient from each node eventually reaches every other node despite missing direct communication link. 
 
-![algorithm](/image/sgp-alg.png)
+![algorithm](/images/sgp-alg.png)
 *[Assran et al. 2019]*
 
 * Asymmetric communication happens where a node sends to another node but not necessarily needs to receive gradient from that node. To overcome challenges associated to designing an algorithm ensuring $$\pi = \frac{1}{n}$$, authors introduce another scalar $$w$$ which is initially set to 1 and eventually becomes same as the number of nodes. Each node updates their gradient by further normalizing with the weighted $$w$$ for a given iteration.  
 
-* SGP also proposes to perform local gradient update for $$\uptau$$ iteration where $$\uptau$$ is bounded. Typically, SGD can converges even when gradients of individual nodes are outdated by one or two iterations. If a node is passed $$\uptau$$ iterations but still has not received gradients from all of its neighbors, then it enters a blocking mode and waits for the remaining gradients from its neighbors. Upon receiving the gradients, the node calculates $$z$$ for updating the weights.
+* SGP also proposes to perform local gradient update for $$\tau$$ iteration where $$\tau$$ is bounded. Typically, SGD can converges even when gradients of individual nodes are outdated by one or two iterations. If a node is passed $$\tau$$ iterations but still has not received gradients from all of its neighbors, then it enters a blocking mode and waits for the remaining gradients from its neighbors. Upon receiving the gradients, the node update its parameters in line 6-8 of the SGP algorithm. Then it proceeds by updating model weights in line 3-4.  
+
+
 
 
