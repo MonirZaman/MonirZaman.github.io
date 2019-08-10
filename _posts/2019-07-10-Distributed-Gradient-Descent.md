@@ -62,7 +62,7 @@ computation to avoid communication bottle neck. Their work is faster than ALLRED
 every other worker. In a setting where communication is a bottleneck, allreduce approach is not feasible. Parameter server
 is asynchronous but poses a single source of failure risk. Push sum SGD have been benched marked against existing distributed training method which show it achieves similar accuracy on validation set but on a significantly less time. A simple summary of the SGP algorithm is given below
 
-![image-of-graph](/images/sgp-dag.png)
+![image-of-graph](/images/sgp-dag.png)  
 *Directed communication graph denoting node 0's neighbors [Assran et al. 2019]*
 
 * SGP maintains a communication mixing matrix that determines which compute node communicates with what other nodes. It is a weighted adjacency matrix. In a parallel SGD, each entry is $$\frac{1}{n}$$. In SGP, each node choose its own weights for its neighbors independent of other nodes in a given iteration. When a node sends its parameters to a neighbor, it also sends the communication weight along with the parameter values. The neighbor, upon receiving, add the weighted parameter value to its own value.   
