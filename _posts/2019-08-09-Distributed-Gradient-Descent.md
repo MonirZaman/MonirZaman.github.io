@@ -9,13 +9,13 @@ There are various methods to train a neural network in a distributed manner. The
 2. Parallel Allreduce method  
 3. Ring Allreduce method  
 
-1. Parameter server method:  
+[1] Parameter server method:  
 There is a central node that acts a server storing gradients from all compute nodes. Each compute node get a set of minibatches of data. Once they compute gradient on their local minibatch, the gradient is sent to the parameter server. The server then aggregates all the gradients and send the aggregated copy to each compute node to update the model weights. Failure of the parameter server can be a bottleneck for this approach.
 
-2. Parallel Allreduce method:  
+[2] Parallel Allreduce method:  
 There is no central parameter server in this method. Each compute node calculates gradient on its own minibatch of data and then sends its gradient to every other nodes. Once it starts receives gradients from all nodes, it aggregates the gradients and use them to update the weights of the neural network before starting computation for the next iteration of SGD. This approach works well when there is very reliable and fast communication available among compute nodes. If there is a slow compute node or slow network can be become a bottleneck.  
 
-3. Ring Allreduce method:  
+[3] Ring Allreduce method:  
 In this method, compute node uses both upload and download bandwidth during communication. Compute nodes are organized in a ring where a node has an incoming connection to a neighbor and an outgoing connection to another neighbor. When a node finishes computing gradients on its minibatch, it sends the gradient to its neighbor. In the same round, the node also receives gradient from its incoming connection. Each node has a buffer where it stores gradients from all nodes in the ring. When there are $$K$$ nodes in the ring, it takes $$(K-1)$$ rounds of communication for a node to receive gradients from all the nodes in the ring. A slow compute node can reduce efficiency of this method since all the other nodes need to wait for its gradient. 
 ![ring-allreduce](/images/ring-allreduce.png)
 *Conceptual diagram of ring allreduce method (https://preferredresearch.jp/2018/07/10/technologies-behind-distributed-deep-learning-allreduce/)*
