@@ -13,3 +13,15 @@ pass through this new hidden node.
 * Chosen network is then modified and search continues.
 
 * Loss function takes performance and network size into account. Given two networks providing similar performance, a simpler network is chosen. 
+
+
+## Research work: Weight agnostic neural networks
+
+* Perform NAS with random weights 
+* Replace training weights with shared random weights and multiple trials
+* It is easy to tune a single shared weight than it is to perform gradient descend over the network
+* Log mean performance of an architecture over 100 trials with different random weights
+* Network architecture provides an inductive bias towards a particular task or a set of tasks and their solutions
+  * It encode relationships and rely on dependency between systems set among each other e.g., an equation combining different aspects of the system
+  
+ ![Winning architecture of car racing agent](/images/winning-architecture-car.png)
