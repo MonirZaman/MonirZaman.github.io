@@ -30,3 +30,5 @@ NeurIPS 2019
   * It encode relationships and rely on dependency between systems set among each other e.g., an equation combining different aspects of the system
   
  ![Winning architecture of car racing agent](/images/winning-architecture-car.png)
+ *Winning architecture of car racing agent (https://arxiv.org/abs/1906.04358)*
+
