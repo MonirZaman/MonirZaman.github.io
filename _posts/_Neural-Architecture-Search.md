@@ -16,6 +16,11 @@ pass through this new hidden node.
 
 
 ## Research work: Weight agnostic neural networks
+```
+Weight Agnostic Neural Networks  
+Adam Gaier, David Ha
+NeurIPS 2019
+```
 
 * Perform NAS with random weights 
 * Replace training weights with shared random weights and multiple trials
