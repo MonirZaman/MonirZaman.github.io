@@ -32,3 +32,5 @@ NeurIPS 2019
  ![Winning architecture of car racing agent](/images/winning-architecture-car.png)
  *Winning architecture of car racing agent (https://arxiv.org/abs/1906.04358)*
 
+## Research work: Differentiable Architecture Search (DART)
+![blog](https://towardsdatascience.com/differentiable-architecture-search-for-rnn-with-fastai-a5e247aeb937)
