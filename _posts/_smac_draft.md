@@ -35,3 +35,7 @@ A core part of the SMAC algorithm is the intensify of a configuration. A summary
   * Predict EI for each of these hyperparameter configurations without evaluating the model 
     and using acquisition function
   
+# Multifidelity Bayesian optimization
+
+* Practical Multi-fidelity Bayesian Optimization for Hyperparameter Tuning
+* These approaches commonly uses a knowledge gradients. They take a step along the direction of the gradient and obtain a point. Then the optimization performs simulation using the point to get an expected improvement over next candidate points and choose the point the maximum expected improvement.
