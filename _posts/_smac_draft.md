@@ -48,6 +48,7 @@ A core part of the SMAC algorithm is the intensify of a configuration. A summary
    * Repeat for J iterations and average knowledge gradients
    * Sample an observation
    * Calculate improvement by observing the sample (u_{n+1}-u_{n})
+    * (An equivalent function is mixture of weights calculation)
    * Average all J improvements and return knowledge gradient
    
  * Repeat the above steps of finding knowledge gradient for a given number of starts.
