@@ -40,3 +40,17 @@ A core part of the SMAC algorithm is the intensify of a configuration. A summary
 * Practical Multi-fidelity Bayesian Optimization for Hyperparameter Tuning
 * A tutorial on Bayesian optimization
 * These approaches commonly uses a knowledge gradients. They take a step along the direction of the gradient and obtain a point. Then the optimization performs simulation using the point to get an expected improvement over next candidate points and choose the point the maximum expected improvement.
+* Algorithm steps:  
+ * Compute gradient descent for a given number of steps
+  * Take a step along the gradient. 
+ * Take the final X
+ * Estimate knowledge gradient on X using simulation by the following steps:
+   * Repeat for J iterations and average knowledge gradients
+   * Sample an observation
+   * Calculate improvement by observing the sample (u_{n+1}-u_{n})
+   * Average all J improvements and return knowledge gradient
+   
+ * Repeat the above steps of finding knowledge gradient for a given number of starts.
+ * Return X with the maximum knowledge gradient
+ 
+
