@@ -37,7 +37,7 @@ A core part of the SMAC algorithm is the intensify of a configuration. A summary
   
 # Multifidelity Bayesian optimization
 
-* Practical Multi-fidelity Bayesian Optimization for Hyperparameter Tuning
+* to read: Practical Multi-fidelity Bayesian Optimization for Hyperparameter Tuning
 * A tutorial on Bayesian optimization
 * These approaches commonly uses a knowledge gradients. They take a step along the direction of the gradient and obtain a point. Then the optimization performs simulation using the point to get an expected improvement over next candidate points and choose the point the maximum expected improvement.
 * Algorithm steps:  
@@ -54,4 +54,19 @@ A core part of the SMAC algorithm is the intensify of a configuration. A summary
  * Repeat the above steps of finding knowledge gradient for a given number of starts.
  * Return X with the maximum knowledge gradient
  
-
+ # [BOHB: Robust and Efficient Hyperparameter Optimization at Scale](https://arxiv.org/pdf/1807.01774.pdf)
+ 
+ * We follow HB’s way of choosing the budgets and continue
+to use SH
+ * In early stages, it uses Hyperband to find configurations with a small budget to that are very soon promising configurations
+ * It also uses uses the Bayesian optimizer predictive power to propose potential good configurations close to the found best configs
+ * A single multidimensional KDE is used
+ * A minimum number of data point is required n = num of hyperparameters + 1
+ * BOHB always uses the model for the largest budget for which enough observations are
+available.
+ * we also sample a constant fraction ρ of the configurations uniformly
+at random (line 1).  
+ * We start with the first SH run that sequential HB would perform
+(the most aggressive one, starting from the lowest budget)
+ *  observations and the resulting models are shared across all SH runs.  
+ 
