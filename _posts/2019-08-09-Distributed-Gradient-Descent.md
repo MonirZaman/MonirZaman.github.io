@@ -39,6 +39,10 @@ the weights to the worker that just communicated. The worker then can start the 
 
 * Asynchonous setting runs into problem when there are slow workers. Gradient sent by a slow worker can lag by few iterations than
 weights that are stored at the server.
+
+* Model update in ASGD is equivalent to Taylor series expansion of 0th term. It ignores higher order terms which corresponds to update using stale gradients from slow workers. We can consider to include one additional term from the Taylor series which would be a derivative of the gradient, in other words Hessian matrix. However, computing Hessian matrix is computationally expensive. So it is approaximated by element-wise multiplication of the stale gradient with itself weighted by a scalar lambda times the difference between fresh model and stale model. It is given by the following equation. For proof, please refer to the paper:  
+![dc-gradient-update](/images/dc-gradient-update.png)
+
 * Delay compensation technique allows a server to store a backup of each worker weights. When a worker sends its gradient, it
 corrects the gradient based on an approximate Hessian matrix as well as considering the difference between the fresh weights 
 of the parameter server and the possibly stale weights of the worker by using the backup. 
