@@ -68,9 +68,12 @@ A core part of the SMAC algorithm is the intensify of a configuration. A summary
 available.
 `b = arg max {Db : |Db| ≥ Nmin + 2}`
  `D_{b}` denotes Configs evaluated at budget `b`. Expression ensures we are fitting KDEs using observations evaluated on maximum budget.  
- * Draw a number of samples from KDEs and return the sample with the highest ration of l(x)/g(x)
-  * A constant fraction ρ of the configurations are chosen at uniformly at random (line 1). 
+ * Draw a number of samples from l'(x) which is same as l(x) except for the fact that all the bandwidths are multiplied by a factor bw to encourage more exploration around promising configuration.  
+ 
+ * Return the sample with the highest ration of l(x)/g(x)
+ * A constant fraction ρ of the configurations are chosen at uniformly at random (line 1). This ensures that BOHB converges eventually.  
  `if rand() < ρ then return random configuration`
  
   * Observations and the resulting models are shared across all SH runs.  
  
+![SHA](/images/bohb.png)
