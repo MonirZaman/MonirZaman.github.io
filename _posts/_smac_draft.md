@@ -56,17 +56,21 @@ A core part of the SMAC algorithm is the intensify of a configuration. A summary
  
  # [BOHB: Robust and Efficient Hyperparameter Optimization at Scale](https://arxiv.org/pdf/1807.01774.pdf)
  
- * We follow HB’s way of choosing the budgets and continue
-to use SH
- * In early stages, it uses Hyperband to find configurations with a small budget to that are very soon promising configurations
- * It also uses uses the Bayesian optimizer predictive power to propose potential good configurations close to the found best configs
- * A single multidimensional KDE is used
+ * We follow HB’s way of choosing the budgets and continue to use SH
+ * In early stages, it uses Hyperband to find configurations with a small budget to that are very soon promising configurations. It runs Successive Halving for several rounds
+ ![SHA](/images/sha.png)
+ 
+ * To perform Successive Halving, BOHB uses the Bayesian optimizer predictive power to propose potential good configurations close to the found best configs
+ 
+ * A single multidimensional Kernel Density Estimate (KDE) is used
  * A minimum number of data point is required n = num of hyperparameters + 1
  * BOHB always uses the model for the largest budget for which enough observations are
 available.
- * we also sample a constant fraction ρ of the configurations uniformly
-at random (line 1).  
- * We start with the first SH run that sequential HB would perform
-(the most aggressive one, starting from the lowest budget)
- *  observations and the resulting models are shared across all SH runs.  
+`b = arg max {Db : |Db| ≥ Nmin + 2}`
+ `D_{b}` denotes Configs evaluated at budget `b`. Expression ensures we are fitting KDEs using observations evaluated on maximum budget.  
+ * Draw a number of samples from KDEs and return the sample with the highest ration of l(x)/g(x)
+  * A constant fraction ρ of the configurations are chosen at uniformly at random (line 1). 
+ `if rand() < ρ then return random configuration`
+ 
+  * Observations and the resulting models are shared across all SH runs.  
  
