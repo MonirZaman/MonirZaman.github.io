@@ -55,6 +55,9 @@ A core part of the SMAC algorithm is the intensify of a configuration. A summary
  * Return X with the maximum knowledge gradient
  
  # [BOHB: Robust and Efficient Hyperparameter Optimization at Scale](https://arxiv.org/pdf/1807.01774.pdf)
+ ```
+ Falkner, Stefan, Aaron Klein, and Frank Hutter. "BOHB: Robust and efficient hyperparameter optimization at scale." arXiv preprint arXiv:1807.01774 (2018).
+ ```
  
  * We follow HB’s way of choosing the budgets and continue to use SH
  * In early stages, it uses Hyperband to find configurations with a small budget to that are very soon promising configurations. It runs Successive Halving for several rounds
