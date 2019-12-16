@@ -4,6 +4,7 @@
   * Reinforcement learning
   * Bayesian ML and approaximating GP
   * Local changes and Graph model
+  * Wasserstein distance
 
 # [Exact GP for a million data points](https://arxiv.org/pdf/1903.08114.pdf)
 
