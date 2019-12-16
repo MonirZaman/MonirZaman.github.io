@@ -6,6 +6,6 @@
 * Speed up inference by caching covariance calculation of training points
 
 # [Gibbs sampling for Dengue outbreak prediction](https://arxiv.org/pdf/1910.14145.pdf)
-[code](https://github.com/uu-sml/birch-vector-borne-disease/tree/76288c12761293aeca9e8b452b0c678914848dae45yu8p)
+[code](https://github.com/uu-sml/birch-vector-borne-disease/tree/76288c12761293aeca9e8b452b0c678914848dae)
 
 # [Practical two step look ahead in Bayesian optimization](http://papers.nips.cc/paper/9174-practical-two-step-lookahead-bayesian-optimization.pdf)
