@@ -4,3 +4,7 @@
 * Propose to use exact GP instead of approaximation
 * Distribute computation by reducing training to an element-wise product between matrix and vector
 * Speed up inference by caching covariance calculation of training points
+
+# [Gibbs sampling for Dengue outbreak prediction](https://arxiv.org/pdf/1910.14145.pdf)
+
+# [Practical two step look ahead in Bayesian optimization](http://papers.nips.cc/paper/9174-practical-two-step-lookahead-bayesian-optimization.pdf)
