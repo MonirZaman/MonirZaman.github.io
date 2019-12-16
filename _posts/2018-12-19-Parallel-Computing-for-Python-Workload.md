@@ -54,5 +54,6 @@ df.groupby([ID, NAME]).aggregate(['sum', 'mean', 'max', 'min'])
 df.join(df, on=[MANAGER_ID, ID])
 ```
 ## References:  
+* [Automatic differentiation using Google JAX](https://jax.readthedocs.io/en/latest/notebooks/quickstart.html)
 * [Working with Big datasets](https://www.kaggle.com/yuliagm/how-to-work-with-big-datasets-on-16g-ram-dask)
 * [Python and Dask](https://towardsdatascience.com/trying-out-dask-dataframes-in-python-for-fast-data-analysis-in-parallel-aa960c18a915)
