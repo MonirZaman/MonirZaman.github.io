@@ -13,8 +13,14 @@
 * Distribute computation by reducing training to an element-wise product between matrix and vector
 * Speed up inference by caching covariance calculation of training points
 
-# [Gibbs sampling for Dengue outbreak prediction](https://arxiv.org/pdf/1910.14145.pdf)
+# [Parameter elimination in particle Gibbs sampling](https://arxiv.org/pdf/1910.14145.pdf)
 [code](https://github.com/uu-sml/birch-vector-borne-disease/tree/76288c12761293aeca9e8b452b0c678914848dae)
+* Proposes particle Gibbs Sampling for inference
+* Apply Gibbs sampling for Dengue outbreak prediction
+* Model consists of parameters and states. It alternates inference between parameters and states
+* Particle Gibbs with Ancestor Sampling (PGAS) selects an ancestor trajectory denoting 
+* PGAS uses sequence Markov Chain for updating state
+* Derive an analytical expression for estimating joint distribution of observation(y_t) and states (x_t) marginalizing on the previous states and observations (x_0:t-1, y_1:t-1)
 
 # [Practical two step look ahead in Bayesian optimization](http://papers.nips.cc/paper/9174-practical-two-step-lookahead-bayesian-optimization.pdf)
 
