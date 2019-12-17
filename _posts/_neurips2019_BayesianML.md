@@ -17,3 +17,8 @@
 [code](https://github.com/uu-sml/birch-vector-borne-disease/tree/76288c12761293aeca9e8b452b0c678914848dae)
 
 # [Practical two step look ahead in Bayesian optimization](http://papers.nips.cc/paper/9174-practical-two-step-lookahead-bayesian-optimization.pdf)
+
+
+# Popular paper
+* [On Exact Computation with an Infinitely Wide Neural Net](https://arxiv.org/pdf/1904.11955.pdf)
+* [Weight Agnostic Neural Networks](https://arxiv.org/abs/1906.04358)
