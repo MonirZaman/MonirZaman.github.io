@@ -40,6 +40,7 @@
 * ASEBO learns the dynamically changing intrinsic dimensionality of the gradient space and adapts to the hardness of different stages of the optimization without external supervision.
 * 
 
-# Popular paper
+# Additional papers
 * [On Exact Computation with an Infinitely Wide Neural Net](https://arxiv.org/pdf/1904.11955.pdf)
 * [Weight Agnostic Neural Networks](https://arxiv.org/abs/1906.04358)
+* [Kernel Instrumental Variable Regression (Causality)](https://arxiv.org/abs/1906.00232)
