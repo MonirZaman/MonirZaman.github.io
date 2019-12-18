@@ -8,7 +8,6 @@
 
 # [Exact GP for a million data points](https://arxiv.org/pdf/1903.08114.pdf)
 
-
 * Propose to use exact GP instead of approaximation
 * Distribute computation by reducing training to an element-wise product between matrix and vector
 * Speed up inference by caching covariance calculation of training points
@@ -34,6 +33,12 @@
 
 # [Practical two step look ahead in Bayesian optimization](http://papers.nips.cc/paper/9174-practical-two-step-lookahead-bayesian-optimization.pdf)
 
+
+# RL
+# [From Complexity to Simplicity: Adaptive ES-Active Subspaces for Blackbox Optimization](http://papers.nips.cc/paper/9218-from-complexity-to-simplicity-adaptive-es-active-subspaces-for-blackbox-optimization.pdf)
+* It leverages techniques from the emerging theory of active subspaces in a novel ES blackbox optimization context . 
+* ASEBO learns the dynamically changing intrinsic dimensionality of the gradient space and adapts to the hardness of different stages of the optimization without external supervision.
+* 
 
 # Popular paper
 * [On Exact Computation with an Infinitely Wide Neural Net](https://arxiv.org/pdf/1904.11955.pdf)
