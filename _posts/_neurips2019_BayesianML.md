@@ -25,6 +25,10 @@
 * Each ancestor trajectory in mPGAS is assigned a weight where w_t is the weight of the trajectory x_0:t-1
 * Update parameters and Summation of statistics
 * Algorithm 2 is the final algorithm
+* Goal of the algorithm is reduce autocorrelation about hidden states
+
+## Extension
+* When not much is known about the parameters of a model, authors propose to use a diffuse prior to reflect the uncertainty.
 
 
 
