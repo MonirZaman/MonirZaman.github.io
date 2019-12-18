@@ -44,3 +44,6 @@
 * [On Exact Computation with an Infinitely Wide Neural Net](https://arxiv.org/pdf/1904.11955.pdf)
 * [Weight Agnostic Neural Networks](https://arxiv.org/abs/1906.04358)
 * [Kernel Instrumental Variable Regression (Causality)](https://arxiv.org/abs/1906.00232)
+
+# Paper summary
+* [Robinly's playlist](https://www.youtube.com/watch?v=FfrLrAudfEQ&list=PLM_Os_a1Hki8vaGeUdU997lDLELcfga9k)
