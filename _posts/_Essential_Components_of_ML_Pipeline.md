@@ -1,5 +1,5 @@
 ## Preprocessing 
-![label_preprocessing](/images/talent7.png)
+![label_preprocessing](/images/talentai7.png)
 
 ## Post Deployment
 * Check model performance
