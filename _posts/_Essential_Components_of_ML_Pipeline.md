@@ -1,3 +1,6 @@
+## Preprocessing 
+![label_preprocessing](/images/talent7.png)
+
 ## Post Deployment
 * Check model performance
 Track model's score. Generate alert when the score becomes an anomaly.
