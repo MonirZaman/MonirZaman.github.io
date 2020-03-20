@@ -1,5 +1,11 @@
 ## Machine learning echo system
 ![technical-debt](/images/technical-debt-ml-model.png)
+[Image courtesy](https://www.youtube.com/watch?v=EI2QisCvEM4)  
+
+Actual training of a machine model constitutes a small portion of a machine learning echo system. 
+```
+Sculley, David, et al. "Hidden technical debt in machine learning systems." Advances in neural information processing systems. 2015.
+```
 
 ## Preprocessing 
 ![label_preprocessing](/images/talentai7.png)
