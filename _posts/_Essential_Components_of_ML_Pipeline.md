@@ -17,6 +17,9 @@ Upon reading features from feature store, features need to be prepared for ML fr
 
 Feature store should provide version controlling and letting users use a given version. 
 
+## Model deployment
+* [Quantization](https://www.youtube.com/watch?v=IPQmGzYuxmc)
+* Pruning
 
 ## Post Deployment
 * Check model performance
