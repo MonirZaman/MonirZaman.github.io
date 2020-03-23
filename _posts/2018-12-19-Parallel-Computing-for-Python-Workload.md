@@ -1,5 +1,15 @@
 Modern day's computer processor comes with multiple cores. Utilizing different cores often vastly reduces runtime of programs. This is helpful in the context where program manipulates large of amount of data. This tutorial will list out some ways to enable parallelization of Python code involving Pandas data frame.
 
+## [JAX](https://github.com/google/jax)  
+Jax combines XLA and AutoGrad. It is released from Google offering the following   
+1. Allows data manipulation on tensors
+2. Accelerate python code on various hardwire such as GPU/TPU by providing an optimized kernel for the custom function. Provides a Numpy wrapper.
+    - Accelerate single function (XLA feature)
+    - Accelerate entire code block similar to computation graph (jit compiler)  
+3. Offers automatic differentiation of a python function with respect to one or many inputs. It is effective for optimizing function value  
+4. Offers a high-level machine learning library  
+
+
 ## Profile code
 Typically, first step is to run a profiler to see how much time different parts of the code base are taking. I use `cProfile` for this purpose. `snakeviz` can be used to visualize the output of the profiler.  
 1. Profile a script using the following command:  
