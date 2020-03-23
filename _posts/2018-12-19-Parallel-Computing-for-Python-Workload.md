@@ -9,6 +9,8 @@ Jax combines XLA and AutoGrad. It is released from Google offering the following
 3. Offers automatic differentiation of a python function with respect to one or many inputs. It is effective for optimizing function value  
 4. Offers a high-level machine learning library  
 
+## [Torchscript](https://pytorch.org/tutorials/beginner/Intro_to_TorchScript_tutorial.html)
+It is a subset of python that are decoupled from runtime environment. It allows converting python code through simple jit call. Torchscript makes it easer to optimize code for custom hardware, quantization of machine learning model and various other optimizations.
 
 ## Profile code
 Typically, first step is to run a profiler to see how much time different parts of the code base are taking. I use `cProfile` for this purpose. `snakeviz` can be used to visualize the output of the profiler.  
