@@ -10,7 +10,8 @@ Reproducing model prediction requires [Test-time dropout method](https://tensorc
 
 #### Parallel execution
 - Certain operations in Tensorflow cannot reproduce results across run on GPU. This is due to limited precision of floats, adding a sequence of numbers may give different results based on the order they were in parallel execution. Even if you avoid non-deterministic operation such as tf.reduce_sum, tensorflow can introduce non-determinism when it calculates gradient
-- Output often different output in the least significant bit  
+
+- Output is not consistent in the least significant bit  
   
 - Nvidia's CuDNN library do not gurrantee reproduceability across runs on GPU [for certain convolution operations](https://docs.nvidia.com/deeplearning/sdk/cudnn-developer-guide/index.html#reproducibility)
  
@@ -64,3 +65,6 @@ K.set_session(tf.Session(graph=tf.get_default_graph(), config=session_conf))
 * Run on CPU
 * Set seed for data sampler; Batches should be iterated in the same order 
 * Run for few iterations on few records
+
+#### Reference
+[1](https://determined.ai/blog/reproducibility-in-ml/)
