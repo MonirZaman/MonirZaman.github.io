@@ -23,5 +23,9 @@ The authors train these two networks with the objective of reducing interference
 
 The image above shows one update in the meta learning. RLN is initialized with $$\theta_{1}$$ and PLN with $$W_{1}$$. Through gradient descend, PLN is updated k times where k is the number of samples. Then a random subset of samples are drawn and loss is calculated on the random subsets based on the network's prediction. Gradient descend is calculated on the initial parameters $$\theta_{1}$$ and $$W_{1}$$ which are then updated. Similar meta learning steps are repeated many times.
 
-
+To review:  
+* [Learning search spaces for Bayesian optimization:
+Another view of hyperparameter transfer learning](https://papers.nips.cc/paper/9438-learning-search-spaces-for-bayesian-optimization-another-view-of-hyperparameter-transfer-learning.pdf)
+  * [Video](https://www.youtube.com/watch?v=4G1dLuW8-kM)
+  * [Related work in ICLR 2020](https://arxiv.org/pdf/1904.02642.pdf)
 
