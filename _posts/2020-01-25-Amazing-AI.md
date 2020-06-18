@@ -24,8 +24,13 @@ The authors train these two networks with the objective of reducing interference
 The image above shows one update in the meta learning. RLN is initialized with $$\theta_{1}$$ and PLN with $$W_{1}$$. Through gradient descend, PLN is updated k times where k is the number of samples. Then a random subset of samples are drawn and loss is calculated on the random subsets based on the network's prediction. Gradient descend is calculated on the initial parameters $$\theta_{1}$$ and $$W_{1}$$ which are then updated. Similar meta learning steps are repeated many times.
 
 ## [META-LEARNING ACQUISITION FUNCTIONS FOR TRANSFER LEARNING IN BAYESIAN OPTIMIZATION](https://arxiv.org/pdf/1904.02642.pdf)  
-The authors address how to transfer learning from one meta-learning to the next meta-learning. If the meta-learning search can be biased in the right direction, it has the potential to save time. Authors have studied Bayesian optimization as the meta learning algorithm. Their proposal include:  
-* Train a neural network on the dataset that consists of previous meta-learning outcomes
+The authors address how to transfer learning from one meta-learning to the next meta-learning. If the meta-learning search can be biased in the right direction, it has the potential to save time. Authors have studied Bayesian optimization as the meta learning algorithm. Their proposal include:
+* There is a notion of source tasks and target task (e.g., Hyperparameter search on a set of 30 datasets to fasttrack search on a given dataset)
+* MetaBO is trained on the set of source tasks  
+
+* Train a neural network as Acquisition Function (AF) on the datasets that consists of previous meta-learning outcomes
+  * In each iteration of Bayesian Optimization, a task is randomly picked and update Neural AF weights based on learning from the task.
+  * It runs some initial non-greedy evaluations to learn about target objective funtion.
 * Use Reinforcement learning to facilitate training of the neural network to approximate gradient of the black-box optimization function
 * Use the neural network as the acquisition function to identify the next potential point to evaluate
 ![Meta-BO](/images/metaBO.png)
