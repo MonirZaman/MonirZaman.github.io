@@ -28,7 +28,7 @@ The authors address how to transfer learning from one meta-learning to the next 
 * Train a neural network on the dataset that consists of previous meta-learning outcomes
 * Use Reinforcement learning to facilitate training of the neural network to approximate gradient of the black-box optimization function
 * Use the neural network as the acquisition function to identify the next potential point to evaluate
-
+![Meta-BO](/images/metaBO.png)
 
 To review:  
 * [Learning search spaces for Bayesian optimization:
