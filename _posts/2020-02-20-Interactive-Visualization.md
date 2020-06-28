@@ -1,4 +1,6 @@
-## Parallel coordinate plot
+## Parallel coordinate plot using plotly
+
+Parallel plot is useful to display high dimensional data. Plotly can visualize data that conditional dependencies. `sample.csv` contains example of such data.
 
 ```
 import plotly.express as px
@@ -6,6 +8,7 @@ import pandas as pd
 df = pd.read_csv('sample.csv')
 df.head()
 ```
+Following is a snapshot of the data. NaN value indicates a column does not have value when values of other columns take specific values.   
 
 ```
          score  x1  x2  x3   x4  x5   x6   x7
