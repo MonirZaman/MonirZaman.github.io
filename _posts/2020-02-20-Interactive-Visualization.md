@@ -1,6 +1,6 @@
 ## Parallel coordinate plot using plotly
 
-Parallel plot is useful to display high dimensional data. Plotly can visualize data that conditional dependencies. `sample.csv` contains example of such data.
+Parallel plot is useful to display high dimensional data. Plotly can visualize data that have conditional dependencies. `sample.csv` contains example of such data.
 
 ```
 import plotly.express as px
@@ -28,6 +28,6 @@ fig = px.parallel_coordinates(df, color="score",
 fig.show()
 ```
 
-will produce the output
+will produce the output. Pink bar shows selecting particular value of a column.
 
 ![coordinate-plot](/images/coord-plot.png)
