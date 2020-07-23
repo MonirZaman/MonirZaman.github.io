@@ -30,17 +30,17 @@ Meta-Training: It will improve the learning algorithm by using it in one or mult
 Meta-Training should be followed by the regular meta-testing RL step where an agent is initialized and trained in a new environment using a learning algorithm that is learned using **Meta-Training**.
 
 The proposed learning algorithm as an objective function $$L_{\alpha}$$ that is parameterized by a neural network with parameters 
-$$\alpha$$. LSTM is used as the objective function. Most of the existing works use Policy Gradient as the objective function. Many other human-engineered RL algorithms are also represented by a specifically designed objective function but in MetaGenRL we meta-learn instead of design it.
+$$\alpha$$. LSTM is used as the objective function. Most of the existing works use Policy Gradient as the objective function. 
 
 ![meta-general-learning-scheme](/images/meta-general-learning-scheme.png)
 
 Intuitive workflow:  
-[1] All agents interact with their environment according to their current policy. The collected experiences are stored in the replay buffer, essentially a history of everything that has happened.  
-[2] Using this replay buffer, one can train a separate neural network, the critic, that can estimate how good it would be to take a specific action in any given situation. 
-[3] MetaGenRL now uses the current objective function to change the policy (‘learning’). Then, this changed policy outputs an action for a given situation and the critic can tell how good this action is.  
-[4] Based on this information we can change the objective function to lead to better actions in the future when used as a learning algorithm (‘meta-learning’).  
-[5] This is done by using a second-order gradient, backpropagating through the critic and policy into the objective function parameters.  
-[6] Each policy is updated by differentiating $$L_{\alpha}$$, while the critic is updated using the usual Temporal Difference error. $$L_{\alpha}$$ is meta-learned by computing second-order gradients by differentiating through the critic.  
+[1] Agents interact with their environment according to their own current policy. The collected experiences are stored in the replay buffer.  
+[2] Replay buffer can be used to train a separate neural network, critic, that can estimate how good it would be to take a specific action in any given situation. 
+[3] MetaGenRL uses the objective function L to change the policy. Then, the updated policy outputs an action for a given situation which is evaluated by the critic measuring how good this action is.  
+[4] Based on this information, one can update the objective function to produce better actions in the future when used as a learning algorithm (‘meta-learning’).  
+[5] It is done with a second-order gradient, backpropagating through the critic and policy into the objective function parameters.  
+[6] Each policy is updated by differentiating $$L_{\alpha}$$. On the other hand, the critic is updated using the usual Temporal Difference error. $$L_{\alpha}$$ is meta-learned by using second-order gradients by differentiating through the critic.  
 
 [ICLR Video presentation](https://iclr.cc/virtual_2020/poster_S1evHerYPr.html)
  
