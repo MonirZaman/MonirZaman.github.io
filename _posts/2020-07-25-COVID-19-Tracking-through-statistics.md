@@ -5,4 +5,3 @@ I have done a few data analysis on COVID-19 dataset with Bangladesh as a casestu
 [Blog](https://sohojai.github.io/covid19/).  
 [Facebook Mobility Data Analysis](https://colab.research.google.com/github/sohojai/covid19/blob/master/_notebooks/Fb-Mobility-Data-Analysis.ipynb).  
 [$$R_{t}$$ Calculation](https://colab.research.google.com/github/sohojai/covid19/blob/master/_notebooks/Bangladesh_Covid19_Rt.ipynb).  
-![network](/images/_.png)
