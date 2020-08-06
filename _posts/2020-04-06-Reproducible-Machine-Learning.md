@@ -19,12 +19,14 @@ Reproducing model prediction requires [Test-time dropout method](https://tensorc
  CUDA_VISIBLE_DEVICES="" python your_program.py
 ```
 
-#### Seed for various random number generator
+#### Tensorflow's reproducibility
 
 ```python
 import numpy as np
 import tensorflow as tf
 import random as rn
+
+# Seed for various random number generator
 
 SEED=0
 
@@ -36,9 +38,6 @@ rn.seed(SEED)
 
 # Set Tensorflow random seed
 tf.set_random_seed(1234)
-
-# for pytorch, set seed for torch and torch.cuda
-
 
 """
 Tensorflow by default use one thread per CPU core(multiple threads might give you different results)  
@@ -54,6 +53,22 @@ from keras import backend as K
 # Create default graph without parallelism
 K.set_session(tf.Session(graph=tf.get_default_graph(), config=session_conf))
 ```
+
+#### Pytorch's reproducibility  
+
+For pytorch, set seed for torch and torch.cuda:  
+```
+random.seed(SEED)  
+np.random.seed(SEED)  
+torch.manual_seed(SEED)   
+if torch.cuda.is_available:
+  torch.cuda.manual_seed(SEED)
+  torch.cuda.manual_seed_all(SEED)
+  torch.backends.cudnn.deterministic = True
+  torch.backends.cudnn.benchmark = False
+
+```
+For more details on Pytorch's reproducibility, take a look [here](https://pytorch.org/docs/stable/notes/randomness.html).  
 
 #### Additional steps:  
 
