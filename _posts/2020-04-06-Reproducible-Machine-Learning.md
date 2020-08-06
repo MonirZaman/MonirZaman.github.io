@@ -57,7 +57,7 @@ K.set_session(tf.Session(graph=tf.get_default_graph(), config=session_conf))
 #### Pytorch's reproducibility  
 
 For pytorch, set seed for torch and torch.cuda:  
-```
+```python  
 random.seed(SEED)  
 np.random.seed(SEED)  
 torch.manual_seed(SEED)   
@@ -82,4 +82,5 @@ For more details on Pytorch's reproducibility, take a look [here](https://pytorc
 * Run for few iterations on few records
 
 #### Reference
-[1](https://determined.ai/blog/reproducibility-in-ml/)
+[Determined AI's blog](https://determined.ai/blog/reproducibility-in-ml/)
+[Reproducibility class](https://drive.google.com/file/d/1spuQo08_qnq0To-bRIkUFQfu3VhhV4Ww/view)
