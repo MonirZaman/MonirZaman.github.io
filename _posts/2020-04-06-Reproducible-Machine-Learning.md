@@ -82,5 +82,5 @@ For more details on Pytorch's reproducibility, take a look [here](https://pytorc
 * Run for few iterations on few records
 
 #### Reference
-[Determined AI's blog](https://determined.ai/blog/reproducibility-in-ml/)
+[Determined AI's blog](https://determined.ai/blog/reproducibility-in-ml/)  
 [Reproducibility class](https://drive.google.com/file/d/1spuQo08_qnq0To-bRIkUFQfu3VhhV4Ww/view)
