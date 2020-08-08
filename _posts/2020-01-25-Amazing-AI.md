@@ -56,6 +56,16 @@ The authors address how to transfer learning from one meta-learning to the next 
 * Use the neural network as the acquisition function to identify the next potential point to evaluate
 ![Meta-BO](/images/metaBO.png)
 
+## [Defending Against Neural Fake News](https://arxiv.org/pdf/1905.12616v2.pdf)
+``
+Zellers, Rowan, et al. "Defending against neural fake news." Advances in Neural Information Processing Systems. 2019.
+``
+Authors provide a threat model for fake news detection that utilizes the following
+* Detect fake news by utilizing a fake news generator
+* Look for artifacts like out-of-distribution sampling left by a generator
+* Question: Is a generated news article always a fake news? 
+
+
 To review:  
 * [Learning search spaces for Bayesian optimization:
 Another view of hyperparameter transfer learning](https://papers.nips.cc/paper/9438-learning-search-spaces-for-bayesian-optimization-another-view-of-hyperparameter-transfer-learning.pdf)
