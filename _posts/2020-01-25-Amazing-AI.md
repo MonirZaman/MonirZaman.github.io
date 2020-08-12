@@ -59,11 +59,21 @@ The authors address how to transfer learning from one meta-learning to the next 
 ## [Defending Against Neural Fake News](https://arxiv.org/pdf/1905.12616v2.pdf)
 ``
 Zellers, Rowan, et al. "Defending against neural fake news." Advances in Neural Information Processing Systems. 2019.
-``
+``   
 Authors provide a threat model for fake news detection that utilizes the following
 * Detect fake news by utilizing a fake news generator
 * Look for artifacts like out-of-distribution sampling left by a generator
 * Question: Is a generated news article always a fake news? 
+
+As a solution, the authors propose a transformer-based language model, called Grover. It is trained on a huge corpus of text found online. The language model is specially trained to generate news article. 
+
+![grover-generation](/images/grover.png)
+
+To detect fake news, the authors perform binary classification that uses training set consisting of both real and fake news. Rather than training a classifier from scratch, they extract features / hidden state from a pretrained language model e.g., Grover. Features are fed to a fully-connected layer to make the final classification.   
+Some artifacts for fake news found by the authors:  
+* The probability of observing a human-written article where all tokens are drawn from the top-p% of the distribution is quite low. Language models typically perform inference this way.  
+* As the generated sequence length increases, out of distribution tokens appear more commonly
+
 
 
 To review:  
