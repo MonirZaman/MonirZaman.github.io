@@ -80,27 +80,36 @@ Some artifacts for fake news found by the authors:
 Balaprakash, Prasanna, et al. "DeepHyper: Asynchronous hyperparameter search for deep neural networks." 2018 IEEE 25th international conference on high performance computing (HiPC). IEEE, 2018.
 ```
 
-DeepHyper is a scalable hyperparameter search library for high performance computing systems. Key findings of the paper are the following:  
+DeepHyper is a scalable hyperparameter search library for high performance computing systems. The authors propose an asynchronous model based Bayesian Search (AMBS) which works in the following ways:  
+
+* Contains a master and a set of workers. The master generates the hyperparameter configurations and the works evaluate them and report the validation errors back to the master.  
+
+*  As soon as an evaluation is completed, the validation error is used to bias the search toward more promising regions
+of the search space using a surrogate model. They considered Random forest, Gaussian process as the surrogate models among others.  
+
+* Lower confidence bound (LCB) is used as the acquisition function in other words, to acquire next sample point to evaluate. $$LCB(x) = \mu(x) − \lambda ∗ \sigma(x)$$. As \lambda increases, the search focuses toward pure exploration, and points are chosen based on their potential to improve the performance.
+
+Key findings of the paper are the following:  
 
 * Search comparision
-  * For the mnistmlp, mnistcnn, and gcn, AMBS obtains high-quality hyperparameter configurations—more than 50%
-of the configurations obtain accuracy greater than 80%.
-  * An exception is that cifar10cnn benchmark, where none of the search methods obtain hyperparameter configurations with more than 80% accuracy.
+  * For the mnistmlp, mnistcnn, and gcn, AMBS obtains very good hyperparameter configurations—more than 50%
+of the configurations obtain accuracy higher than 80%.
+  * It comes with an exception is that cifar10cnn benchmark, where neither of the search methods obtain hyperparameter configurations with more than 80% accuracy.
 
 * Surrogate model comparison
-  * We observe that RF outperforms ET, GBRT, and GP on all but one benchmark  (gcn), where ET is slightly better than RF.
+  * The authors observe that Random Forest outperforms Extra Trees, Gradient Boosted Regression Trees, and Gaussian Processes on all but one benchmark which is GCN, where Extra Trees is slightly better than Random Forest.
 
 * Scaling on theta:
 
-  * AMBS is able to generate sufficient configurations and
-sustain the worker utilization to over 90% for the cifar10cnn
+  * AMBS is able to generate enough configurations and
+maintain the worker utilization to over 90% for the cifar10cnn
 hyperparameter searches since the variance of compute time is high.
 
   * As a partial remedy to improve the performance of AMBS
-at scale, we evaluated the same search at 1,024 nodes with
-a batch generator function. The generator divides a large
-request for new hyperparameter configurations down into
-batches of a given size (default 20).
+at scale, they have evaluated the same search at 1,024 nodes with
+a batch generator function. The generator divides a
+request high number of new hyperparameter configurations down into
+batches of a given size (sample default 20).
 
   * The number of models with greater
 than 50% accuracy increases from 1 to 19 as we scale with
