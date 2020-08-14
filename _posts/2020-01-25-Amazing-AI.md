@@ -74,7 +74,41 @@ Some artifacts for fake news found by the authors:
 * The probability of observing a human-written article where all tokens are drawn from the top-p% of the distribution is quite low. Language models typically perform inference this way.  
 * As the generated sequence length increases, out of distribution tokens appear more commonly
 
+## [DeepHyper: Asynchronous Hyperparameter Search for Deep Neural Networks](https://deephyper.readthedocs.io/en/latest/_downloads/9b42e1cbe440e34b88fb259f5528a308/deephyper_final.pdf)
 
+```
+Balaprakash, Prasanna, et al. "DeepHyper: Asynchronous hyperparameter search for deep neural networks." 2018 IEEE 25th international conference on high performance computing (HiPC). IEEE, 2018.
+```
+
+* Search comparision
+  * For the mnistmlp, mnistcnn, and gcn, AMBS obtains high-quality hyperparameter configurations—more than 50%
+of the configurations obtain accuracy greater than 80%.
+  * An exception is that cifar10cnn benchmark, where none of the search methods obtain hyperparameter configurations with more than 80% accuracy.
+
+* Surrogate model comparison
+  * We observe that RF outperforms ET, GBRT, and GP on all but one benchmark  (gcn), where ET is slightly better than RF.
+
+* Scaling on theta:
+
+  * AMBS is able to generate sufficient configurations and
+sustain the worker utilization to over 90% for the cifar10cnn
+hyperparameter searches since the variance of compute time is high.
+
+  * As a partial remedy to improve the performance of AMBS
+at scale, we evaluated the same search at 1,024 nodes with
+a batch generator function. The generator divides a large
+request for new hyperparameter configurations down into
+batches of a given size (default 20).
+
+  * The number of models with greater
+than 50% accuracy increases from 1 to 19 as we scale with
+AMBS from 8 to 64 nodes. because the search
+converges toward configurations with few tens of training
+epochs that finish faster, while the RS method uniformly
+samples configurations over a wide range and thus take longer
+to finish.
+
+Related work: [OpenAI scaling laws](https://arxiv.org/pdf/2001.08361.pdf)
 
 To review:  
 * [Learning search spaces for Bayesian optimization:
