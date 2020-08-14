@@ -80,6 +80,8 @@ Some artifacts for fake news found by the authors:
 Balaprakash, Prasanna, et al. "DeepHyper: Asynchronous hyperparameter search for deep neural networks." 2018 IEEE 25th international conference on high performance computing (HiPC). IEEE, 2018.
 ```
 
+DeepHyper is a scalable hyperparameter search library for high performance computing systems. Key findings of the paper are the following:  
+
 * Search comparision
   * For the mnistmlp, mnistcnn, and gcn, AMBS obtains high-quality hyperparameter configurations—more than 50%
 of the configurations obtain accuracy greater than 80%.
