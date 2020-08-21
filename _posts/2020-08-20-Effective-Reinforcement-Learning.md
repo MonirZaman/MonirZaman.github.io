@@ -12,4 +12,13 @@ Noise in the agent's output impacts any meta-learning. I will demonstrate one ex
 Noise in the agent is displayed in the picture where the agent produces different results for the same set of action and hyperparameters. 
 ![rl-reward](/images/rl-rewards.png)
 
+## Code
 For a code example, access the jupyter notebook [here](https://monirzaman.github.io/blog/2020/08/19/noisy-evaluation.html). 
+
+## How to address noise
+There have been some proposals in the literature that aim to deal with a noisy evaluation function during metalearning. Here RL agent is the noisy evaluation function and optimal parameter search is the metalearning. 
+
+```
+Rakshit, Pratyusha, Amit Konar, and Swagatam Das. "Noisy evolutionary optimization algorithms–a comprehensive survey." 
+Swarm and Evolutionary Computation 33 (2017): 18-45.
+```
