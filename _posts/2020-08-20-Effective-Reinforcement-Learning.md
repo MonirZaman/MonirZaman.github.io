@@ -22,3 +22,17 @@ There have been some proposals in the literature that aim to deal with a noisy e
 Rakshit, Pratyusha, Amit Konar, and Swagatam Das. "Noisy evolutionary optimization algorithms–a comprehensive survey." 
 Swarm and Evolutionary Computation 33 (2017): 18-45.
 ```
+One way to deal with noise in meta-learning is penalize parameters that produce output with high uncertainty or variability. An algorithm implementing this approach is following:  
+
+* Set value of $N$ as $N$ = $NUM\_SAMPLES$ 
+* Run all trials $N$ times. 
+    * Collect noisy feedbacks for $i$th trial: $f_{i}$
+* Sample a new trial based on:  $\operatorname*{argmax}_i \bar {f_{i}} + \frac {\sqrt{N}}{\sigma}$
+
+Another approach is to resample parameters with higher uncertainty to reduce noise and increase quality of the meta-learner. Research work studying this approach is the following:   
+```
+Lucas, Simon M., Jialin Liu, and Diego Perez-Liebana. "The n-tuple bandit evolutionary algorithm for game agent optimisation." 
+2018 IEEE Congress on Evolutionary Computation (CEC). IEEE, 2018.
+```
+
+
