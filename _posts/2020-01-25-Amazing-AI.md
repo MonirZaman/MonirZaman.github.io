@@ -122,7 +122,7 @@ to finish.
 ## [OpenAI scaling laws](https://arxiv.org/pdf/2001.08361.pdf)
 
 Summary of the scaling laws:  
-* Data requirements grow very slowly as `$D ∼ C^{0.27}$` with available compute.
+* Data requirements grow very slowly as `D ∼ C^{0.27}` with available compute.
 * When more computational budget C is available, it pays off to spend it on larger models. `N ∝ C^0.73`
 * Larger models are sample efficient `B ∝ C^0.24`
 * In practice, fewer optimization steps are needed when more compute is available `S ∝ C^0.03`
