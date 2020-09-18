@@ -1,3 +1,5 @@
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+
 Reinforcement learning is prone to noise. It is harder to reproduce an experiment that trains a reinforcement learning agent. An agent can produce different results despite using the same seed for random number generator. Primary reasons are the following  
 
 - Stochastic environment is stochastic. The same set of actions may lead to different states of the world and rewards
@@ -19,15 +21,16 @@ For a code example, access the jupyter notebook [here](https://monirzaman.github
 There have been some proposals in the literature that aim to deal with a noisy evaluation function during metalearning. Here RL agent is the noisy evaluation function and optimal parameter search is the metalearning. 
 
 ```
-Rakshit, Pratyusha, Amit Konar, and Swagatam Das. "Noisy evolutionary optimization algorithms–a comprehensive survey." 
+Rakshit, Pratyusha, Amit Konar, and Swagatam Das. 
+"Noisy evolutionary optimization algorithms–a comprehensive survey." 
 Swarm and Evolutionary Computation 33 (2017): 18-45.
 ```
 One way to deal with noise in meta-learning is penalize parameters that produce output with high uncertainty or variability. An algorithm implementing this approach is following:  
 
-* Set value of $N$ as $N$ = $NUM\_SAMPLES$ 
-* Run all trials $N$ times. 
-    * Collect noisy feedbacks for $i$th trial: $f_{i}$
-* Sample a new trial based on:  $\operatorname*{argmax}_i \bar {f_{i}} + \frac {\sqrt{N}}{\sigma}$
+* Set value of $$N$$ as $$N$$ = $$NUM\_SAMPLES$$ 
+* Run all trials $$N$$ times. 
+    * Collect noisy feedbacks for $$i$$th trial: $$f_{i}$$
+* Sample a new trial based on:  $$\operatorname*{argmax}_i \bar {f_{i}} + \frac {\sqrt{N}}{\sigma}$$
 
 Another approach is to resample parameters with higher uncertainty to reduce noise and increase quality of the meta-learner. Research work studying this approach is the following:   
 ```
