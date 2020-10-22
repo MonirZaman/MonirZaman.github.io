@@ -9,6 +9,11 @@ Jax combines XLA and AutoGrad. It is released from Google offering the following
 3. Offers automatic differentiation of a python function with respect to one or many inputs. It is effective for optimizing function value  
 4. Offers a high-level machine learning library  
 
+Some terminalogies:  
+"A Just-In-Time (JIT) compiler is a feature of the run-time interpreter, that instead of interpreting bytecode every time a method is invoked, will compile the bytecode into the machine code instructions of the running machine, and then invoke this object code instead. Ideally the efficiency of running object code will overcome the inefficiency of recompiling the program every time it runs." [Source](https://stackoverflow.com/questions/95635/what-does-a-just-in-time-jit-compiler-do)
+
+"XLA (Accelerated Linear Algebra) is a domain-specific compiler for linear algebra that can accelerate Python program with potentially no source code changes. XLA provides an alternative mode of running programs: it compiles your program into a sequence of computation kernels generated specifically for the given program. Because these kernels are unique to the program, they can exploit model-specific information for optimization. It can fuse multiple operations like the addition, multiplication and reduction into a single GPU kernel. Moreover, this fused operation does not write out the intermediate values produced to memory; instead it streams the results of these intermediate computations directly to their users while keeping them entirely in GPU registers." [Source](https://www.tensorflow.org/xla)
+
 ## [Torchscript](https://pytorch.org/tutorials/beginner/Intro_to_TorchScript_tutorial.html)
 It is a subset of python that are decoupled from runtime environment. It allows converting python code through simple jit call. Torchscript makes it easer to optimize code for custom hardware, quantization of machine learning model and various other optimizations.
 
