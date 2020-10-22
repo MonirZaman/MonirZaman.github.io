@@ -65,7 +65,10 @@ with multiprocessing.Pool(processes=poolSize) as a_pool:
 ```
 
 ## Dask Data Frame
-Dask API offers a logical dataframe for processing large input file. It offers the same functionality as a Pandas data frame do. In Data science workflow, such data frame can greatly reduce run-time of data preprocessing.
+Dask API offers a logical dataframe for processing large input file. It offers the same functionality as a Pandas data frame do. In Data science workflow, such data frame can greatly reduce run-time of data preprocessing. Based on the [official documentation](https://docs.dask.org/en/latest/dataframe.html).  
+
+"Dask DataFrames coordinate many Pandas DataFrames/Series arranged along the index. A Dask DataFrame is partitioned row-wise, grouping rows by index value for efficiency. These Pandas objects may live on disk or on other machines."  
+
 ```python
 import dask.dataframe as dd
 df = dd.read_csv('records.csv')
