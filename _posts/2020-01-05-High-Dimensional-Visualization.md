@@ -40,3 +40,11 @@ Bayesian optimization and its variant are commonly used to tune hyperparameters 
 ![BOHB-Hyperband](/images/bohb-hyperband.png)
 Image courtesy:  
 ```Park, Heungseok, et al. "HyperTendril: Visual Analytics for User-Driven Hyperparameter Optimization of Deep Neural Networks." arXiv preprint arXiv:2009.02078 (2020).```
+
+## Visualizing population-based search
+[HiPlot](https://ai.facebook.com/blog/hiplot-high-dimensional-interactive-plots-made-easy/) is a useful library from Facebook that can visualize population-based optimization data. Below is a screenshot showing loss value over different generations of population.
+![pbt](/images/pbt.png)
+
+Image courtesy: https://ai.facebook.com/blog/hiplot-high-dimensional-interactive-plots-made-easy/
+
+
