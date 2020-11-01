@@ -1,3 +1,5 @@
+Optimization often produces high dimensional data. This post will include some example plots for these optimizations. 
+
 ## Parallel coordinate plot using plotly
 
 Parallel plot is useful to display high dimensional data. Plotly can visualize data that have conditional dependencies. `sample.csv` contains example of such data.
@@ -31,3 +33,10 @@ fig.show()
 will produce the output. Pink bar shows selecting particular value of a column.
 
 ![coordinate-plot](/images/coord-plot.png)
+
+## Visualization of Bayesian optimization output
+
+Bayesian optimization and its variant are commonly used to tune hyperparameters in machine learning models. Below is a plot that can effectively visualize optimization history.
+![BOHB-Hyperband](/images/bohb-hyperband.png)
+Image courtesy:  
+```Park, Heungseok, et al. "HyperTendril: Visual Analytics for User-Driven Hyperparameter Optimization of Deep Neural Networks." arXiv preprint arXiv:2009.02078 (2020).```
