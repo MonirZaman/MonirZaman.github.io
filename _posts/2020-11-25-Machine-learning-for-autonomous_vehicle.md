@@ -1,9 +1,8 @@
 Autonomous vehicle (AV) heavily utilizes machine learning for various tasks. Majority of these tasks are related to its perception. The perception module helps 
-the vehicle sees the world. Some of the ML area it covers are the following:  
+the vehicle sees the world. In this tutorial, I will describe how AV utilizes computer vision to build its perception module. 
 
 ## Semantic segmentation
-ML model classifies each pixel in an image into different classes. Each image comes with a mask that is the ground truth or labels of the image. In AV, there are 
-additional sensors such as LIDAR, thermal camera, etc. Segmentation task can utilize these multi-modal datasets. 
+ML model classifies each pixel in an image into a given class in semantic segmentation. Each image comes with a mask that is the ground truth or labels of the image. In AV, there are additional sensors such as LIDAR, thermal camera, etc. Segmentation task can utilize these multi-modal datasets. 
 
 ![multimodal-segmentation](/images/multimodal-segmentation.png)
 For example, [Kim et al.](http://www.fsr.ethz.ch/papers/FSR_2017_paper_23.pdf) applies two networks to process individual modality and project 
