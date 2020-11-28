@@ -16,8 +16,12 @@ the decoder layers which consist of the initial, downsample, upsample, and bottl
 For the Lidar network, authors provide the roughness and the porous
 feature as input to the network. Since the terrain area should be smoother compared to the high vegetation area. Similarly, space containing vegetation 
 should be more porous compared to the terrain area.  Point cloud is represented by the 3D voxel grid. Network learns 3D feature representations minimizing 
-categorical cross entropy loss in the 3D data. Network consists of 3D
-convolution layer, max-pooling layer, and upsampling layer. 
+categorical cross entropy loss in the 3D data. Network consists of 3D convolution layer, max-pooling layer, and upsampling layer. 
 
+To calculate roughness feature, a plane is fitted in each voxel. Average residual of each point from the fitted plane is the measure of roughness. Terrain tends to be less rough than forest, hilly areas. Authors also calculate porosity of each point. These high level features are projected onto 2D images by projected the 3D point location on the 2D images. 
 
-## Object detection
+### Fusion
+Lidar features are fused to the image features using this network structure:  
+![mm-network](/images/mm-network.png)  
+
+Projection of the 3D Lidar data onto the 2D images is done by a camera model. The camera model perfoms rotation as well as tranlation of the 3D points. Feature fusion is done at the multiple levels to ensure both low level and high level features are seen by different parts of the network. 
