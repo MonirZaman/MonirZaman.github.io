@@ -6,7 +6,7 @@ In this tutorial, I will describe how AV utilizes computer vision to build its p
 ## Semantic segmentation
 ML model divides an image into several meaningful parts in semantic segmentation. It classifies each pixel in an image into a given class. Each image comes with a mask that is the ground truth or labels of the image. In AV, ground truth label for pixels can include road, pedestrian, forest, etc. 
 
-<img src="/images/multimodal-segmentation.png" width="10" height="10">
+![mm-network](/images/multimodal-segmentation.png)
 For example, [Kim et al.](http://www.fsr.ethz.ch/papers/FSR_2017_paper_23.pdf) applies two networks to process individual modality and project 
 LIDAR output to the image output to produce the final segmented image.
 
