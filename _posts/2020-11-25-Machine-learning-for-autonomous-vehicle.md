@@ -25,4 +25,13 @@ To calculate roughness feature, a plane is fitted in each voxel. Average residua
 Lidar features are fused to the image features using this network structure:  
 ![mm-network](/images/mm-network.png)  
 
-Projection of the 3D Lidar data onto the 2D images is done by a camera model. The camera model perfoms rotation as well as tranlation of the 3D points. Feature fusion is done at the multiple levels to ensure both low level and high level features are seen by different parts of the network. 
+Projection of the 3D Lidar data onto the 2D images is done by a camera model. The camera model perfoms rotation as well as tranlation of the 3D points. Feature fusion is done at the multiple levels to ensure both low level and high level features are seen by different parts of the network.  
+
+Features can be fused at various other stages of the network like the following:  
+![fusion-timing](/images/fusion-timing.png)
+
+Image courtesy: 
+```
+Feng, Di, et al. "Deep multi-modal object detection and semantic segmentation for autonomous driving: Datasets, methods, and challenges." IEEE Transactions on Intelligent Transportation Systems (2020).
+```
+
