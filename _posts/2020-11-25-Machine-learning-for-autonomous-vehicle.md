@@ -4,7 +4,11 @@ the vehicle sees the world. Recent advancements in deep learning have improved t
 In this tutorial, I will describe how AV utilizes computer vision to build its perception module. Autonomous vehicles are equipped with multiple sensors such as camera, Lidar, Radar etc. Any ML model can utilize these mutli-modal datasets. I will review work that shows what data modalities to combine and when to combine in the model. 
 
 ## Semantic segmentation
-ML model divides an image into several meaningful parts in semantic segmentation. It classifies each pixel in an image into a given class. Each image comes with a mask that is the ground truth or labels of the image. In AV, ground truth label for pixels can include road, pedestrian, forest, etc. 
+ML model divides an image into several meaningful parts in semantic segmentation. It classifies each pixel in an image into a given class. Each image comes with a mask that is the ground truth or labels of the image. Here is the model architecture typically used for semantic segmentation.
+
+![unet](/images/unet.png)
+
+In AV, ground truth label for pixels can include road, pedestrian, forest, etc. 
 
 ![mm-network](/images/multimodal-segmentation.png)
 For example, [Kim et al.](http://www.fsr.ethz.ch/papers/FSR_2017_paper_23.pdf) applies two networks to process individual modality and project 
