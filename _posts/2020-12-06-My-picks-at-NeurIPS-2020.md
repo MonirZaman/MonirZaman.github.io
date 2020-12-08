@@ -11,15 +11,33 @@
     **Code bless us All**
 
 * [Feedback control loop](https://neurips.cc/virtual/2020/protected/invited_16168.html)   
+    - Multi-agent learning games
     - Non-stationary environment
     - (1) Stabilize and shape behavior
+        - Two player and multi-player/agent learning
+        - Zero-sum game
+        - Allocation game
+        - Learning rule example: replicator dynamics
+        - Can natural learning rule lead to nash equilibrium?
+            - Update rule depends on a user's own strategy
+            - Uncoupled learning rule
+            - Anti-coordination game
+
+        - Introduce auxiliary states for higher order learning
+        - Anticipatory learning - where things are heading taking into account
+        - Optimization - optimistic gradient ascent
+    
     - (2) Robustness to variation
+        - Internal: thrust, drag
+        - External: weather
+        - Nominal analysis
+        - Contractive game: allow auxiliary dynamics over long term
+        - Partially observed markov process
+        
     - (3) Track command signals
-    - Two player and multi-player/agent learning
-    - Zero-sum game
-    - Allocation game
-    - Learning rule example: replicator dynamics
-    - Can natural learning rule lead to nash equilibrium?
+        - Forecasting and no-regret
+        - Distributional forecast
+        
    
 ## Representation learning
 
