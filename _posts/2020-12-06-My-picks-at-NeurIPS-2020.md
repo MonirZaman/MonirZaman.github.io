@@ -38,7 +38,12 @@
         - Forecasting and no-regret
         - Distributional forecast
         
-   
+## [Equivariant networks](https://neurips.cc/virtual/2020/protected/tutorial_3e267ff3c8b6621e5ad4d0f26142892b.html)
+    - Symmetry: a translation that leaves some aspect of the object invariant
+        - Transformation
+        - GNN - same adjacency matrix
+        ![symmetry](/images/symmetry.png)
+    
 ## Representation learning
 
 * [Learning Physical Graph Representations from Visual Scenes](https://neurips.cc/virtual/2020/protected/poster_4324e8d0d37b110ee1a4f1633ac52df5.html)
