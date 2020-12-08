@@ -1,5 +1,5 @@
 
-## Keynote: 
+## Keynotes: 
 
 * [You Can’t Escape Hyperparameters and Latent Variables: Machine Learning as a Software Engineering Enterprise](https://neurips.cc/virtual/2020/protected/invited_16166.html)
     - We are compiler hackers
@@ -38,6 +38,14 @@
         - Forecasting and no-regret
         - Distributional forecast
         
+## Reinforcement learning
+* [Off-policy Reinforcement learning](https://neurips.cc/virtual/2020/protected/tutorial_8155bc545f84d9652f1012ef2bdfb6eb.html)
+    - Data driven RL
+    - off-policy still collects data actively from environment
+    - Offline uses data collected with any policy; new data is not added
+    - Large data and large model lead to generalization
+    
+    
 ## [Equivariant networks](https://neurips.cc/virtual/2020/protected/tutorial_3e267ff3c8b6621e5ad4d0f26142892b.html)
     - Symmetry: a translation that leaves some aspect of the object invariant
         - Transformation
