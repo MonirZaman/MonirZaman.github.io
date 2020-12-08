@@ -79,7 +79,35 @@
     - 3D reconstruction from 2D have to address ambiguity
     - n-Quantization for multiple hypothesis, normalizing flows, reprojection loss for mode degeneration for sparse gradients
     - Normalizing flows convert complex distribution such as 3D meshes to simpler distribution such as multivariate gaussian
-    
+
+## Evaluation
+* [Accuracy is not enough](https://neurips.cc/virtual/2020/protected/tutorial_a9588aa82388c0579d8f74b4d02b895f.html)
+    - Precision and Recall
+    - Ranking
+        - Expected search length: Num of non-relevant item searched before k relevant item
+        - R-precision: Inverse of expected search length. 
+        - Reciprocal rank: Time to find a Single relevant item 
+        - average precision: avg precision for different recall preference
+        - rank-based precision
+        - expected utility
+    - Behavior
+        - online setting
+        - Explicit feedback 
+            - Expensive and privacy concern
+        - Implicit feedback
+            - can be noisy and biased
+        - Use log to calculate offline metric 
+        - Implicit
+            - Short-term
+                - page level
+            - long-term
+                - session - level
+            - clicks, dwell time, eye movement
+            - zooming in and out
+            - Good abandonment
+            - Slate evaluation
+            
+            
 ## Sparsity
 
 - Gaussian weights
