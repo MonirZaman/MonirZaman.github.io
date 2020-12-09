@@ -37,7 +37,14 @@
     - (3) Track command signals
         - Forecasting and no-regret
         - Distributional forecast
-        
+* [Robustness, Verification, Privacy: Addressing Machine Learning Adversaries](https://neurips.cc/virtual/2020/protected/invited_16163.html)
+    - Privacy
+    - Robustness
+    - Verifiability
+        - ML is risk assessment system
+        - Build trust
+        - Who builds the ML system and who verifies the ML code is correct?
+
 ## Reinforcement learning
 * [Off-policy Reinforcement learning](https://neurips.cc/virtual/2020/protected/tutorial_8155bc545f84d9652f1012ef2bdfb6eb.html)
     - Data driven RL
