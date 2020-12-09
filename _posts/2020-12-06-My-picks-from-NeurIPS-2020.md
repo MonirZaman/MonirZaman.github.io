@@ -117,6 +117,14 @@
     - n-Quantization for multiple hypothesis, normalizing flows, reprojection loss for mode degeneration for sparse gradients
     - Normalizing flows convert complex distribution such as 3D meshes to simpler distribution such as multivariate gaussian
 
+* [Do Adversarially Robust ImageNet Models Transfer Better?](https://neurips.cc/virtual/2020/protected/poster_24357dd085d2c4b1a88a7e0692e60294.html)
+    - What features model is learning depends on 
+        - Convolutional prior
+        - Data augmentation
+        - Loss function
+    - Adversarial robustness
+        - Train model with adversarial examples
+
 ## Evaluation
 * [Accuracy is not enough](https://neurips.cc/virtual/2020/protected/tutorial_a9588aa82388c0579d8f74b4d02b895f.html)
     - Precision and Recall
