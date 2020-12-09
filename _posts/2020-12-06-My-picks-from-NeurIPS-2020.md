@@ -47,12 +47,6 @@
         - Who builds the ML system and who verifies the ML code is correct?
         - Verify training distribution can be called as verifying hypothesis
 
-## Causal learning
-* [Causal imitation learning]
-    - Reward signal is unobserved
-    - Behavior cloning and inverse reinforcement learning
-    - Environment is structural causal model, expert, learner
-
 ## Meta learning
 * [Continual Deep learning](https://neurips.cc/virtual/2020/protected/poster_2f3bbb9730639e9ea48f309d9a79ff01.html)
     - Catastrophic forgetting as new data arrived
@@ -64,6 +58,12 @@
         - (3) Train function regularizations of memorable past
         
    - ELBO - variational objective
+* [Adversarial robust few-shot learning: a meta-learning approach]
+    - Adversarial examples only in the outer loop
+    - Meta-learner is adversarially robust
+    - Query data matters when doing adversarial training
+    - Setting in a few shot learning
+    - Outer loop queries with adversarial examples
 
 * [Online continual learning](https://neurips.cc/virtual/2020/protected/poster_85b9a5ac91cd629bd3afe396ec07270a.html)
     - Online data
@@ -196,6 +196,12 @@
             - zooming in and out
             - Good abandonment
             - Slate evaluation
+
+## Causal learning
+* [Causal imitation learning]
+    - Reward signal is unobserved
+    - Behavior cloning and inverse reinforcement learning
+    - Environment is structural causal model, expert, learner
             
             
 ## Sparsity
