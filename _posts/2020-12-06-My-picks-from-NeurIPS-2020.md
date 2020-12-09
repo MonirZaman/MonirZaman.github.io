@@ -78,7 +78,8 @@
         - Each step of the random walk is a contrastive learning task
         - Also apply self-supervised using palindrome frame
         - Edge dropout improves object level correspondence
-        
+    - Label propagation
+    - Work outperforms colorization based method
     
 * [Learning Physical Graph Representations from Visual Scenes](https://neurips.cc/virtual/2020/protected/poster_4324e8d0d37b110ee1a4f1633ac52df5.html)
 * [Multi-label Contrastive Predictive Coding](https://neurips.cc/virtual/2020/protected/poster_5cd5058bca53951ffa7801bcdf421651.html)
