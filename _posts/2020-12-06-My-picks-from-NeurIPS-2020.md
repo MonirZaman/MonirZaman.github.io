@@ -203,11 +203,17 @@ Below are some of the talks that I enjoyed watching or reading.
 * [Causal intervention in Semantic segmentation](https://neurips.cc/virtual/2020/protected/poster_07211688a0869d995947a8fb11b215d6.html)
     - Expensive to collect label for semantic segmentation
     - Context adjustment
-        - Context is a confounder between input data and label.
+        - Context is a confounder between input data and label. Some objects alway cooccur such as couch and TV.
         - In order to defound it, we need to find an input data from any context with the same label.
         e.g., Two Car pictures from any context.
         ![causal-structure](/images/causal-structure.png)
         
+        - Use causal intervention to cut connection from C to X
+        - (1) Classification
+        - (2) Pseudo-mask for semantic segmentation
+        - (3) Confounder set to break the edge with confounder
+            - Average segmentation mask of each class
+        - Is there a notion of time?
 
 * [Causal imitation learning]
     - Reward signal is unobserved
