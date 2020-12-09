@@ -96,6 +96,16 @@
     - Memory module is differentiable
     
 ## Vision application
+* [Rethinking Pre-training and Self-training](https://neurips.cc/virtual/2020/protected/poster_27e9661e033a73a6ad8cefcde965c54d.html)
+    - How do you incorporate unlabeled data in your task
+    - Pretraining and transfer weights for downstream task
+        - Value diminishes with more data
+    - Self-training: co-training / SimCLR
+    - SimCLR and pre-training
+    - When pre-training hurts, self-training helps
+    - Does self training have any limit? 
+    - Joint training helps
+    - pre-training and self-training on the same task are additive
 
 * [Neural Sparse Voxel Fields - NSVF](https://neurips.cc/virtual/2020/protected/poster_b4b758962f17808746e9bb832a6fa4b8.html)
     - Voxel embedding
