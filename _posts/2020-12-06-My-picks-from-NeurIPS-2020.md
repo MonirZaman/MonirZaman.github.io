@@ -54,6 +54,7 @@
     - Offline uses data collected with any policy; new data is not added
     - Large data and large model lead to generalization
     
+* [Can Temporal-Diﬀerence and Q-Learning Learn Representation? A Mean-Field Theory](https://neurips.cc/virtual/2020/protected/poster_e3bc4e7f243ebc05d66a0568a3331966.html)    
     
 ## [Equivariant networks](https://neurips.cc/virtual/2020/protected/tutorial_3e267ff3c8b6621e5ad4d0f26142892b.html)
     - Symmetry: a translation that leaves some aspect of the object invariant
