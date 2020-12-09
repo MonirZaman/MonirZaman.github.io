@@ -47,6 +47,12 @@
         - Who builds the ML system and who verifies the ML code is correct?
         - Verify training distribution can be called as verifying hypothesis
 
+## Causal learning
+* [Causal imitation learning]
+    - Reward signal is unobserved
+    - Behavior cloning and inverse reinforcement learning
+    - Environment is structural causal model, expert, learner
+
 ## Meta learning
 * [Continual Deep learning](https://neurips.cc/virtual/2020/protected/poster_2f3bbb9730639e9ea48f309d9a79ff01.html)
     - Catastrophic forgetting as new data arrived
@@ -59,6 +65,17 @@
         
    - ELBO - variational objective
 
+* [Online continual learning](https://neurips.cc/virtual/2020/protected/poster_85b9a5ac91cd629bd3afe396ec07270a.html)
+    - Online data
+    - reservoir sampling
+    - replay buffer
+    - C-MAML 
+        - Inner and outer loop model
+    - Adaptive learning rate schedule - per parameter
+        - conservative updating gradient related to the previous task
+        - gradient clipping and masking
+    - Single pass and multiple pass - how many times an example is used
+    
 ## Reinforcement learning
 * [Off-policy Reinforcement learning](https://neurips.cc/virtual/2020/protected/tutorial_8155bc545f84d9652f1012ef2bdfb6eb.html)
     - Data driven RL
