@@ -47,6 +47,18 @@
         - Who builds the ML system and who verifies the ML code is correct?
         - Verify training distribution can be called as verifying hypothesis
 
+## Meta learning
+* [Continual Deep learning](https://neurips.cc/virtual/2020/protected/poster_2f3bbb9730639e9ea48f309d9a79ff01.html)
+    - Catastrophic forgetting as new data arrived
+    - Some weights are regularized while others not
+    - Function regularization
+        - Identify few crucial examples
+        - (1) Convert neural network to GP
+        - (2) Identify memorable past examples (on the boundary?)
+        - (3) Train function regularizations of memorable past
+        
+   - ELBO - variational objective
+
 ## Reinforcement learning
 * [Off-policy Reinforcement learning](https://neurips.cc/virtual/2020/protected/tutorial_8155bc545f84d9652f1012ef2bdfb6eb.html)
     - Data driven RL
