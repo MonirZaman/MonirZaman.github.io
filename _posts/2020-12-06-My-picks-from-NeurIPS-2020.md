@@ -1,3 +1,5 @@
+NeurIPS 2020 is virtual this year. As a result, not only the talks were virtual, but also the networking and poster sessions were held online too. I got to experience gather.town for the first time. It felt like playing video games at times. I changed my avatar many times :D  
+Below are some of the talks that I enjoyed watching or reading.  
 
 ## Keynotes: 
 
@@ -84,10 +86,10 @@
     - Large data and large model lead to generalization
     
 * [RL with augmented data](https://neurips.cc/virtual/2020/protected/poster_e615c82aba461681ade82da2da38004a.html)
-- Pixel based 
-- state-based
-- Soft-Actor-Critic model
-- Evaluation on Data efficiency, generalization efficiency
+    - Pixel based 
+    - state-based
+    - Soft-Actor-Critic model
+    - Evaluation on Data efficiency, generalization efficiency
 
 * [Sub-sampling for Efficient Non-Parametric Bandit Exploration](https://neurips.cc/virtual/2020/protected/poster_3ab6be46e1d6b21d59a3c3a0b9d0f6ef.html)
     - UCB , Thompson sampling
@@ -198,6 +200,15 @@
             - Slate evaluation
 
 ## Causal learning
+* [Causal intervention in Semantic segmentation](https://neurips.cc/virtual/2020/protected/poster_07211688a0869d995947a8fb11b215d6.html)
+    - Expensive to collect label for semantic segmentation
+    - Context adjustment
+        - Context is a confounder between input data and label.
+        - In order to defound it, we need to find an input data from any context with the same label.
+        e.g., Two Car pictures from any context.
+        ![causal-structure](/images/causal-structure.png)
+        
+
 * [Causal imitation learning]
     - Reward signal is unobserved
     - Behavior cloning and inverse reinforcement learning
