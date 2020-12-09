@@ -33,6 +33,7 @@
         - Nominal analysis
         - Contractive game: allow auxiliary dynamics over long term
         - Partially observed markov process
+        - PAC verification (1) completeness (2) Soundness
         
     - (3) Track command signals
         - Forecasting and no-regret
@@ -44,6 +45,7 @@
         - ML is risk assessment system
         - Build trust
         - Who builds the ML system and who verifies the ML code is correct?
+        - Verify training distribution can be called as verifying hypothesis
 
 ## Reinforcement learning
 * [Off-policy Reinforcement learning](https://neurips.cc/virtual/2020/protected/tutorial_8155bc545f84d9652f1012ef2bdfb6eb.html)
