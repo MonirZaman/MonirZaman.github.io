@@ -57,9 +57,18 @@
 * [RL with augmented data](https://neurips.cc/virtual/2020/protected/poster_e615c82aba461681ade82da2da38004a.html)
 - Pixel based 
 - state-based
+- Soft-Actor-Critic model
 - Evaluation on Data efficiency, generalization efficiency
 
-
+* [Sub-sampling for Efficient Non-Parametric Bandit Exploration](https://neurips.cc/virtual/2020/protected/poster_3ab6be46e1d6b21d59a3c3a0b9d0f6ef.html)
+    - UCB , Thompson sampling
+    - Bootstrapping observation; log regret
+        - Sub-sampling dueling algorithm
+            - Leader arm competes with other arms
+            - Change leader at the end of the iteration
+        - Randomized sampler
+        - Deterministic sampler
+    
 * [Can Temporal-Diﬀerence and Q-Learning Learn Representation? A Mean-Field Theory](https://neurips.cc/virtual/2020/protected/poster_e3bc4e7f243ebc05d66a0568a3331966.html)    
     
 ## [Equivariant networks](https://neurips.cc/virtual/2020/protected/tutorial_3e267ff3c8b6621e5ad4d0f26142892b.html)
