@@ -63,6 +63,23 @@
     
 ## Representation learning
 
+* [Space-Time Correspondence as a Contrastive Random Walk](https://neurips.cc/virtual/2020/protected/poster_e2ef524fbf3d9fe611d5a8e90fefdc9c.html)
+    - Contrastive learning
+    - Data augmentation has hyperparameters and require supervision
+    - Dynamics in Video
+    - Mining correspondence
+    - Temporal coherence
+    - Latent views - intermediate views
+        - Palindrome views
+        - Random walk from a query frame to a target node and edge strength
+        - Encoder
+        - Pairwise similarity and softmax function
+        - Transition probability 
+        - Each step of the random walk is a contrastive learning task
+        - Also apply self-supervised using palindrome frame
+        - Edge dropout improves object level correspondence
+        
+    
 * [Learning Physical Graph Representations from Visual Scenes](https://neurips.cc/virtual/2020/protected/poster_4324e8d0d37b110ee1a4f1633ac52df5.html)
 * [Multi-label Contrastive Predictive Coding](https://neurips.cc/virtual/2020/protected/poster_5cd5058bca53951ffa7801bcdf421651.html)
 * [Learning optimal representation](https://neurips.cc/virtual/2020/public/poster_d8ea5f53c1b1eb087ac2e356253395d8.html)
