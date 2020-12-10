@@ -1,7 +1,10 @@
-NeurIPS 2020 is virtual this year. As a result, not only the talks were virtual, but also the networking and poster sessions were held online too. I got to experience gather.town for the first time. It felt like playing video games at times. I changed my avatar many times :D  
+NeurIPS 2020 is virtual this year. As a result, not only the talks were virtual, but also the networking and poster sessions were held online. I got to experience gather.town for the first time. It felt like playing video games at times. I changed my avatar many times :D  
+All the keynotes had sign language interpretation. I thought it was cool!  
 Below are some of the talks that I enjoyed watching or reading.  
 
 ## Keynotes: 
+
+* [Causal Learning](https://neurips.cc/virtual/2020/protected/invited_16169.html) 
 
 * [You Can’t Escape Hyperparameters and Latent Variables: Machine Learning as a Software Engineering Enterprise](https://neurips.cc/virtual/2020/protected/invited_16166.html)
     - We are compiler hackers
