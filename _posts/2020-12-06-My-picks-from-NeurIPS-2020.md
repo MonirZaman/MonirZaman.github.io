@@ -113,6 +113,12 @@ Below are some of the talks that I enjoyed watching or reading.
     
 ## Representation learning
 
+* [Bootstrap Your Own Latent - A New Approach to Self-Supervised Learning](https://neurips.cc/virtual/2020/protected/poster_f3ada80d5c4ee70142b17b8192b2958e.html)
+    - Self-supervised learning in par with SimCLR
+    - Image augmentation
+    - Prediction network and a target network
+    - Exponential moving average is used to update weights from prediction network to target network minimizing cosine similarity of output of two networks
+
 * [Space-Time Correspondence as a Contrastive Random Walk](https://neurips.cc/virtual/2020/protected/poster_e2ef524fbf3d9fe611d5a8e90fefdc9c.html)
     - Contrastive learning
     - Data augmentation has hyperparameters and require supervision
