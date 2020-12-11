@@ -115,6 +115,10 @@ Below are some of the talks that I enjoyed watching or reading.
 ## ML Compiler
 * [Transferable Graph Optimizers for ML Compilers](https://neurips.cc/virtual/2020/protected/poster_9f29450d2eb58feb555078bdefe28aa5.html)
 
+* [A Study on Encodings for Neural Architecture Search](https://neurips.cc/virtual/2020/protected/poster_ea4eb49329550caaa1d2044105223721.html)
+
+* [5 - Spotlight: A Study on Encodings for Neural Architecture Search](https://neurips.cc/virtual/2020/protected/poster_9d4c03631b8b0c85ae08bf05eda37d0f.html)
+
 ## [Equivariant networks](https://neurips.cc/virtual/2020/protected/tutorial_3e267ff3c8b6621e5ad4d0f26142892b.html)
     - Symmetry: a translation that leaves some aspect of the object invariant
         - Transformation
