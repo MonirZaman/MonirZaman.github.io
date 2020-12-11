@@ -112,6 +112,9 @@ Below are some of the talks that I enjoyed watching or reading.
 ## Normalizing flows
 * [Improved Variational Bayesian Phylogenetic Inference with Normalizing Flows](https://neurips.cc/virtual/2020/protected/poster_d96409bf894217686ba124d7356686c9.html)
 
+## ML Compiler
+* [Transferable Graph Optimizers for ML Compilers](https://neurips.cc/virtual/2020/protected/poster_9f29450d2eb58feb555078bdefe28aa5.html)
+
 ## [Equivariant networks](https://neurips.cc/virtual/2020/protected/tutorial_3e267ff3c8b6621e5ad4d0f26142892b.html)
     - Symmetry: a translation that leaves some aspect of the object invariant
         - Transformation
