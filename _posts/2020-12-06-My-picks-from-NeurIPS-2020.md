@@ -3,7 +3,11 @@ All the keynotes had sign language interpretation. I thought it was cool!
 Below are some of the talks that I enjoyed watching or reading.  
 
 ## Keynotes: 
-
+* [The Genomic Bottleneck: A Lesson from Biology](https://neurips.cc/virtual/2020/protected/invited_16167.html)
+    - Success to humans over other animal is perhaps due to better prior
+    - Neo-cortex in Brain is a repetitive structure
+    - Humans have broken cultural barrier through language and thus transfer knowledge from one generation to another
+    
 * [Causal Learning](https://neurips.cc/virtual/2020/protected/invited_16169.html) 
 
 * [You Can’t Escape Hyperparameters and Latent Variables: Machine Learning as a Software Engineering Enterprise](https://neurips.cc/virtual/2020/protected/invited_16166.html)
