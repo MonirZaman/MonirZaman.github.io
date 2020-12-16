@@ -38,4 +38,12 @@ Image courtesy:
 ```
 Feng, Di, et al. "Deep multi-modal object detection and semantic segmentation for autonomous driving: Datasets, methods, and challenges." IEEE Transactions on Intelligent Transportation Systems (2020).
 ```
+## Object detection  
 
+[YOLO](https://pjreddie.com/darknet/yolo/) model is most commonly used for object detection which allows classifying individual entity in the image as well as bounding box around them. Recent work has show that multi-tasks help reduce inference time. For example, detecting pedestrian in a scene and predicting their intended movement in parallel helps improve the run-time performance.
+
+```
+Single Shot Multitask Pedestrian Detection andBehavior Prediction
+by Prateek Agrawal, Pratik Prabhanjan brahman
+ML4AD workshop, NeurIPS 2020
+```
