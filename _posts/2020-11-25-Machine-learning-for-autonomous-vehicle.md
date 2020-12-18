@@ -47,3 +47,6 @@ Single Shot Multitask Pedestrian Detection andBehavior Prediction
 by Prateek Agrawal, Pratik Prabhanjan brahman
 ML4AD workshop, NeurIPS 2020
 ```
+
+Reference:  
+[PLARD](https://github.com/zhechen/PLARD)
