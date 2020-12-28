@@ -48,5 +48,8 @@ by Prateek Agrawal, Pratik Prabhanjan brahman
 ML4AD workshop, NeurIPS 2020
 ```
 
+Hardware-aware detection model can help reducing latency with competitive accuracy which will result into energy savings. [MobileDets](https://slideslive.com/38941915/mobiledets-searching-for-object-detection-for-mobile-accelerators) finds performance improvement when a depth-wise convolution (otherwise known as inverted bottleneck layers) is used at the later stage in the Object detection model such as MobileNet and regular convolution block is used at earlier stage. 
+
+
 Reference:  
 [PLARD](https://github.com/zhechen/PLARD)
