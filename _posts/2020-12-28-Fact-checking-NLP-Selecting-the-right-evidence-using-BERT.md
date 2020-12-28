@@ -25,7 +25,7 @@ This post will focus on ``step 2`` which identifies the relevant sentences neede
 `evidence` is a list of sentences from the wikipedia documents with the format: ``wiki_document_name, sentence/evidence_id, evidence_content, support_flag``.
 
 Snapshot of the wikipedia article for the above claim is:  
-![wiki_regina](/images/wiki_regina.png)
+![wiki_regina](/images/wiki_regina.PNG)
 
 Since a claim can have many sentences / evidences. A classifier can be trained to select a subset of the evidences that are most relevant. In order to do that, a pair-wise dataset is prepared where each claim is followed by relevant evidence. Conversely, the record also adds its non-relavant evidence with the appropriate flag. Here is an example:  
 ```
