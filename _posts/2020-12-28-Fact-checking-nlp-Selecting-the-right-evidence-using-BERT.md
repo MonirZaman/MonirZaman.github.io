@@ -1,3 +1,7 @@
+---
+layout: post
+title: "Fact checking NLP: Selecting the right evidence using BERT"
+---
 
 In order to verify a claim, we can utilize a knowledge corpus like Wikipedia. Checking a claim generally involves three steps 1) relevant document retrieval from knowledge corpus, 2) relevant sentence retrieval from the document that are related to the claim, 3) identify whether the claim is supported by the evidence sentences.
 
