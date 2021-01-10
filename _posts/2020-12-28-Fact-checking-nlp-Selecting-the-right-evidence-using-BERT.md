@@ -3,15 +3,15 @@ layout: post
 title: "Fact checking NLP: Selecting the right evidence using BERT"
 ---
 
-In order to verify a claim, we can utilize a knowledge corpus like Wikipedia. Checking a claim generally involves three steps 1) relevant document retrieval from knowledge corpus, 2) relevant sentence retrieval from the document that are related to the claim, 3) identify whether the claim is supported by the evidence sentences.
+In order to verify a claim, we can utilize a knowledge corpus like Wikipedia. Checking a claim generally involves three steps 1) relevant **document** retrieval from knowledge corpus, 2) relevant **sentence** retrieval from the documents, 3) identify whether the claim is supported by the evidence sentences.
 
 In step 1, one process the claim to extract relevant entities which are then used to select Wikipedia documents. Tools for extracting entities include ``AllenNLP, Stanford OpenIE``. [MediaWiki API](https://www.mediawiki.org/wiki/API:%20Main_page) can be used for probing Wikipedia. 
 
-In step 2, one needs select the relevant sentences from the Wikipedia pages as not all the information are needed to verify the claim. An ML model can be trained to select a set of related sentences for a given claim. 
+In step 2, one needs to select the relevant sentences from the Wikipedia pages as not all the information are needed to verify the claim. An ML model can be trained to select a set of related sentences for a given claim. 
 
 In step 3, once a claim is assigned a set of related sentences/evidences, one can train another ML model to classify the label for the claim: supported, refuted or not enough information.
 
-This post will focus on ``step 2`` which identifies the relevant sentences needed to verify a claim. I will describe the work done by [Zhenghao Liu et al.](https://www.aclweb.org/anthology/2020.acl-main.655.pdf) It uses the [FEVER dataset](https://arxiv.org/abs/1803.05355) that provides Wikipedia documents for a given claim. FEVER dataset contains 185,455 annotated claims with 5,416,537 Wikipedia documents. It is a fact-verification dataset with each claim annotated as SUPPORTS, REFUTES or NOT ENOUGH INFO by annotators. Here is the dataset format:  
+This post will focus on ``step 2`` which identifies the relevant sentences needed to verify a claim. I will describe the research done by [Zhenghao Liu et al.](https://www.aclweb.org/anthology/2020.acl-main.655.pdf) It uses the [FEVER dataset](https://arxiv.org/abs/1803.05355) that provides Wikipedia documents for a given claim. FEVER dataset contains 185,455 annotated claims with 5,416,537 Wikipedia documents. It is a fact-verification dataset with each claim annotated as SUPPORTS, REFUTES or NOT ENOUGH INFO by annotators. Here is the dataset format:  
 ```
 {'claim': 'Régine Chassagne is Canadian.',
  'evidence': [['Régine_Chassagne',
