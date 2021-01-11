@@ -14,7 +14,7 @@ In step 3, once a claim is assigned a set of related sentences/evidences, one ca
 This post will focus on ``step 2`` which identifies the relevant sentences needed to verify a claim. I will describe the work done by [Zhenghao Liu et al.](https://www.aclweb.org/anthology/2020.acl-main.655.pdf). It trains a BERT model to rank related sentences to a claim higher. I have added mixed precision training to the model training.   
 
 ## [Mixed precision training](https://pytorch.org/blog/accelerating-training-on-nvidia-gpus-with-pytorch-automatic-mixed-precision/)
-Mixed precision uses 16 bit to store floating point numbers instead of 32 bits. Numerical precision is reduced as a result. Upside is the reduced memory requirement as well as the shorter training time. Point-wise operation like addition, NN activation can still achieve competitive result with reduced precision. However, NN loss value should be stored in higher precision to achieve better performance. NVIDIA's `amp` library can automatically set the precision in the training pipeline.  
+Mixed precision uses 16 bit to store floating point numbers instead of 32 bits. Numerical precision is reduced as a result. Upside is the reduced memory requirement as well as the shorter training time. Point-wise operation like addition, multiplication can still achieve competitive result with reduced precision. However, NN loss functions, activations and weight updates should be stored in higher precision to achieve better performance. NVIDIA's `amp` library can automatically set the precision. I added the following codes in the training pipeline to support mixed precision.  
 
 ```python
 
