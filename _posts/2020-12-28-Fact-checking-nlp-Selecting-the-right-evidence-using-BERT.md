@@ -11,7 +11,41 @@ In step 2, one needs to select the relevant sentences from the Wikipedia pages a
 
 In step 3, once a claim is assigned a set of related sentences/evidences, one can train another ML model to classify the label for the claim: supported, refuted or not enough information.
 
-This post will focus on ``step 2`` which identifies the relevant sentences needed to verify a claim. I will describe the research done by [Zhenghao Liu et al.](https://www.aclweb.org/anthology/2020.acl-main.655.pdf) It uses the [FEVER dataset](https://arxiv.org/abs/1803.05355) that provides Wikipedia documents for a given claim. FEVER dataset contains 185,455 annotated claims with 5,416,537 Wikipedia documents. It is a fact-verification dataset with each claim annotated as SUPPORTS, REFUTES or NOT ENOUGH INFO by annotators. Here is the dataset format:  
+This post will focus on ``step 2`` which identifies the relevant sentences needed to verify a claim. I will describe the work done by [Zhenghao Liu et al.](https://www.aclweb.org/anthology/2020.acl-main.655.pdf). It trains a BERT model to rank related sentences to a claim higher. I have added mixed precision training to the model training.   
+
+## [Mixed precision training](https://pytorch.org/blog/accelerating-training-on-nvidia-gpus-with-pytorch-automatic-mixed-precision/)
+Mixed precision uses 16 bit to store floating point numbers instead of 32 bits. Numerical precision is reduced as a result. Upside is the reduced memory requirement as well as the shorter training time. Point-wise operation like addition, NN activation can still achieve competitive result with reduced precision. However, NN loss value should be stored in higher precision to achieve better performance. NVIDIA's `amp` library can automatically set the precision in the training pipeline.  
+
+```python
+
+# Creates once at the beginning of training
+scaler = torch.cuda.amp.GradScaler()
+for epoch in range(int(args.num_train_epochs)):
+  optimizer.zero_grad()
+  for inp_tensor_pos, msk_tensor_pos, seg_tensor_pos, inp_tensor_neg, msk_tensor_neg, seg_tensor_neg in trainset_reader:
+    model.train()
+  
+    # Running forward pass with autocast
+    with torch.cuda.amp.autocast():
+      score_pos = model(inp_tensor_pos, msk_tensor_pos, seg_tensor_pos)
+      score_neg = model(inp_tensor_neg, msk_tensor_neg, seg_tensor_neg)
+      label = torch.ones(score_pos.size())
+      if args.cuda:
+          label = label.cuda()
+      loss = crit(score_pos, score_neg, Variable(label, requires_grad=False))
+
+      # Scales the loss, and calls backward()
+      # to create scaled gradients
+      scaler.scale(loss).backward()
+
+      # Unscale gradient and skipping optimizer.step()
+      scaler.step(optimizer)
+      # update scaler for next iteration
+      scaler.update()
+```
+
+
+Zhenghao Liu et al. use the [FEVER dataset](https://arxiv.org/abs/1803.05355) that provides Wikipedia documents for a given claim. FEVER dataset contains 185,455 annotated claims with 5,416,537 Wikipedia documents. It is a fact-verification dataset with each claim annotated as SUPPORTS, REFUTES or NOT ENOUGH INFO by annotators. Here is the dataset format:  
 ```
 {'claim': 'Régine Chassagne is Canadian.',
  'evidence': [['Régine_Chassagne',
