@@ -9,7 +9,9 @@ In step 1, one process the claim to extract relevant entities which are then use
 
 In step 2, one needs to select the relevant sentences from the Wikipedia pages as not all the information are needed to verify the claim. An ML model can be trained to select a set of related sentences for a given claim. 
 
-In step 3, once a claim is assigned a set of related sentences/evidences, one can train another ML model to classify the label for the claim: supported, refuted or not enough information.
+In step 3, once a claim is assigned a set of related sentences/evidences, one can train another ML model to classify the label for the claim: supported, refuted or not enough information. [Zhou et al.]() summarize the pipeline in the figure below.
+
+[!pipeline](/images/fact-checking-pipeline.png)
 
 This post will focus on ``step 2`` which identifies the relevant sentences needed to verify a claim. I will describe the work done by [Zhenghao Liu et al.](https://www.aclweb.org/anthology/2020.acl-main.655.pdf). It trains a BERT model to rank related sentences to a claim higher. I have added mixed precision training to the model training.   
 
