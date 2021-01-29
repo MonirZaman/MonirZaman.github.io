@@ -120,10 +120,10 @@ Below are some of the talks that I enjoyed watching or reading.
 * [5 - Spotlight: A Study on Encodings for Neural Architecture Search](https://neurips.cc/virtual/2020/protected/poster_9d4c03631b8b0c85ae08bf05eda37d0f.html)
 
 ## [Equivariant networks](https://neurips.cc/virtual/2020/protected/tutorial_3e267ff3c8b6621e5ad4d0f26142892b.html)
-    - Symmetry: a translation that leaves some aspect of the object invariant
-        - Transformation
-        - GNN - same adjacency matrix
-        ![symmetry](/images/symmetry.png)
+- Symmetry: a translation that leaves some aspect of the object invariant
+- Transformation
+- GNN - same adjacency matrix
+ ![symmetry](/images/symmetry.png)
     
 ## Representation learning
 
