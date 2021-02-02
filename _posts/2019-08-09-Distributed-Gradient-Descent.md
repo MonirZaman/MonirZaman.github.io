@@ -20,6 +20,19 @@ In this method, compute node uses both upload and download bandwidth during comm
 ![ring-allreduce](/images/ring-allreduce.png)
 *Conceptual diagram of ring allreduce method (https://preferredresearch.jp/2018/07/10/technologies-behind-distributed-deep-learning-allreduce/)*
 
+[DeepSpeed](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-model-training-for-everyone/) implements several smart techniques to train a large scale deep learning model. It features:  
+
+- 1bit-Adam: It begins with a warmup stage, which is the vanilla Adam algorithm; followed by the compression stage, which keeps the variance term constant and compresses the linear term `momentum` in 1-bit representation.
+
+- Zero: Optimizations to reduce memory
+redundancy in parallel training devices, by partitioning weights, activations, and optimizer state.
+
+- Sparse attention: It can compute local attention between nearby tokens, or global attention via summary tokens computed with 
+local attention. It can also allow random attention or any combination of local, global, and random attention
+
+- Data, Model and pipeline parallelism all at the same time
+
+
 # Latest research works
 
 ## Delay compensated Asynchronous Stochastic Gradient Descent
