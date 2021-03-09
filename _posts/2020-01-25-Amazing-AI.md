@@ -133,3 +133,13 @@ Another view of hyperparameter transfer learning](https://papers.nips.cc/paper/9
   * [Video](https://www.youtube.com/watch?v=4G1dLuW8-kM)
   * [Related work in ICLR 2020](https://arxiv.org/pdf/1904.02642.pdf)
 
+## Zero-day attack detection
+Intrusion detection applies machine learning to detect anomalious access. Here are few recent works of how machine learning can help. 
+
+[Tang et al. ](https://netman.aiops.org/wp-content/uploads/2020/07/1570576256.pdf) apply encoder-decoder network to reconstruct the sequence of tokens. They measure the difference in BLEU score to classify anomaly. 
+![image](https://user-images.githubusercontent.com/1463508/110458984-3ef03c00-8081-11eb-9163-15ae06630fb5.png)
+
+[Haider et al.]() apply fuzzy rough set attribute reduction (FRAR) method to construct features and apply Gaussian mixture model (GMM) to detect anomaly.
+![image](https://user-images.githubusercontent.com/1463508/110459064-5af3dd80-8081-11eb-9574-63d6fed17f3f.png)
+
+
