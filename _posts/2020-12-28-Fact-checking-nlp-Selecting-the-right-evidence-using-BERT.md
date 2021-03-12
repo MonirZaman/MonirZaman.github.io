@@ -70,7 +70,7 @@ Snapshot of the wikipedia article for the above claim is:
 
 Since a claim can have many sentences / evidences. A classifier can be trained to select a subset of the evidences that are most relevant. In order to do that, a pair-wise dataset is prepared where each claim is followed by relevant evidence. It is referred to as positive example. Conversely, the claim followed by its non-relavant evidence is referred to as negative example. Here is a positive example:  
 ```
-Ireland is a place on Earth surrounded by water.  Ireland	is separated from Great Britain to its east by the North Channel , the Irish Sea , and St George 's Channel.
+Ireland is a place on Earth surrounded by water.  Ireland is separated from Great Britain to its east by the North Channel , the Irish Sea , and St George 's Channel.
 ```
 A negative example:  
 ```
