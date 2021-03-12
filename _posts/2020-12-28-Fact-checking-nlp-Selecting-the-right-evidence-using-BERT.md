@@ -68,11 +68,14 @@ Zhenghao Liu et al. use the [FEVER dataset](https://arxiv.org/abs/1803.05355) th
 Snapshot of the wikipedia article for the above claim is:  
 ![wiki_regina](/images/wiki_regina.PNG)
 
-Since a claim can have many sentences / evidences. A classifier can be trained to select a subset of the evidences that are most relevant. In order to do that, a pair-wise dataset is prepared where each claim is followed by relevant evidence. Conversely, the record also adds its non-relavant evidence with the appropriate flag. Here is an example:  
+Since a claim can have many sentences / evidences. A classifier can be trained to select a subset of the evidences that are most relevant. In order to do that, a pair-wise dataset is prepared where each claim is followed by relevant evidence. It is referred to as positive example. Conversely, the claim followed by its non-relavant evidence is referred to as negative example. Here is a positive example:  
 ```
-Ireland is a place on Earth surrounded by water.	Ireland	It is separated from Great Britain to its east by the North Channel , the Irish Sea , and St George 's Channel .	Ireland	As of 2013 , the amount of land that is wooded in Ireland is about 11 % of the total , compared with a European average of 35 % .
+Ireland is a place on Earth surrounded by water.  Ireland	is separated from Great Britain to its east by the North Channel , the Irish Sea , and St George 's Channel.
 ```
-Here the first sentence is the claim and the second sentence and onwards are evidence that are separated by tab. Each supporting evidence of a claim are paired with all the other non-supportive evidence to create records. 
+A negative example:  
+```
+Ireland is a place on Earth surrounded by water.  As of 2013 , the amount of land that is wooded in Ireland is about 11 % of the total , compared with a European average of 35 % .
+```
 
 [BERT model](https://arxiv.org/abs/1810.04805) provides the representation for the claim-evidence pair. A learning-to-rank layer maps the representation to a ranking score. It is trained to output high score for supporting evidence and low score for non-supporting evidence. [Margin Ranking Loss](https://pytorch.org/docs/stable/generated/torch.nn.MarginRankingLoss.html) is used as the loss function. Inference is done by feeding a claim and its evidences without any annotation. If the golden evidences for a given claim appear within the top 5 scores, then it is considered as a successful retrieval. Performance is measured in F1@5, Precision@5 and Recall@5 scores.  
 
