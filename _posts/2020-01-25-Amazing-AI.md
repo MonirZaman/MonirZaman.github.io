@@ -142,4 +142,9 @@ Intrusion detection applies machine learning to detect anomalious access. Here a
 [Haider et al.]() apply fuzzy rough set attribute reduction (FRAR) method to construct features and apply Gaussian mixture model (GMM) to detect anomaly.
 ![image](https://user-images.githubusercontent.com/1463508/110459064-5af3dd80-8081-11eb-9574-63d6fed17f3f.png)
 
-
+[Automatic training and hyperparameter tuning for anomaly detection]
+- Malware samples change frequently. So detection tools should be frequently trained with an optimial set of hyper-parameters to achieve the desired performance. 
+- Publicly available EMBER Dataset
+- AutoGluon and NNI Automatic machine learning
+- Extract 2381 features using Library to Instrument Executable Formats (LIEF): https://lief.quarkslab.com/
+- 
