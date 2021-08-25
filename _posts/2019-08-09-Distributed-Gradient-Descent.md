@@ -32,6 +32,16 @@ local attention. It can also allow random attention or any combination of local,
 
 - Data, Model and pipeline parallelism all at the same time
 
+## Some best practice to follow in distributed training
+
+* Each rank / parallel process can generate their own log and tensorflow warnings. It may result into huge standard out log. All the ranks' output except for rank 0 can be redirected to file. Below is an example with Horovod:   
+```
+if hvd.rank() > 0:
+    outfile = open(os.path.join(FLAGS.train_dir, f"rank{hvd.rank()}.stdout"), "w")
+    sys.stdout = outfile
+    sys.stderr = outfile
+```
+
 
 # Latest research works
 
