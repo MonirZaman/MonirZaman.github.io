@@ -22,7 +22,7 @@ Few other tools and libraries to parallelize python workload
     * [Writing your First Distributed Python Application with Ray](https://towardsdatascience.com/writing-your-first-distributed-python-application-with-ray-4248ebc07f41)
 * [Numba](http://numba.pydata.org/)
 
-Often we need to determine which part of a program takes long time to run. Instead of parallel implementation of the entire program, it is best to parallel implemenation of the parts that are slow. Following is a demonstration of how we can profile python code.  
+Often we need to determine which part of a program takes long time to run. Instead of parallel implementation of the entire program, it is best to do parallel implemenation of the parts that are slow. Following is a demonstration of how we can profile python code.  
 
 ## Profile code
 Typically, first step is to run a profiler to see how much time different parts of the code base are taking. I use `cProfile` for this purpose. `snakeviz` can be used to visualize the output of the profiler.  
@@ -43,7 +43,7 @@ Typically, first step is to run a profiler to see how much time different parts 
 `snakeviz profile_output`
 ![profile_output](/images/profile_output.png)  
 
-## Parallel computation
+## Parallel computation with an example  
 ### Partition a Pandas Data Frame
 One technique that enables parallelization is to divide input data into partitions or batches. Then processing can be done in parallel on each partition.
 
