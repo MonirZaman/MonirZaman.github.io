@@ -18,7 +18,8 @@ Some terminologies:
 It is a subset of python that are decoupled from runtime environment. It allows converting python code through simple jit call. Torchscript makes it easer to optimize code for custom hardware, quantization of machine learning model and various other optimizations.  
 
 Few other tools and libraries to parallelize python workload
-* [Ray](https://towardsdatascience.com/writing-your-first-distributed-python-application-with-ray-4248ebc07f41)
+* [Ray](https://docs.ray.io/en/ray-0.4.0/index.html)
+    * [Writing your First Distributed Python Application with Ray](https://towardsdatascience.com/writing-your-first-distributed-python-application-with-ray-4248ebc07f41)
 * [Numba](http://numba.pydata.org/)
 
 Often we need to determine which part of a program takes long time to run. Instead of parallel implementation of the entire program, it is best to parallel implemenation of the parts that are slow. Following is a demonstration of how we can profile python code.  
