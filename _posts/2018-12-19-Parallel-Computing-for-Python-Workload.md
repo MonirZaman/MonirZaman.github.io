@@ -15,15 +15,28 @@ Some terminologies:
 "XLA (Accelerated Linear Algebra) is a domain-specific compiler for linear algebra that can accelerate Python program with potentially no source code changes. XLA provides an alternative mode of running programs: it compiles your program into a sequence of computation kernels generated specifically for the given program. Because these kernels are unique to the program, they can exploit model-specific information for optimization. It can fuse multiple operations like the addition, multiplication and reduction into a single GPU kernel. Moreover, this fused operation does not write out the intermediate values produced to memory; instead it streams the results of these intermediate computations directly to their users while keeping them entirely in GPU registers." [Source](https://www.tensorflow.org/xla)
 
 ## [Torchscript](https://pytorch.org/tutorials/beginner/Intro_to_TorchScript_tutorial.html)
-It is a subset of python that are decoupled from runtime environment. It allows converting python code through simple jit call. Torchscript makes it easer to optimize code for custom hardware, quantization of machine learning model and various other optimizations.
+It is a subset of python that are decoupled from runtime environment. It allows converting python code through simple jit call. Torchscript makes it easer to optimize code for custom hardware, quantization of machine learning model and various other optimizations.  
 
-## Numba
+Few other tools and libraries to parallelize python workload
+* [Ray](https://towardsdatascience.com/writing-your-first-distributed-python-application-with-ray-4248ebc07f41)
+* [Numba](http://numba.pydata.org/)
+
+Often we need to determine which part of a program takes long time to run. Instead of parallel implementation of the entire program, it is best to parallel implemenation of the parts that are slow. Following is a demonstration of how we can profile python code.  
 
 ## Profile code
 Typically, first step is to run a profiler to see how much time different parts of the code base are taking. I use `cProfile` for this purpose. `snakeviz` can be used to visualize the output of the profiler.  
 1. Profile a script using the following command:  
-`python -m cProfile -s time -o profile_output YOUR_SCRIPT.py ARGUMENT`
-2. Install `snakeviz`  
+`python -m cProfile -s time -o profile_output YOUR_SCRIPT.py ARGUMENT`  
+
+2.a Analyze profile information using `pstats`  
+```
+    import pstats
+    s = pstats.Stats("profile_output")
+    s.strip_dirs()
+    s.sort_stats("time").print_stats(10)
+```   
+
+2.b Install `snakeviz`  
 `pip install snakeviz`
 3. Visualize profiler's output  
 `snakeviz profile_output`
