@@ -1,13 +1,13 @@
-## Distributed system's research paper review:
+This post will review a distributed system's research paper:
 # Millions of Tiny Databases by Brooker et al.
 
 ```
 Brooker, Marc, Tao Chen, and Fan Ping. "Millions of tiny databases." 17th {USENIX} Symposium on Networked Systems Design and Implementation ({NSDI} 20). 2020.
 ```
-
+The paper describes a distributed system called Physalia which is defined by the following properties.
 - Distributed database
 - Offers strong durability and consistency
-- A cell consists of 7 nodes
+- Consists of cell where each cell consists of 7 nodes
 - Compute instance e.g., EC2 is Client that uses Physalia to pinpoint where blocks of a file are stored. Following is an image showing a block storage connected to a compute instance.  
 ![overview](/images/overview.png)
 
