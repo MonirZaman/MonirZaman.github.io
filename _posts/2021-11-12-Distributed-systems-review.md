@@ -52,4 +52,6 @@ Leslie Lamport. 2001. Paxos made simple. ACM SIGACT News 32, 4 (Dec. 2001), 51â€
 - Secondary focus is availablity. It ensures Physalia is available during network partition.
 
 ## Reference 
-- Formal Verification of Multi-Paxos for Distributed Consensus. https://arxiv.org/pdf/1606.01387.pdf
+- [Formal Verification of Multi-Paxos for Distributed Consensus](https://arxiv.org/pdf/1606.01387.pdf)
+- [A Survey of Distributed Consensus Protocols for Blockchain Networks](https://arxiv.org/pdf/1904.04098.pdf)
+- [Elastic Paxos](https://www.inf.usi.ch/pedone/Paper/2017/2017ICDCSb.pdf)
