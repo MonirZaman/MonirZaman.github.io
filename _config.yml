@@ -9,7 +9,9 @@ name: Monir Zaman
 description: Data Scientist, Problem solver, Researcher
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: images/me-and-nora.jpg  
+avatar: https://github.com/MonirZaman/MonirZaman.github.io/blob/5b2e9f7d64f729f0164c8b6a85ca83ace75d9c23/images/me-and-nora.jpg
+
+#images/me-and-nora.jpg  
 #https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png
 
 #
