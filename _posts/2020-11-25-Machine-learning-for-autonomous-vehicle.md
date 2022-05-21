@@ -58,17 +58,18 @@ Hardware-aware detection model can help reducing latency with competitive accura
 - Objective is to create more labeled data
 - It uses contrastive loss
   - Same class should have similar similar embedding and different class should have different embedding.
-![Image of loss function](/images/simclr-loss.png)
-![Image of loss function](/images/simclr-repeal.png)
-![Image of loss function](/images/simclr-attract.png)
+![Image of loss function](/images/simclr-loss.PNG)
+![Image of repeal](/images/simclr-repeal.PNG)
+![Image of attract](/images/simclr-attract.PNG)
 
 Algorithm:   
  - SimCLR architecture utilizes data augmentation
- ![SimCLR](/images/simclr-alg.png)
+ ![SimCLR](/images/simclr-alg.PNG)
     - Augmention of each image is passed through ResNet model to get embedding.
     - Embedding of an image should be similar to the embedding of the augmentation of the same image.
     - Embedding of an image should be different than the embedding of other image or their augmentation version.  
  - It recommends ResNet as a backbone network and apply nonlinearity.
+ ![Image of HEAD](/images/simclr-head.PNG)
  
  - How to sample positive?
  - How to sample negative samples?
