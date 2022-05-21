@@ -50,6 +50,30 @@ ML4AD workshop, NeurIPS 2020
 
 Hardware-aware detection model can help reducing latency with competitive accuracy which will result into energy savings. [MobileDets](https://slideslive.com/38941915/mobiledets-searching-for-object-detection-for-mobile-accelerators) finds performance improvement when a depth-wise convolution (otherwise known as inverted bottleneck layers) is used at the later stage in the Object detection model such as MobileNet and regular convolution block is used at earlier stage. 
 
-
-Reference:  
 [PLARD](https://github.com/zhechen/PLARD)
+
+## [SimCLR: A simple framework for Contrastive](http://proceedings.mlr.press/v119/chen20j/chen20j.pdf)
+
+- Semi-supervised learning
+- Objective is to create more labeled data
+- It uses contrastive loss
+  - Same class should have similar similar embedding and different class should have different embedding.
+![Image of loss function](/images/simclr-loss.png)
+![Image of loss function](/images/simclr-repeal.png)
+![Image of loss function](/images/simclr-attract.png)
+
+Algorithm:   
+ - SimCLR architecture utilizes data augmentation
+ ![SimCLR](/images/simclr-alg.png)
+    - Augmention of each image is passed through ResNet model to get embedding.
+    - Embedding of an image should be similar to the embedding of the augmentation of the same image.
+    - Embedding of an image should be different than the embedding of other image or their augmentation version.  
+ - It recommends ResNet as a backbone network and apply nonlinearity.
+ 
+ - How to sample positive?
+ - How to sample negative samples?
+    - Random sampling is used. Unbalanced dataset can cause issues. 
+    - Tips: Cluster similar images and sample from there.
+
+Video discussion: https://www.youtube.com/watch?v=wySLC4nszv8
+
