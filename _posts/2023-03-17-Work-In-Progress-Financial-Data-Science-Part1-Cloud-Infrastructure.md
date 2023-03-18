@@ -1,9 +1,8 @@
-This blog post will explain AWS Step function. I will show some basic code examples to create Step function. This is the infrastructure will used for 
-analyzing financial data.  All the code example will be in AWS CDK which is a framework that allows you to define and provision cloud infrastructure in code and deploy it through AWS CloudFormation.
+In this article, I will demonstrate how to use AWS Step Function. AWS Step Function is a service that lets you orchestrate multiple AWS services in a workflow. I will use it to analyze financial data with some simple code examples. The code examples are written in AWS CDK, which is a tool that helps you create cloud resources with your preferred programming language.
 
-This code creates a VPC, a DynamoDB table in the VPC, two Lambda functions to add and query items from the table in the VPC, and a Step Function that invokes the Lambda functions in sequence. The add_item Lambda function adds an item to the table, and the query_item Lambda function queries an item from the table. The Step Function invokes the add_item function first, and then the query_item function.
+The code example creates these cloud resources: a VPC, a DynamoDB table inside the VPC, two Lambda functions that interact with the table inside the VPC, and a Step Function that runs the Lambda functions one after another. The first Lambda function adds data to the table, and the second Lambda function retrieves data from the table.
 
-You can customize this code to fit your specific use case by modifying the Lambda functions, the VPC, and the Step Function definition.
+You can adapt this code example to your own scenario by changing the Lambda functions, the VPC, and the Step Function definition.
 
 Here is the sample cdk code:
 
