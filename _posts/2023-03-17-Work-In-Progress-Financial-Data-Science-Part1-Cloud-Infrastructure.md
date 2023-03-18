@@ -4,6 +4,15 @@ The code example creates these cloud resources: a VPC, a DynamoDB table inside t
 
 You can adapt this code example to your own scenario by changing the Lambda functions, the VPC, and the Step Function definition.
 
+## VPC
+
+VPC stands for Virtual Private Cloud. It is a virtual network that you can create in AWS. It allows you to launch AWS resources, such as EC2 instances, RDS instances, and Lambda functions, into a virtual network that you define.
+
+In the example code I provided below, the VPC is created using the AWS CDK ec2.Vpc construct. The max_azs parameter specifies the maximum number of availability zones to use, and the cidr parameter specifies the IP address range for the VPC. The subnet_configuration parameter specifies the subnets to create in the VPC. In this case, only one public subnet is created.
+
+The DynamoDB table and the Lambda functions are created in the VPC using the vpc parameter. The security_groups parameter specifies the security groups to associate with the Lambda functions. In this case, the default security group for the VPC is used. The allow_all_outbound parameter specifies whether to allow all outbound traffic from the Lambda functions.
+
+
 Here is the sample cdk code:
 
 ```typescript
@@ -87,3 +96,5 @@ class StepFunctionStack(core.Stack):
             timeout=core.Duration.minutes(5),
         )
 ```
+
+
