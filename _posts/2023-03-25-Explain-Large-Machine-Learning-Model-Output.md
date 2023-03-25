@@ -34,3 +34,34 @@ In this example, we first import the necessary modules and create an instance of
 Next, input text is defined and converted to input IDs using the tokenizer. Baseline IDs are also defined as a tensor of zeros with the same shape as our input IDs.
 
 Then, attribute() method of our IntegratedGradients instance is called with input and baseline IDs. The output of this method is an attribution tensor that represents the importance of each token in the input text for the output of the model.
+
+We often need to deal with multimodal data such as image, numeric values, categories in addition to text. Here is another example where the model takes multimodal data and can be explained with integrated gradients
+
+```python
+from transformers import pipeline
+from captum.attr import IntegratedGradients
+import torch
+
+# Load the trained model
+model = pipeline('text-classification', model='distilbert-base-uncased')
+
+# Define the input text, numbers, and categories
+text = "I love this movie!"
+numbers = torch.tensor([1, 2, 3, 4, 5])
+categories = torch.tensor([0, 1, 0])
+
+# Combine the text, numbers, and categories into a single input tensor
+input_tensor = {'input_ids': model.tokenizer.encode(text, add_special_tokens=True, return_tensors='pt'),
+                'numbers': numbers.unsqueeze(0),
+                'categories': categories.unsqueeze(0)}
+
+# Define the IntegratedGradients object
+ig = IntegratedGradients(model)
+
+# Compute the attributions
+attributions = ig.attribute(input_tensor)
+
+# Print the attributions
+print(attributions)
+
+```
