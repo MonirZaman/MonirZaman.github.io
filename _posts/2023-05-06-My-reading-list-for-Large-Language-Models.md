@@ -19,6 +19,10 @@ A large language model (LLM) is a type of machine learning model that can do a l
 - Generative pretrained-transformer created by Andrej Karpathy for education purpose
 - [Video](https://www.youtube.com/watch?v=kCc8FmEb1nY)
 
+## Online course
+- [Full stack's course on LLM](https://fullstackdeeplearning.com/llm-bootcamp/spring-2023/)
+- 
+
 
 ## Knowledge representation and Hallucination
 - Hallucination refers to mistakes in the generated text that are statistically plausible but are in fact incorrect or nonsensical
