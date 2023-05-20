@@ -20,7 +20,7 @@ A large language model (LLM) is a type of machine learning model that can do a l
 - [Video](https://www.youtube.com/watch?v=kCc8FmEb1nY)
 
 ## Evaluation of LLM
-- [HELM](https://youtu.be/HJGccJh07Os)
+- [Holistic evaluation of language model HELM](https://youtu.be/HJGccJh07Os)
 
 
 ## Online course
