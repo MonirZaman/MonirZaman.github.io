@@ -11,8 +11,10 @@ A large language model (LLM) is a type of machine learning model that can do a l
 - **What is fine-tuning?** - Fine-tuning is the process of adapting a pre-trained language model to a specific task or domain.
 - **How does fine-tuning work?** - Fine-tuning involves training the pre-trained language model on a small amount of task-specific data.
 - **What are some applications of fine-tuning?** - Fine-tuning can be used for a wide range of applications, including sentiment analysis, named entity recognition, and text classification.
+
 - RLHF: Reinforcement Learning from Human Feedback
-  - [Blog by Chip](https://huyenchip.com/2023/05/02/rlhf.html)
+ - [Lecture by Hyung from OpenAI](https://youtu.be/zjrM-MW-0y0)
+ - [Blog by Chip](https://huyenchip.com/2023/05/02/rlhf.html)
 
 
 ## nanoGPT
