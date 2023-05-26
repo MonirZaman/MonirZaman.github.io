@@ -34,6 +34,9 @@ A large language model (LLM) is a type of machine learning model that can do a l
 - Hallucination refers to mistakes in the generated text that are statistically plausible but are in fact incorrect or nonsensical
 - [Stanford lecture](https://www.youtube.com/watch?v=4ynrGLIuPv4)
 
+## Application
+- [flyte q/a bot with langchain, faiss, gpt](https://flyte.org/blog/building-flytegpt-on-flyte-with-langchain)
+
 
 ## Select technical concepts related to LLM and Transformer
 
