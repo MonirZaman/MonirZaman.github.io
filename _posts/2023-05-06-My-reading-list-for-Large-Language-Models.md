@@ -12,22 +12,22 @@ A large language model (LLM) is a type of machine learning model that can do a l
 - **How does fine-tuning work?** - Fine-tuning involves training the pre-trained language model on a small amount of task-specific data.
 - **What are some applications of fine-tuning?** - Fine-tuning can be used for a wide range of applications, including sentiment analysis, named entity recognition, and text classification.
 
-- RLHF: Reinforcement Learning from Human Feedback
- - [Lecture by Hyung from OpenAI](https://youtu.be/zjrM-MW-0y0)
+## RLHF: Reinforcement Learning from Human Feedback
+ - [Youtube lecture by Hyung from OpenAI](https://youtu.be/zjrM-MW-0y0) [Slides](https://docs.google.com/presentation/d/13Tylt2SvKvBL2hgILy5CmBtPDv3rXlVrQp01OzAe5Xo/edit#slide=id.g238b2698243_0_791)
  - [Blog by Chip](https://huyenchip.com/2023/05/02/rlhf.html)
 
 
 ## nanoGPT
-- Generative pretrained-transformer created by Andrej Karpathy for education purpose
-- [Video](https://www.youtube.com/watch?v=kCc8FmEb1nY)
+Generative pretrained-transformer created by Andrej Karpathy for education purpose
+ - [Video](https://www.youtube.com/watch?v=kCc8FmEb1nY)
 
 ## Evaluation of LLM
 - [Holistic evaluation of language model HELM](https://youtu.be/HJGccJh07Os)
 
 
 ## Online course
+- [NYU 2023 spring course on Natural Language Processing](https://nyu-cs2590.github.io/spring2023/calendar/)
 - [Full stack's course on LLM](https://fullstackdeeplearning.com/llm-bootcamp/spring-2023/)
-- 
 
 
 ## Knowledge representation and Hallucination
@@ -45,4 +45,4 @@ Byte Pair Encoding (BPE) and SentencePiece are both subword tokenization methods
 
 **Positional embedding**
 Positional embeddings are added to the word embeddings once before the first layer. Each position t within the sequence gets different embedding if t = 2 i is even then use sine function if t is odd then consine function.
-- [ref](https://towardsdatascience.com/understanding-positional-encoding-in-transformers-dc6bafc021ab)
+- [Referrence](https://towardsdatascience.com/understanding-positional-encoding-in-transformers-dc6bafc021ab)
