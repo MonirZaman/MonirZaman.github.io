@@ -17,9 +17,20 @@ A large language model (LLM) is a type of machine learning model that can do a l
  - [Blog by Chip](https://huyenchip.com/2023/05/02/rlhf.html)
  - Reading notes on RLHF
 
-**Reward model** is used to model human feedback. Reward model is also a language model except for the last layear is the linear layer that outputs a reward value. Given two completion <img src="https://render.githubusercontent.com/render/math?math=y_{i}"> and $$y_{j}$$, objective to model the probability $p_{ij}$ which denotes the confidence $y_{i}$ is better than $y_{j}$:
+**Reward model (RM) **: RM is used to model human feedback. Reward model is also a language model except for the last layear is the linear layer that outputs a reward value. Given two completion <img src="https://render.githubusercontent.com/render/math?math=y_{i}"> and $$y_{j}$$, objective to model the probability $p_{ij}$ which denotes the confidence $y_{i}$ is better than $y_{j}$:
 ![reward](/images/rlhf/reward.png)
   
+**Proximal policy optimization (PPO)**: Next, we apply reinforcement learning that trains a policy aka language model parameters to generate text with higher reward based on the reward model. It creates many prompts and uses the language model to generate sequence for these prompts. Objective is to maximize the expected reward i.e., weighted summation of completion rewards with weights as the probability of the completion.
+
+
+![reward](/images/rlhf/objective.png)
+
+![reward](/images/rlhf/gradientascend.png)
+
+Proximal policy optimization (PPO) is used to compute the gradient. Iterative algorithm like gradient ascend is used to solve the optimization objective. 
+
+
+
 
 
 ## nanoGPT
