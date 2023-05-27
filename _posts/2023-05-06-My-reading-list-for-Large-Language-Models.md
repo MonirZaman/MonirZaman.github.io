@@ -15,6 +15,11 @@ A large language model (LLM) is a type of machine learning model that can do a l
 ## RLHF: Reinforcement Learning from Human Feedback
  - [Youtube lecture by Hyung from OpenAI](https://youtu.be/zjrM-MW-0y0) [Slides](https://docs.google.com/presentation/d/13Tylt2SvKvBL2hgILy5CmBtPDv3rXlVrQp01OzAe5Xo/edit#slide=id.g238b2698243_0_791)
  - [Blog by Chip](https://huyenchip.com/2023/05/02/rlhf.html)
+ - Reading notes on RLHF
+
+**Reward model** is used to model human feedback. Reward model is also a language model except for the last layear is the linear layer that outputs a reward value. Given two completion $y_{i}$ and $y_{j}$, objective to model the probability $p_{ij}$ which denotes the confidence $y_{i}$ is better than $y_{j}$:
+![reward](/images/rlhf/reward.png)
+  
 
 
 ## nanoGPT
