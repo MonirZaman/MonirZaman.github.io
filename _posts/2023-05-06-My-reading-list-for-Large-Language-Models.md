@@ -17,10 +17,11 @@ A large language model (LLM) is a type of machine learning model that can do a l
  - [Blog by Chip](https://huyenchip.com/2023/05/02/rlhf.html)
  - Reading notes on RLHF
 
-**Reward model (RM) **: RM is used to model human feedback. Reward model is also a language model except for the last layear is the linear layer that outputs a reward value. Given two completion <img src="https://render.githubusercontent.com/render/math?math=y_{i}"> and $$y_{j}$$, objective to model the probability $p_{ij}$ which denotes the confidence $y_{i}$ is better than $y_{j}$:
+**Reward model (RM)**: RM is used to model human feedback. Reward model is also a language model except for the last layear is the linear layer that outputs a reward value. Given two completion <img src="https://render.githubusercontent.com/render/math?math=y_{i}"> and <img src="https://render.githubusercontent.com/render/math?math=y_{j}">, objective to model the probability <img src="https://render.githubusercontent.com/render/math?math=p_{ij}"> which denotes the confidence <img src="https://render.githubusercontent.com/render/math?math=y_{i}"> is better than <img src="https://render.githubusercontent.com/render/math?math=y_{j}">:
+
 ![reward](/images/rlhf/reward.png)
   
-**Proximal policy optimization (PPO)**: Next, we apply reinforcement learning that trains a policy aka language model parameters to generate text with higher reward based on the reward model. It creates many prompts and uses the language model to generate sequence for these prompts. Objective is to maximize the expected reward i.e., weighted summation of completion rewards with weights as the probability of the completion.
+**Proximal policy optimization (PPO)**: Next, we apply reinforcement learning that trains a policy aka language model parameters to generate text with higher reward based on the reward model. It samples many prompts and uses the language model to generate sequence for these prompts. Objective is to maximize the expected reward i.e., weighted summation of completion rewards with weights as the probability of the completion.
 
 
 ![reward](/images/rlhf/objective.png)
@@ -29,8 +30,16 @@ A large language model (LLM) is a type of machine learning model that can do a l
 
 Proximal policy optimization (PPO) is used to compute the gradient. Iterative algorithm like gradient ascend is used to solve the optimization objective. 
 
+Steps of policy gradient training steps:
+- Initialize parameters of the language model from Supervised finetuned mode
+- Samples prompt from dataset, generates sequence for the prompts and current policy 
+- Calculate reward for the prompt and completion
+- Calculate gradients and update the parameters of the language model
 
+**Regularization**
+Vanilla policy gradient can over optimize to the Reward model. A per-token KL divergence from SFT distribution penalty added as a regularization. This is to keep some of the variation from SFT model.
 
+![reward](/images/rlhf/reg.png)
 
 
 ## nanoGPT
