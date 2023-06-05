@@ -17,8 +17,7 @@ A large language model (LLM) is a type of machine learning model that can do a l
  - [Blog by Chip](https://huyenchip.com/2023/05/02/rlhf.html)
  - Reading notes on RLHF
 
-**Reward model (RM)**: RM is used to model human feedback. Reward model is also a language model except for the last layear is the linear layer that outputs a reward value. Given two completion <img src="https://render.githubusercontent.com/render/math?math=y_{i}"> and <img src="https://render.githubusercontent.com/render/math?math=y_{j}">, objective to model the probability <img src="https://render.githubusercontent.com/render/math?math=p_{ij}"> which denotes the confidence <img src="https://render.githubusercontent.com/render/math?math=y_{i}"> is better than 
-<img src="https://render.githubusercontent.com/render/math?math=y_{j}">:
+**Reward model (RM)**: RM is used to model human feedback. Reward model is also a language model except for the last layear is the linear layer that outputs a reward value. Given two completion <img src="https://render.githubusercontent.com/render/math?math=y_{i}"> and <img src="https://render.githubusercontent.com/render/math?math=y_{J}">, objective to model the probability <img src="https://render.githubusercontent.com/render/math?math=p_{ij}"> which denotes the confidence <img src="https://render.githubusercontent.com/render/math?math=y_{i}"> is better than <img src="https://render.githubusercontent.com/render/math?math=y_{J}">:
 
 ![reward](/images/rlhf/reward.png)
   
@@ -44,7 +43,7 @@ Vanilla policy gradient can over optimize to the Reward model. A per-token KL di
 
 ## Online course
 - [NYU 2023 spring course on Natural Language Processing](https://nyu-cs2590.github.io/spring2023/calendar/)
-- Building Systems with the ChatGPT API [DeepLearning.ai](https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/) [Student copy](/Building-Systems-with-the-ChatGPT-API/)
+- Building Systems with the ChatGPT API | [DeepLearning.ai](https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/) | [Student copy](https://github.com/MonirZaman/MonirZaman.github.io/blob/master/_posts/Building-Systems-with-the-ChatGPT-API/LLM.md)
 - [Full stack's course on LLM](https://fullstackdeeplearning.com/llm-bootcamp/spring-2023/)
 
 ## Evaluation of LLM
