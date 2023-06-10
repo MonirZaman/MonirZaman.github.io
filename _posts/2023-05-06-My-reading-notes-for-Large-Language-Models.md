@@ -24,9 +24,9 @@ A large language model (LLM) is a type of machine learning model that can do a l
 **Proximal policy optimization (PPO)**: Next, we apply reinforcement learning that trains a policy aka language model parameters to generate text with higher reward based on the reward model. It samples many prompts and uses the language model to generate sequence for these prompts. Objective is to maximize the expected reward i.e., weighted summation of completion rewards with weights as the probability of the completion.
 
 
-![reward](/images/rlhf/objective.png)
+![reward](/images/rlhf/objective.png  =50x50)
 
-![reward](/images/rlhf/gradientascend.png)
+![reward](/images/rlhf/gradientascend.png  =50x50)
 
 Proximal policy optimization (PPO) is used to compute the gradient. Iterative algorithm like gradient ascend is used to solve the optimization objective. 
 
@@ -43,7 +43,8 @@ Vanilla policy gradient can over optimize to the Reward model. A per-token KL di
 
 ## Online course
 - [NYU 2023 spring course on Natural Language Processing](https://nyu-cs2590.github.io/spring2023/calendar/)
-- Building Systems with the ChatGPT API | [DeepLearning.ai](https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/) | [Student copy](https://github.com/MonirZaman/MonirZaman.github.io/blob/master/_posts/Building-Systems-with-the-ChatGPT-API/LLM.md)
+- Building Systems with the ChatGPT API \| [DeepLearning.ai](https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/) \| [Student copy](https://github.com/MonirZaman/MonirZaman.github.io/blob/master/_posts/Building-Systems-with-the-ChatGPT-API/LLM.md)
+- LangChain for LLM Application Development \| [DeepLearning.ai](https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/) \| [Student copy](https://github.com/MonirZaman/MonirZaman.github.io/blob/master/_posts/LangChain-for-LLM-Application-Development/1-Model_prompt_parser.md)
 - [Full stack's course on LLM](https://fullstackdeeplearning.com/llm-bootcamp/spring-2023/)
 
 ## Evaluation of LLM
