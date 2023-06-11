@@ -1,3 +1,7 @@
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 A large language model (LLM) is a type of machine learning model that can do a lot of cool things with language. It can write text that sounds like it was written by a human, answer questions like a human would, and even translate text from one language to another. LLMs are trained using a lot of data and deep learning algorithms to understand language better. 😎
 
 ## Transformer Architecture
@@ -19,10 +23,13 @@ A large language model (LLM) is a type of machine learning model that can do a l
 
 **Reward model (RM)**: RM is used to model human feedback. Reward model is also a language model except for the last layear is the linear layer that outputs a reward value. Given two completion <img src="https://render.githubusercontent.com/render/math?math=y_{i}"> and <img src="https://render.githubusercontent.com/render/math?math=y_{J}">, objective to model the probability <img src="https://render.githubusercontent.com/render/math?math=p_{ij}"> which denotes the confidence <img src="https://render.githubusercontent.com/render/math?math=y_{i}"> is better than <img src="https://render.githubusercontent.com/render/math?math=y_{J}">:
 
+test symbol: $$y_{i}$$, $$y_{j}$$ and $$p_{ij}$$
+
 ![reward](/images/rlhf/reward.png)
   
 **Proximal policy optimization (PPO)**: Next, we apply reinforcement learning that trains a policy aka language model parameters to generate text with higher reward based on the reward model. It samples many prompts and uses the language model to generate sequence for these prompts. Objective is to maximize the expected reward i.e., weighted summation of completion rewards with weights as the probability of the completion.
 
+<img src="/images/rlhf/objective.png" width="50" height="50">
 
 ![reward](/images/rlhf/objective.png  =50x50)
 
@@ -68,5 +75,5 @@ Generative pretrained-transformer created by Andrej Karpathy for education purpo
 Byte Pair Encoding (BPE) and SentencePiece are both subword tokenization methods that are used in NLP. BPE is a data-driven method that iteratively replaces the most frequent pair of bytes in a sequence with a single, unused byte. Subword tokenization with BPE helps in effectively tackling the concerns of out-of-vocabulary words. SentencePiece is an unsupervised text tokenizer and detokenizer mainly for Neural Network-based text generation systems where the vocabulary size is predetermined prior to the neural model training
 
 **Positional embedding**
-Positional embeddings are added to the word embeddings once before the first layer. Each position t within the sequence gets different embedding if t = 2 i is even then use sine function if t is odd then consine function.
+Positional embeddings are added to the word embeddings once before the first layer. Each position t within the sequence gets different embedding when t is even then use sine function if t is odd then consine function.
 - [Referrence](https://towardsdatascience.com/understanding-positional-encoding-in-transformers-dc6bafc021ab)
