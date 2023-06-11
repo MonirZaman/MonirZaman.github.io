@@ -27,13 +27,9 @@ A large language model (LLM) is a type of machine learning model that can do a l
   
 **Proximal policy optimization (PPO)**: Next, we apply reinforcement learning that trains a policy aka language model parameters to generate text with higher reward based on the reward model. It samples many prompts and uses the language model to generate sequence for these prompts. Objective is to maximize the expected reward i.e., weighted summation of completion rewards with weights as the probability of the completion.
 
-<img src="/images/rlhf/objective.png" width="400" height="150" style="display:block;margin:auto;">
+<img src="/images/rlhf/objective.png" width="500" height="100" style="display:block;margin:auto;">
 
-<img src="/images/rlhf/gradientascend.png" width="400" height="150" style="display:block;margin:auto;">
-
-![reward](/images/rlhf/objective.png  =50x50)
-
-![reward](/images/rlhf/gradientascend.png  =50x50)
+<img src="/images/rlhf/gradientascend.png" width="400" height="100" style="display:block;margin:auto;">
 
 Proximal policy optimization (PPO) is used to compute the gradient. Iterative algorithm like gradient ascend is used to solve the optimization objective. 
 
