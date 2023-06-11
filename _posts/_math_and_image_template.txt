@@ -5,4 +5,10 @@
 {% raw %}
   $$a^2 + b^2 = c^2$$ --> note that all equations between these tags will not need escaping! 
  {% endraw %}
+ 
+ 
+ Resize image:
+
+<img src="/images/rlhf/gradientascend.png" width="400" height="100" style="display:block;margin:auto;">
+
 
