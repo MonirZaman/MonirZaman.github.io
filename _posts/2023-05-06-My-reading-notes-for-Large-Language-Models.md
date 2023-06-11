@@ -21,15 +21,15 @@ A large language model (LLM) is a type of machine learning model that can do a l
  - [Blog by Chip](https://huyenchip.com/2023/05/02/rlhf.html)
  - Reading notes on RLHF
 
-**Reward model (RM)**: RM is used to model human feedback. Reward model is also a language model except for the last layear is the linear layer that outputs a reward value. Given two completion <img src="https://render.githubusercontent.com/render/math?math=y_{i}"> and <img src="https://render.githubusercontent.com/render/math?math=y_{J}">, objective to model the probability <img src="https://render.githubusercontent.com/render/math?math=p_{ij}"> which denotes the confidence <img src="https://render.githubusercontent.com/render/math?math=y_{i}"> is better than <img src="https://render.githubusercontent.com/render/math?math=y_{J}">:
-
-test symbol: $$y_{i}$$, $$y_{j}$$ and $$p_{ij}$$
+**Reward model (RM)**: RM is used to model human feedback. Reward model is also a language model except for the last layear is the linear layer that outputs a reward value. Given two completion $$y_{i}$$ and $$y_{j}$$, objective to model the probability $$p_{ij}$$ which denotes the confidence for $$y_{i}$$ is better than $$y_{j}$$:
 
 ![reward](/images/rlhf/reward.png)
   
 **Proximal policy optimization (PPO)**: Next, we apply reinforcement learning that trains a policy aka language model parameters to generate text with higher reward based on the reward model. It samples many prompts and uses the language model to generate sequence for these prompts. Objective is to maximize the expected reward i.e., weighted summation of completion rewards with weights as the probability of the completion.
 
-<img src="/images/rlhf/objective.png" width="50" height="50">
+<img src="/images/rlhf/objective.png" width="300" height="200">
+
+<img src="/images/rlhf/gradientascend.png" width="300" height="200">
 
 ![reward](/images/rlhf/objective.png  =50x50)
 
