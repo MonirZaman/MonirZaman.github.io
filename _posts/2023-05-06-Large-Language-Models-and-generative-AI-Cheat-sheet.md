@@ -18,7 +18,15 @@ A large language model (LLM) is a type of machine learning model that can do a l
 LLM starts with the pre-training stage where the model learns to predict next token given it is an auto-regressive language model. Pre-training is done an internet-scale dataset. 
 
 #### Scaling law
-Scaling law helps to identify relationship among model parameters, dataset size and compute budget. Following scaling law was followed during pretraining BloombertGPT.
+Scaling law helps to identify relationship among model parameters, dataset size and compute budget. There is a powerlaw relationship, meaning two quantities are proportional to each other based on power raised to a constant:
+- Testloss vs compute budget
+- Testloss vs dataset size (number of tokens)
+- Testloss vs number of model parameters
+
+Refer to [Chinchilla scaling law: Training Compute-Optimal Large Language Models](https://openreview.net/pdf?id=iBBcRUlOAPR)
+
+
+Following scaling law was followed during pretraining BloombertGPT.
 ![bgpt_scaling_polity](/images/rlhf/scaling-bgpt.png)
 
 
