@@ -15,8 +15,10 @@ A large language model (LLM) is a type of machine learning model that can do a l
 ![gpt_stage](/images/rlhf/gpt-stages.png)
 [Image courtesy](https://www.youtube.com/watch?v=bZQun8Y4L2A&pp=ygUPYW5kcmVqIGthcnBhdGh5)
 
+LLM starts with the pre-training stage where the model learns to predict next token given it is an auto-regressive language model. Pre-training is done an internet-scale dataset. 
 
 #### Scaling law
+Scaling law helps to identify relationship among model parameters, dataset size and compute budget. Following scaling law was followed during pretraining BloombertGPT.
 ![bgpt_scaling_polity](/images/rlhf/scaling-bgpt.png)
 
 
