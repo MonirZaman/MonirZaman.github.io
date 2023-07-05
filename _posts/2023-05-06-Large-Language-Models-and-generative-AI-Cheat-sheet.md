@@ -10,6 +10,17 @@ A large language model (LLM) is a type of machine learning model that can do a l
 - **How does the transformer architecture work?** - The transformer architecture uses self-attention to compute representations of input sequences.
 - **What are some applications of the transformer architecture?** - The transformer architecture has been used for a wide range of applications, including machine translation, text classification, and text generation.
 
+## Stages of building LLM
+
+![gpt_stage](/images/rlhf/gpt-stages.png)
+[Image courtesy](https://www.youtube.com/watch?v=bZQun8Y4L2A&pp=ygUPYW5kcmVqIGthcnBhdGh5)
+
+
+#### Scaling law
+![bgpt_scaling_polity](/images/rlhf/scaling-bgpt.png)
+
+
+
 ## Fine-Tuning
 
 - **What is fine-tuning?** - Fine-tuning is the process of adapting a pre-trained language model to a specific task or domain.
