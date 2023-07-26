@@ -38,7 +38,9 @@ Following scaling law was followed during pretraining BloombertGPT.
 - **What are some applications of fine-tuning?** - Fine-tuning can be used for a wide range of applications, including sentiment analysis, named entity recognition, and text classification.
 - **Fine-tuning examples:**
 -- [Finetune llama2 with HF on sagemaker](https://www.philschmid.de/sagemaker-llama2-qlora)
+  
 -- [Fine-tuning recipe with Parameter efficient finetuning LoRA and evaluation](https://github.com/MonirZaman/MonirZaman.github.io/blob/master/_posts/generative-ai-with-llm/Lab_2_fine_tune_generative_ai_model.md)
+
 -- [Interactively fine-tune Falcon-40B and other LLMs on Amazon SageMaker Studio notebooks using QLoRA](https://aws.amazon.com/blogs/machine-learning/interactively-fine-tune-falcon-40b-and-other-llms-on-amazon-sagemaker-studio-notebooks-using-qlora/)
 
 ## RLHF: Reinforcement Learning from Human Feedback
@@ -69,10 +71,13 @@ Vanilla policy gradient can over optimize to the Reward model. A per-token KL di
 
 ![reward](/images/rlhf/reg.png)
 
+## Langchain handbook
+- LangChain for LLM Application Development \| [DeepLearning.ai](https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/) \| [Student copy](https://github.com/MonirZaman/MonirZaman.github.io/blob/master/_posts/LangChain-for-LLM-Application-Development/1-Model_prompt_parser.md)
+- LangChain: Chat with Your Data \| [DeepLearning.ai](https://www.deeplearning.ai/short-courses/langchain-chat-with-your-data/) \| [Student copy](https://github.com/MonirZaman/MonirZaman.github.io/blob/master/_posts/LangChain-Chat-with-Your-Data/)
+
 ## Online course
 - [NYU 2023 spring course on Natural Language Processing](https://nyu-cs2590.github.io/spring2023/calendar/)
 - Building Systems with the ChatGPT API \| [DeepLearning.ai](https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/) \| [Student copy](https://github.com/MonirZaman/MonirZaman.github.io/blob/master/_posts/Building-Systems-with-the-ChatGPT-API/LLM.md)
-- LangChain for LLM Application Development \| [DeepLearning.ai](https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/) \| [Student copy](https://github.com/MonirZaman/MonirZaman.github.io/blob/master/_posts/LangChain-for-LLM-Application-Development/1-Model_prompt_parser.md)
 - [Full stack's course on LLM](https://fullstackdeeplearning.com/llm-bootcamp/spring-2023/)
 
 ## Evaluation of LLM
