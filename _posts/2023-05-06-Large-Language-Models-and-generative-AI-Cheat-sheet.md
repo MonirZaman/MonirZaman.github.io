@@ -37,6 +37,7 @@ Following scaling law was followed during pretraining BloombertGPT.
 - **How does fine-tuning work?** - Fine-tuning involves training the pre-trained language model on a small amount of task-specific data.
 - **What are some applications of fine-tuning?** - Fine-tuning can be used for a wide range of applications, including sentiment analysis, named entity recognition, and text classification.
 - **Fine-tuning examples:**
+  
 -- [Finetune llama2 with HF on sagemaker](https://www.philschmid.de/sagemaker-llama2-qlora)
   
 -- [Fine-tuning recipe with Parameter efficient finetuning LoRA and evaluation](https://github.com/MonirZaman/MonirZaman.github.io/blob/master/_posts/generative-ai-with-llm/Lab_2_fine_tune_generative_ai_model.md)
