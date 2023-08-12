@@ -6,7 +6,7 @@ ONNX is designed to allow framework interoperability and hardware optimization a
 among other things. ONNX provides a common set of operators called opset that allows developers 
 to move between various frameworks easily. A shared model file format provides separation between development and deployment stages, which means ML models can be deployed on a wide scale of hardware devices irrespective of the framework that was used to train the model.
 
-Example of a transformer model being converted into ONNX format:
+[Example](https://github.com/microsoft/onnxruntime-training-examples/blob/master/QnA-finetune/inference_chat.py) of a transformer model being converted into ONNX format:
 ```python
     model = AutoModelForQuestionAnswering.from_pretrained("distilbert-base-uncased")
     model.load_state_dict(torch.load("pytorch_model.bin", map_location=torch.device(device)))
