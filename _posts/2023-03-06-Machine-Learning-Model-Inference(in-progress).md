@@ -1,7 +1,19 @@
-Inference is the process of using machine learning model to predict the outcome of a given input record. 
-Inference typically requires low latency to ensure a smooth customer experience. This post will outline 
-a few options for optimizing inference operation. 
+Inference is the process of using machine learning model to predict the outcome of a given input record. Inference typically requires low latency to ensure a smooth customer experience. This post will outline a few options for optimizing inference operation. 
 
+## Optimization methods
+Common optimization methods for inference before deploying the model includes
+- Distillation
+- Quantization
+- Pruning
+
+Distillation: It is process of training a smaller model mimicking the behavior of the larger model.
+Quantization: It uses reduced precision for floating point numbers
+Pruning: Remove unnecessary parts of the model that are not needed during inference.
+
+
+
+
+## Tools: ONNX runtime
 ONNX is designed to allow framework interoperability and hardware optimization accessibility 
 among other things. ONNX provides a common set of operators called opset that allows developers 
 to move between various frameworks easily. A shared model file format provides separation between development and deployment stages, which means ML models can be deployed on a wide scale of hardware devices irrespective of the framework that was used to train the model.
