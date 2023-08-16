@@ -7,8 +7,11 @@ Common optimization methods for inference before deploying the model includes
 - Pruning
 
 Distillation: It is process of training a smaller model mimicking the behavior of the larger model.
-Quantization: It uses reduced precision for floating point numbers
+![distillation](/images/inference/distillation.png)
+Quantization: It uses reduced precision for floating point numbers.
+![quantization](/images/inference/quantization.png) 
 Pruning: Remove unnecessary parts of the model that are not needed during inference.
+![pruning](/images/inference/pruning.png)
 
 
 
