@@ -36,7 +36,9 @@ Following scaling law was followed during pretraining BloombertGPT.
 - **What is fine-tuning?** - Fine-tuning is the process of adapting a pre-trained language model to a specific task or domain.
 - **How does fine-tuning work?** - Fine-tuning involves training the pre-trained language model on a small amount of task-specific data.
 - **What are some applications of fine-tuning?** - Fine-tuning can be used for a wide range of applications, including sentiment analysis, named entity recognition, and text classification.
-- **Fine-tuning examples:**
+
+
+**Fine-tuning examples:**
   
 - [Finetune llama2 with HF on sagemaker](https://www.philschmid.de/sagemaker-llama2-qlora)
   
@@ -78,6 +80,8 @@ Vanilla policy gradient can over optimize to the Reward model. A per-token KL di
 - [LangChain handbook](https://www.pinecone.io/learn/series/langchain/)
 
 ## Online course
+- [MIT 2023 Efficient ML](https://www.youtube.com/playlist?list=PL80kAHvQbh-pT4lCkDT53zT8DKmhE0idB)
+  
 - [NYU 2023 spring course on Natural Language Processing](https://nyu-cs2590.github.io/spring2023/calendar/)
 - Building Systems with the ChatGPT API \| [DeepLearning.ai](https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/) \| [Student copy](https://github.com/MonirZaman/MonirZaman.github.io/blob/master/_posts/Building-Systems-with-the-ChatGPT-API/LLM.md)
 - [Full stack's course on LLM](https://fullstackdeeplearning.com/llm-bootcamp/spring-2023/)
