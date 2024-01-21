@@ -110,3 +110,6 @@ Given the input is a question, here is how the model is used for conversation in
     else:
         output = model(input_ids, attention_mask=attention_mask)
 ```
+
+Reference
+[Performance and Scalability: How To Fit a Bigger Model and Train It Faster](https://huggingface.co/docs/transformers/v4.18.0/en/performance)
