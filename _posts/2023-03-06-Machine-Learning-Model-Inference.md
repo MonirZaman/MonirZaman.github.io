@@ -24,6 +24,7 @@ For example we can load 7B parameter LLM in half precision.
 class GPTModel:
     model = AutoModelForCausalLM.from_pretrained(<model_path>, device_map='auto',
         torch_dtype=torch.float16)
+    tokenizer = Autotokenizer.from_pretrained(<model_path>)
     
 ```
 
@@ -36,6 +37,32 @@ if torch.cuda.device_count() > 1:
     
 ```
 
+For data parallelism, refer to this video [tutorial](https://www.youtube.com/watch?v=RltaQ-HxqKE&t=43s). 
+
+![data-parallelism](/images/inference/dataparallelism.png)
+
+
+For an end-to-end example, refer to [this code](https://github.com/CarperAI/trlx/blob/main/examples/summarize_rlhf/reward_model/gptj_reward_test.py).
+
+It is also important to use an optimized dataloader such as torch.DataLoader. It uses a combination of disk space and memory, instead of loading entire dataset into memory. Define the following
+
+- Dataset: Generally defines how a raw record is tokenized. It also defines a list of input ids, attention masks and labels from a batch of raw records
+- Collate function: defines how vector representation of records in a batch is stacked vertically
+- DataLoader
+
+Here is a pseudocode to illustrate the use
+```
+dataset = MyDataset(_record_getter_fn_with_yield, model_for_inference.module.tokenizer, max_length=768)
+dataloader = torch.DataLoader(dataset, shuffle=False, batch_size=64, collate_fn=your_collate_fn)
+```
+
+Set your model to evaluate mode during inference as this will avoid unnecessary caching.
+```
+if isinstance(model_for_inference, DataParallel):
+    model_for_inference.module.eval()
+else:
+    model_for_inference.eval()
+``` 
 
 ## Tools: ONNX runtime
 ONNX is designed to allow framework interoperability and hardware optimization accessibility 
