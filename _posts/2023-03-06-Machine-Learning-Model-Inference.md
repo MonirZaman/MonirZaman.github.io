@@ -14,6 +14,27 @@ Pruning: Remove unnecessary parts of the model that are not needed during infere
 ![pruning](/images/inference/pruning.png)
 
 
+## Pytorch code optimization for inference
+
+We can load the model in half precision. It is often required to fit a large model into memory.
+
+For example we can load 7B parameter LLM in half precision.
+```
+# Inside GPT model class
+class GPTModel:
+    model = AutoModelForCausalLM.from_pretrained(<model_path>, device_map='auto',
+        torch_dtype=torch.float16)
+    
+```
+
+We can also wrap the GPT model object with DataParallel construct available in Pytorch. It splits the input records by the number of available GPU, copy the model into each GPU and process input record splits in parallel.
+
+```
+model_for_inference = GPTModel()
+if torch.cuda.device_count() > 1:
+    model_for_inference = torch.nn.DataParallel(model_for_inference)
+    
+```
 
 
 ## Tools: ONNX runtime
