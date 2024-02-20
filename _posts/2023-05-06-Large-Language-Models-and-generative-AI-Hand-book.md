@@ -74,6 +74,9 @@ Vanilla policy gradient can over optimize to the Reward model. A per-token KL di
 
 ![reward](/images/rlhf/reg.png)
 
+## Mixture of expert
+- [Mixtral blog](https://octo.ai/blog/what-is-a-mixtral-of-experts/)
+
 ## Langchain handbooks
 - LangChain for LLM Application Development \| [DeepLearning.ai](https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/) \| [Student copy](https://github.com/MonirZaman/MonirZaman.github.io/blob/master/_posts/LangChain-for-LLM-Application-Development/)
 - LangChain: Chat with Your Data \| [DeepLearning.ai](https://www.deeplearning.ai/short-courses/langchain-chat-with-your-data/) \| [Student copy](https://github.com/MonirZaman/MonirZaman.github.io/blob/master/_posts/LangChain-Chat-with-Your-Data/)
