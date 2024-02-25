@@ -39,6 +39,7 @@ Following scaling law was followed during pretraining BloombertGPT.
 
 
 **Fine-tuning examples:**
+- [Finetune Gemma with PEFT](https://huggingface.co/blog/gemma-peft)
   
 - [Finetune llama2 with HF on sagemaker](https://www.philschmid.de/sagemaker-llama2-qlora)
   
