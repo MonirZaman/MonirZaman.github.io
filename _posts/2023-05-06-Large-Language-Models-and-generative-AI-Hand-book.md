@@ -45,6 +45,8 @@ Following scaling law was followed during pretraining BloombertGPT.
 - Finetune coding assistant [slides](https://docs.google.com/presentation/d/17gYjRsfNYoG4oyQMx23goHI1viyh15Gdwij-D3ZGNOs/mobilepresent?slide=id.p) [colab](https://colab.research.google.com/drive/1GCU8XbdHO1kb72bj4dUvmAuClY9cpSyU?usp=sharing)
 
 - [Finetune Gemma with PEFT](https://huggingface.co/blog/gemma-peft)
+
+- [Train multimodal LLM Yi](_posts/Training-multimoda-language-model-Yi.md)
   
 - [Finetune llama2 with HF on sagemaker](https://www.philschmid.de/sagemaker-llama2-qlora)
   
