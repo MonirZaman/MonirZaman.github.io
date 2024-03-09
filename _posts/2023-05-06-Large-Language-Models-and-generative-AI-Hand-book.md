@@ -46,7 +46,7 @@ Following scaling law was followed during pretraining BloombertGPT.
 
 - [Finetune Gemma with PEFT](https://huggingface.co/blog/gemma-peft)
 
-- [Train multimodal LLM Yi](_posts/Training-multimoda-language-model-Yi.md)
+- [Train multimodal LLM Yi](https://github.com/MonirZaman/MonirZaman.github.io/blob/master/_posts/Training-multimoda-language-model-Yi.md)
   
 - [Finetune llama2 with HF on sagemaker](https://www.philschmid.de/sagemaker-llama2-qlora)
   
