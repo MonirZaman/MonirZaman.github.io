@@ -90,6 +90,9 @@ Vanilla policy gradient can over optimize to the Reward model. A per-token KL di
 - LangChain: Chat with Your Data \| [DeepLearning.ai](https://www.deeplearning.ai/short-courses/langchain-chat-with-your-data/) \| [Student copy](https://github.com/MonirZaman/MonirZaman.github.io/blob/master/_posts/LangChain-Chat-with-Your-Data/)
 - [LangChain handbook](https://www.pinecone.io/learn/series/langchain/)
 
+## Retrieval augmented generation (RAG)
+- [Financial query Mixtral model](https://github.com/AkimParis/Mixtral_RAG/blob/main/RAG_Mixtral_Europe_Fin_Data.ipynb)
+
 ## Online course
 - [MIT 2023 Efficient ML](https://www.youtube.com/playlist?list=PL80kAHvQbh-pT4lCkDT53zT8DKmhE0idB)
   
