@@ -91,6 +91,8 @@ Vanilla policy gradient can over optimize to the Reward model. A per-token KL di
 - [LangChain handbook](https://www.pinecone.io/learn/series/langchain/)
 
 ## Retrieval augmented generation (RAG)
+![rag-survey](https://pbs.twimg.com/media/GIACqFfWQAMR7Wb?format=jpg&name=large)
+
 - [Financial query Mixtral model](https://github.com/AkimParis/Mixtral_RAG/blob/main/RAG_Mixtral_Europe_Fin_Data.ipynb)
 
 ## Online course
