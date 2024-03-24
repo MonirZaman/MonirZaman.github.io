@@ -32,7 +32,7 @@ Following scaling law was followed during pretraining BloombertGPT.
 ## Finetuning Framework for LLM
 ![llamafactory](/images/rlhf/IMG_3742.jpeg)
 
-LlamaFactory provides a unified and efficient fine-tuning framework for a wide range of large language models (LLMs). By integrating various efficient training methods and supporting over 100 LLMs, LlamaFactory allows users to easily adapt these models to different downstream tasks.
+[LlamaFactory](https://arxiv.org/pdf/2403.13372.pdf) provides a unified and efficient fine-tuning framework for a wide range of large language models (LLMs). By integrating various efficient training methods and supporting over 100 LLMs, LlamaFactory allows users to easily adapt these models to different downstream tasks.
 
 ## Supervised Fine-Tuning
 
