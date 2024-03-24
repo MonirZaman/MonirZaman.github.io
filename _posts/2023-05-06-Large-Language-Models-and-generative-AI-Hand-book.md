@@ -130,3 +130,6 @@ Byte Pair Encoding (BPE) and SentencePiece are both subword tokenization methods
 **Positional embedding**
 Positional embeddings are added to the word embeddings once before the first layer. Each position t within the sequence gets different embedding when t is even then use sine function if t is odd then consine function.
 - [Referrence](https://towardsdatascience.com/understanding-positional-encoding-in-transformers-dc6bafc021ab)
+
+## Dataset generation
+- [cosmopedia](https://huggingface.co/blog/cosmopedia)
