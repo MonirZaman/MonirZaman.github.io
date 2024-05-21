@@ -29,6 +29,9 @@ Refer to [Chinchilla scaling law: Training Compute-Optimal Large Language Models
 Following scaling law was followed during pretraining BloombertGPT.
 ![bgpt_scaling_polity](/images/rlhf/scaling-bgpt.png)
 
+## Basics 
+- ![llama3 from scratch](https://github.com/naklecha/llama3-from-scratch)
+
 ## Finetuning Framework for LLM
 ![llamafactory](/images/rlhf/IMG_3742.jpeg)
 
