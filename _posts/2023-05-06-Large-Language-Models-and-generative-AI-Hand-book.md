@@ -11,6 +11,10 @@ A large language model (LLM) is a type of machine learning model that can do a l
 - **What are some applications of the transformer architecture?** - The transformer architecture has been used for a wide range of applications, including machine translation, text classification, and text generation.
 
 ## Transformer and NN Basics 
+- GPT 2 implementation from scratch by Andrej Karpathy. [Video](https://youtu.be/l8pRSuU81PU?si=UoCg7doBKkuswf68)
+
+- GPT (Generative pretrained-transformer) created by Andrej Karpathy for education purpose. [Video](https://www.youtube.com/watch?v=kCc8FmEb1nY)
+  
 - [llama3 from scratch](https://github.com/naklecha/llama3-from-scratch)
 
   
@@ -118,10 +122,6 @@ Vanilla policy gradient can over optimize to the Reward model. A per-token KL di
 
 ## Evaluation of LLM
 - [Holistic evaluation of language model HELM](https://youtu.be/HJGccJh07Os)
-
-## GPT from scratch
-Generative pretrained-transformer created by Andrej Karpathy for education purpose
- - [Video](https://www.youtube.com/watch?v=kCc8FmEb1nY)
 
 ## Knowledge representation and Hallucination
 - Hallucination refers to mistakes in the generated text that are statistically plausible but are in fact incorrect or nonsensical
