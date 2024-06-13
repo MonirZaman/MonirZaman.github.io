@@ -13,6 +13,9 @@ At its core, a multi-agent framework is a system composed of multiple interactin
 - Processes or Flows: These define the orchestration of tasks within the system, ensuring that tasks are distributed efficiently and aligned with the framework’s objectives. They guide both the interactions between agents and the use of tools to achieve the desired outcomes
 
 ## Casestudy: PHIA 
+```
+Mike A. Merrill, Akshay Paruchuri, Naghmeh Rezaei, et al. "Transforming Wearable Data into Health Insights using Large Language Model Agents." arXiv preprint arXiv:2406.06464 (2024).
+```
 ![phia](/images/rlhf/IMG_4231.png)
 
 
