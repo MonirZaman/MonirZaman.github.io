@@ -18,4 +18,18 @@ Mike A. Merrill, Akshay Paruchuri, Naghmeh Rezaei, et al. "Transforming Wearable
 ```
 ![phia](/images/rlhf/IMG_4231.png)
 
+PHIA, an agent based on the ReAct framework:
+#### Stages of Operation:
+- Thought Stage: PHIA formulates a plan to address a query.
+- Act Stage: PHIA uses tools like a Python data analysis runtime and a Google Search API to execute tasks and expand its health domain knowledge.
+- Observe Stage: PHIA integrates the tools’ outputs into its context to enhance responses.
+
+PHIA engages with wearable data using Python and the Pandas library for precise numerical analysis, ensuring user data privacy.
+
+PHIA retrieves up-to-date health information from reliable web sources, improving its reasoning and credibility.
+
+#### Few-Shot Prompting:
+- To master tool use, PHIA employs few-shot prompting, providing high-quality examples for task performance without extensive fine-tuning.
+
+- This involves computing sentence-T5 embeddings for queries, clustering them, and selecting representative queries to demonstrate high-quality responses through iterative planning and code
 
