@@ -2,9 +2,12 @@ The domain of Generative AI is advancing swiftly, leading to a surge in the need
 
 ## Model Training, Deployment, and Maintenance: 
 - Experience in a production environment.
+- cloud tools to get logs, run batch jobs
 
 ## NLP and Deep Learning: 
+- jax, pytorch, tensorflow, sklearn
 - Strong skills in natural language processing, large language models, and deep learning.
+- Identify reliable automatic and human evaluation methods for evaluating machine translation and multilingual performance of LLMs, then incorporate findings into the models.
 
 ## Knowledge of Architectures: 
 - Familiarity with current state-of-the-art architectures, including transformers.
