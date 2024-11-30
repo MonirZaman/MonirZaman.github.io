@@ -37,6 +37,16 @@ Refer to [Chinchilla scaling law: Training Compute-Optimal Large Language Models
 Following scaling law was followed during pretraining BloombertGPT.
 ![bgpt_scaling_polity](/images/rlhf/scaling-bgpt.png)
 
+## Prompt optimization for LLM in application layer
+### [TextGrad](https://arxiv.org/abs/2406.07496)
+
+![textgrad](/images/llm/textgrad.png)
+
+TextGrad offers a PyTorch-style API designed for automatic text based optimization. It allows automatically transform a simple prompt to classify data in a more sophisticated prompt that is suitable for application. TextGrad does this by backpropagating text feedback from the output of a language models to all the possible earlier components in the pipeline for optimization.TextGrad uses language models to 1) evaluate outputs, 2) criticize them and 3) update the inputs. 
+
+### [Recursively criticizes and improves](https://arxiv.org/abs/2303.17491)
+### [Metaprompt](https://platform.openai.com/docs/guides/prompt-generation?context=text-out)
+### [DSPy](https://github.com/stanfordnlp/dspy)
 
 ## Finetuning Framework for LLM
 ![llamafactory](/images/rlhf/IMG_3742.jpeg)
