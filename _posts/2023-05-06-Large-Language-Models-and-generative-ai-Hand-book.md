@@ -37,7 +37,7 @@ Refer to [Chinchilla scaling law: Training Compute-Optimal Large Language Models
 Following scaling law was followed during pretraining BloombertGPT.
 ![bgpt_scaling_polity](/images/rlhf/scaling-bgpt.png)
 
-## Prompt optimization for LLM in application layer
+## Prompt optimization for LLM application layer
 ### [TextGrad](https://arxiv.org/abs/2406.07496)
 
 ![textgrad](/images/llm/textgrad.png)
@@ -48,7 +48,14 @@ TextGrad offers a PyTorch-style API designed for automatic text based optimizati
 ### [Metaprompt](https://platform.openai.com/docs/guides/prompt-generation?context=text-out)
 ### [DSPy](https://github.com/stanfordnlp/dspy)
 
-## Finetuning Framework for LLM
+### Anthropic’s Prompt Engineering Interactive Tutorial
+The Google Sheets-based interactive exercises to experiment with different [prompts](https://lnkd.in/gqr5uQqg)
+
+## LLM Finetuning 
+
+### OpenAI’s best practices for finetuning
+[This guide](https://lnkd.in/g7_kspz4) focuses on GPT-3, but are applicable to full finetuning in general. It includes how finetuning works, how to prepare training data, etc.
+
 ![llamafactory](/images/rlhf/IMG_3742.jpeg)
 
 [LlamaFactory](https://arxiv.org/pdf/2403.13372.pdf) provides a unified and efficient fine-tuning framework for a wide range of large language models (LLMs). By integrating various efficient training methods and supporting over 100 LLMs, LlamaFactory allows users to easily adapt these models to different downstream tasks.
