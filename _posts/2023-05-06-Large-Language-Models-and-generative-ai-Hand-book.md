@@ -51,6 +51,11 @@ TextGrad offers a PyTorch-style API designed for automatic text based optimizati
 ### Anthropic’s Prompt Engineering Interactive Tutorial
 The Google Sheets-based interactive exercises to experiment with different [prompts](https://lnkd.in/gqr5uQqg)
 
+## AI agents
+- [Multi-agent system blog]
+- [Multi-agent system course](https://llmagents-learning.org/f24)
+  
+
 ## LLM Finetuning 
 
 ### OpenAI’s best practices for finetuning
