@@ -14,6 +14,8 @@ At its core, a multi-agent framework is a system composed of multiple interactin
 
 ## [Multi-agent system course link](https://llmagents-learning.org/f24)
 
+## [Building effective agents](https://www.anthropic.com/research/building-effective-agents)
+
 ## PHIA - ReAct based framework
 ```
 Mike A. Merrill, Akshay Paruchuri, Naghmeh Rezaei, et al. "Transforming Wearable Data into Health Insights using Large Language Model Agents." arXiv preprint arXiv:2406.06464 (2024).
