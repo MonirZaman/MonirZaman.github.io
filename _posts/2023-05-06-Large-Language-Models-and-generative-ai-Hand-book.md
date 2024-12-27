@@ -52,7 +52,7 @@ TextGrad offers a PyTorch-style API designed for automatic text based optimizati
 The Google Sheets-based interactive exercises to experiment with different [prompts](https://lnkd.in/gqr5uQqg)
 
 ## AI agents
-- [Multi-agent system blog]
+- [Multi-agent system blog](https://monirzaman.github.io/LLM-based-agent-framework-wip/)
 - [Multi-agent system course](https://llmagents-learning.org/f24)
   
 
@@ -149,7 +149,8 @@ Vanilla policy gradient can over optimize to the Reward model. A per-token KL di
 - Hallucination refers to mistakes in the generated text that are statistically plausible but are in fact incorrect or nonsensical
 - [Stanford lecture](https://www.youtube.com/watch?v=4ynrGLIuPv4)
 
-## Application
+## Additional case study
+- [Paper2podcast](https://github.com/Azzedde/paper_to_podcast/blob/main/paper_to_podcast.py)
 - [flyte q/a bot with langchain, faiss, gpt](https://flyte.org/blog/building-flytegpt-on-flyte-with-langchain)
 
 
