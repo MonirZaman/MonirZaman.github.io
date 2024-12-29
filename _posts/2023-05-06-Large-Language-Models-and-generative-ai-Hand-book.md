@@ -153,7 +153,10 @@ Vanilla policy gradient can over optimize to the Reward model. A per-token KL di
 - [Paper2podcast](https://github.com/Azzedde/paper_to_podcast/blob/main/paper_to_podcast.py)
 - [flyte q/a bot with langchain, faiss, gpt](https://flyte.org/blog/building-flytegpt-on-flyte-with-langchain)
 
+## Interview resource
+- [Mastering LLM questions](https://github.com/llmgenai/LLMInterviewQuestions/tree/main)
 
+  
 ## Select technical concepts related to LLM and Transformer
 
 **Byte Pair Encoding (BPE)** 
