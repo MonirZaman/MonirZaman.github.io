@@ -43,7 +43,7 @@ PHIA retrieves up-to-date health information from reliable web sources, improvin
 - This involves computing sentence-T5 embeddings for queries, clustering them, and selecting representative queries to demonstrate high-quality responses through iterative planning and code
 
 ## LLMCompiler 
-[!LLMCompilerImage](https://substackcdn.com/image/fetch/f_auto,q_auto:best,fl_progressive:steep/https%3A%2F%2Fanupjadhav.substack.com%2Fapi%2Fv1%2Fpost_preview%2F141851783%2Ftwitter.jpg%3Fversion%3D4)
+[!LLMCompilerImage](/images/rlhf/llmcompiler.png)
 
 ```
 Kim, Sehoon, et al. "An LLM compiler for parallel function calling." arXiv preprint arXiv:2312.04511 (2023).
@@ -52,24 +52,12 @@ Kim, Sehoon, et al. "An LLM compiler for parallel function calling." arXiv prepr
 LangChain implementation of LLMCompiler is [here](https://langchain-ai.github.io/langgraph/tutorials/llm-compiler/LLMCompiler/). 
 
 
-LLMCompiler is a novel framework that optimizes parallel function calling for large language models (LLMs). 
+LLMCompiler is a novel framework that optimizes parallel function calling for large language models (LLMs). LLMCompiler agents, in contrast to ReAct, focus on parallel function calling and efficient execution of tasks. They are designed to handle multi-part queries and advanced retrieval-augmented generation (RAG) use cases over multiple documents. The LLMCompiler agent can perform parallel function calls, which allows it to deliver results more quickly than the sequential execution seen in ReAct-based agents
 
-## Components
+It has the following components
+- **Input**: Requires only tool definitions and optional examples from users.
 - **Function Calling Planner**: Generates a directed acyclic graph (DAG) of tasks and their dependencies.
 - **Task Fetching Unit**: Dispatches tasks and resolves dependencies.
 - **Executor**: Executes tasks in parallel using associated tools.
 
-## Key Features
-- Enables efficient parallel execution of multiple function calls.
-- Automatically generates optimized orchestration of function calls.
-- Works with both open-source and closed-source LLMs.
-- Requires only tool definitions and optional examples from users.
-
-## Benefits
-- **Latency Speedup**: Up to 3.7x compared to sequential approaches.
-- **Cost Savings**: Up to 6.7x.
-- **Accuracy Improvements**: Up to ~9%.
-
-## Applications
-LLMCompiler can be used for various tasks requiring complex reasoning and multiple function calls, like question answering and task planning. It addresses limitations of previous sequential approaches by allowing long-term planning and massive parallelization of steps.
 
