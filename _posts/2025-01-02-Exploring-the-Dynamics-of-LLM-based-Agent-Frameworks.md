@@ -1,5 +1,3 @@
-# Exploring the Dynamics of LLM-based-Agent Frameworks: An Introduction
-
 In the ever-evolving landscape of artificial intelligence, LLM-based-agent frameworks stand at the forefront of innovation, driving systems that are more robust, adaptable, and intelligent. These frameworks represent a paradigm shift from solitary computational entities to a collective of agents, each with unique capabilities and roles, working in concert to solve complex problems. 
 
 At its core, a framework is a system composed of multiple interacting intelligent agents. 
@@ -43,7 +41,7 @@ PHIA retrieves up-to-date health information from reliable web sources, improvin
 - This involves computing sentence-T5 embeddings for queries, clustering them, and selecting representative queries to demonstrate high-quality responses through iterative planning and code
 
 ## LLMCompiler 
-[!LLMCompilerImage](/images/rlhf/llmcompiler.png)
+![LLMCompilerImage](/images/rlhf/llmcompiler.png)
 
 ```
 Kim, Sehoon, et al. "An LLM compiler for parallel function calling." arXiv preprint arXiv:2312.04511 (2023).
@@ -59,5 +57,13 @@ It has the following components
 - **Function Calling Planner**: Generates a directed acyclic graph (DAG) of tasks and their dependencies.
 - **Task Fetching Unit**: Dispatches tasks and resolves dependencies.
 - **Executor**: Executes tasks in parallel using associated tools.
+
+## Reflection
+
+Reflexion is a framework designed to enhance agents' reasoning abilities by providing them with dynamic memory and self-reflection features. It uses a typical reinforcement learning (RL) setup, where a binary reward model is used, and the action space, based on the ReAct framework, is expanded with language to support complex reasoning processes. After each action, the agent calculates a heuristic, which may lead to the decision to reset the environment and start a new trial based on the results of the self-reflection.
+
+![reflexion](/images/rlhf/reflexion.png)
+*Reflexion framework. ([Source: Shinn & Labash, 2023](https://arxiv.org/abs/2303.11366))*
+
 
 
