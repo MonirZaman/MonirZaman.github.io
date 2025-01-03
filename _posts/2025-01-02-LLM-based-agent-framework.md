@@ -1,8 +1,8 @@
-# Exploring the Dynamics of Multi-Agent Frameworks: An Introduction
+# Exploring the Dynamics of LLM-based-Agent Frameworks: An Introduction
 
-In the ever-evolving landscape of artificial intelligence, multi-agent frameworks stand at the forefront of innovation, driving systems that are more robust, adaptable, and intelligent. These frameworks represent a paradigm shift from solitary computational entities to a collective of agents, each with unique capabilities and roles, working in concert to solve complex problems. Please also read [this wonderful post](https://lilianweng.github.io/posts/2023-06-23-agent/) on agent framework. 
+In the ever-evolving landscape of artificial intelligence, LLM-based-agent frameworks stand at the forefront of innovation, driving systems that are more robust, adaptable, and intelligent. These frameworks represent a paradigm shift from solitary computational entities to a collective of agents, each with unique capabilities and roles, working in concert to solve complex problems. 
 
-At its core, a multi-agent framework is a system composed of multiple interacting intelligent agents. 
+At its core, a framework is a system composed of multiple interacting intelligent agents. 
 
 - Large Language Models (LLMs): These are the core of the agents’ intelligence, enabling them to understand and generate human language. They act as the reasoning engine for the agents, allowing them to process complex data and queries to produce coherent responses1.
 
@@ -12,9 +12,14 @@ At its core, a multi-agent framework is a system composed of multiple interactin
 
 - Processes or Flows: These define the orchestration of tasks within the system, ensuring that tasks are distributed efficiently and aligned with the framework’s objectives. They guide both the interactions between agents and the use of tools to achieve the desired outcomes
 
-## [Multi-agent system course link](https://llmagents-learning.org/f24)
+## Resources on agent framework
+- [LLM-based-agent system course link](https://llmagents-learning.org/f24)
 
-## [Building effective agents](https://www.anthropic.com/research/building-effective-agents)
+- [Building effective agents](https://www.anthropic.com/research/building-effective-agents)
+
+- [LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/)
+
+## Agent framework Case Study
 
 ## PHIA - ReAct based framework
 ```
