@@ -63,6 +63,7 @@ It has the following components
 Reflexion is a framework designed to enhance agents' reasoning abilities by providing them with dynamic memory and self-reflection features. It uses a typical reinforcement learning (RL) setup, where a binary reward model is used, and the action space, based on the ReAct framework, is expanded with language to support complex reasoning processes. After each action, the agent calculates a heuristic, which may lead to the decision to reset the environment and start a new trial based on the results of the self-reflection.
 
 ![reflexion](/images/rlhf/reflexion.png)
+
 *Reflexion framework. ([Source: Shinn & Labash, 2023](https://arxiv.org/abs/2303.11366))*
 
 
