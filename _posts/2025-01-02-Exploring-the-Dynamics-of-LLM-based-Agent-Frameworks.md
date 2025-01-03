@@ -10,6 +10,9 @@ At its core, a framework is a system composed of multiple interacting intelligen
 
 - Processes or Flows: These define the orchestration of tasks within the system, ensuring that tasks are distributed efficiently and aligned with the framework’s objectives. They guide both the interactions between agents and the use of tools to achieve the desired outcomes
 
+![agent-overview](/images/rlhf/agent.png)
+*Agent system overview ([Source: lilianweng.github.io](https://lilianweng.github.io/posts/2023-06-23-agent/))*
+
 ## Resources on agent framework
 - [LLM-based-agent system course link](https://llmagents-learning.org/f24)
 
