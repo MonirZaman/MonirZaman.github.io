@@ -155,7 +155,9 @@ Vanilla policy gradient can over optimize to the Reward model. A per-token KL di
 
 ## Interview resource
 - [Mastering LLM questions](https://github.com/llmgenai/LLMInterviewQuestions/tree/main)
-- Topics covered typically (Courtesy [Rohit Shah](https://www.linkedin.com/in/rohit-shah-00579175?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app))
+- Topics covered typically (Courtesy [Rohit Shah](https://www.linkedin.com/in/rohit-shah-00579175?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)).
+
+
 • 𝗗𝗼 𝗻𝗼𝘁 𝗷𝘂𝘀𝘁 𝗳𝗼𝗰𝘂𝘀 𝗼𝗻 𝘄𝗵𝗮𝘁 𝗯𝘂𝘁 𝗮𝗹𝘀𝗼 𝘄𝗵𝘆 – I have seen many people focus on what they have done in a project but miss out on why. Gen AI is very similar to Machine Learning; it’s process-driven & not outcome-driven. If someone says that linear regression gave 90% accuracy in their project, you can’t challenge that as every data set is different. Similarly, in Gen AI, it’s about the process.
 
  - Why did you choose a vector DB?
