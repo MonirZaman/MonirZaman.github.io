@@ -37,6 +37,11 @@ Refer to [Chinchilla scaling law: Training Compute-Optimal Large Language Models
 Following scaling law was followed during pretraining BloombertGPT.
 ![bgpt_scaling_polity](/images/rlhf/scaling-bgpt.png)
 
+## Reasoning language model
+
+- [DeepSeek R1 guide](https://newsletter.languagemodels.co/p/the-illustrated-deepseek-r1)
+- [DeepSeek bits and bytes](https://stratechery.com/2025/deepseek-faq/)
+
 ## Prompt optimization for LLM application layer
 ### [TextGrad](https://arxiv.org/abs/2406.07496)
 
@@ -157,28 +162,6 @@ Vanilla policy gradient can over optimize to the Reward model. A per-token KL di
 - [Mastering LLM questions](https://github.com/llmgenai/LLMInterviewQuestions/tree/main)
 - Topics covered typically (Courtesy [Rohit Shah](https://www.linkedin.com/in/rohit-shah-00579175?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)).
 
-
-• 𝗗𝗼 𝗻𝗼𝘁 𝗷𝘂𝘀𝘁 𝗳𝗼𝗰𝘂𝘀 𝗼𝗻 𝘄𝗵𝗮𝘁 𝗯𝘂𝘁 𝗮𝗹𝘀𝗼 𝘄𝗵𝘆 – I have seen many people focus on what they have done in a project but miss out on why. Gen AI is very similar to Machine Learning; it’s process-driven & not outcome-driven. If someone says that linear regression gave 90% accuracy in their project, you can’t challenge that as every data set is different. Similarly, in Gen AI, it’s about the process.
-
- - Why did you choose a vector DB?
- - Why did you do fine-tuning vs. RAG?
- - Why did you do a hybrid search & not just a keyword-based search?
- - Why did you choose an ANN algorithm?
-
-• 𝗨𝗻𝗱𝗲𝗿𝘀𝘁𝗮𝗻𝗱𝗶𝗻𝗴 𝗶𝗻𝘁𝗲𝗿𝗻𝗮𝗹 𝘄𝗼𝗿𝗸𝗶𝗻𝗴𝘀 𝗼𝗳 𝗟𝗟𝗠𝘀 – It is important to understand how LLMs work, including the attention mechanism, and the latest research around internal components like tokenizers, position encoding, etc.
-
-• 𝗘𝘃𝗮𝗹𝘂𝗮𝘁𝗶𝗼𝗻 𝗶𝘀 𝗮𝗹𝗹 𝘆𝗼𝘂 𝗻𝗲𝗲𝗱 – I have seen a lot of cases where people have production LLM use cases without evaluation; they don’t know the evaluation numbers. Evaluation is not just about RAGAS numbers but also about latency, throughput, time to first token, and cost per query.
-
-• 𝗗𝗼𝗰𝘂𝗺𝗲𝗻𝘁 𝗱𝗶𝗴𝗶𝘁𝗶𝘇𝗮𝘁𝗶𝗼𝗻 & 𝗽𝗿𝗲-𝗽𝗿𝗼𝗰𝗲𝘀𝘀𝗶𝗻𝗴 – A lot of people miss out on this, but it is the most important step in any Gen AI project. Many don't know how to handle large tables, charts, and graphs.
-
-• 𝗙𝗶𝗻𝗲-𝘁𝘂𝗻𝗶𝗻𝗴 𝗟𝗟𝗠𝘀 𝗶𝘀 𝗮𝗻 𝗶𝗺𝗽𝗼𝗿𝘁𝗮𝗻𝘁 𝘀𝗸𝗶𝗹𝗹 – While talking with a few senior folks from big tech giants, the market trend is moving towards fine-tuning language models. It’s not just about LoRA and QLORA, which are important to learn theoretically, but also:
-
- - How many data points did you use to tune the LLM?
- - How did you create data?
- - GPU size estimation?
- - Parallelism techniques.
-
-• 𝗟𝗟𝗠 𝘀𝘆𝘀𝘁𝗲𝗺 𝗱𝗲𝘀𝗶𝗴𝗻 – This is supercritical. LLM engineering is just part of the entire system. Focus not only on LLM models/agents but also on observability and monitoring, scaling, cost, and latency optimization.
 
   
 ## Select technical concepts related to LLM and Transformer
