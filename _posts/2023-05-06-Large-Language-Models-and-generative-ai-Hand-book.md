@@ -57,7 +57,7 @@ TextGrad offers a PyTorch-style API designed for automatic text based optimizati
 The Google Sheets-based interactive exercises to experiment with different [prompts](https://lnkd.in/gqr5uQqg)
 
 ## AI agents
-- [Multi-agent system blog](https://monirzaman.github.io/LLM-based-agent-framework-wip/)
+- [Multi-agent system blog](https://monirzaman.github.io/Exploring-the-Dynamics-of-LLM-based-Agent-Frameworks/)
 - [Multi-agent system course](https://llmagents-learning.org/f24)
   
 
