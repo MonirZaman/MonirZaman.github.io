@@ -22,6 +22,22 @@ At its core, a framework is a system composed of multiple interacting intelligen
 
 ## Agent framework Case Study
 
+## AI-CO Scientist
+
+![ai-coscientist](/images/rlhf/co-scientist.png)
+*AI-Co Scientist ([Source: paper](https://storage.googleapis.com/coscientist_paper/ai_coscientist.pdf))*
+
+The AI co-scientist multi-agent system processes a user’s research goal by converting it into a plan, which is then evaluated by the Supervisor agent. This agent allocates resources to specialized agents, queuing them as tasks. Worker agents execute these tasks, and the system consolidates results into a research overview with hypotheses for the scientist. The Supervisor agent coordinates the agents to create valid, innovative hypotheses. The Generation agent generates hypotheses, which are reviewed by the Reflection agent and evaluated by the Ranking agent. Other agents, such as Evolution and Meta-review, refine and improve the hypotheses.
+
+The Supervisor agent tracks statistics on the hypotheses and reviews, optimizing future operations by adjusting agent weights. Feedback from the Meta-review agent enhances the agents’ performance without back-propagation methods, using the long-context capabilities of the Gemini 2.0 models to continuously improve the system through iterative learning and increased compute resources.
+
+## AI CUDA Engineer
+
+![ai-cuda](/images/rlhf/ai-cuda-engineer.png)
+*AI-CUDA Engineer ([Source: blog](https://sakana.ai/ai-cuda-engineer/))*
+
+AI CUDA engineer optimizes CUDA kernel in four stages for enhanced performance. In Stage 1 and 2, PyTorch code is translated into CUDA kernels, yielding initial runtime improvements. Stage 3 uses evolutionary optimization, selecting the best-performing kernels and introducing a novel crossover strategy to combine them. Stage 4 builds an Innovation Archive, drawing on past kernel innovations to achieve continuous performance gains, similar to how knowledge accumulates and evolves over time. This multi-stage approach enables ongoing improvements in CUDA kernel performance through both evolutionary techniques and leveraging historical successes.
+
 ## PHIA - ReAct based framework
 ```
 Mike A. Merrill, Akshay Paruchuri, Naghmeh Rezaei, et al. "Transforming Wearable Data into Health Insights using Large Language Model Agents." arXiv preprint arXiv:2406.06464 (2024).
