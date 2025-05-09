@@ -20,6 +20,9 @@ At its core, a framework is a system composed of multiple interacting intelligen
 
 - [LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/)
 
+## Code examples
+- [Finetuning for tool calling](https://huggingface.co/agents-course/notebooks/blob/main/bonus-unit1/bonus-unit1.ipynb)
+
 ## Agent framework Case Study
 
 ## AI-CO Scientist
