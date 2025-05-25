@@ -15,15 +15,20 @@ At its core, a framework is a system composed of multiple interacting intelligen
 
 ## Resources on agent framework
 - [LLM-based-agent system course link](https://llmagents-learning.org/f24)
-
+- [Advanced LLM-based agent course](https://llmagents-learning.org/sp25)
 - [Building effective agents](https://www.anthropic.com/research/building-effective-agents)
-
 - [LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/)
+- [Thinking Tool](https://www.anthropic.com/engineering/claude-think-tool)
 
 ## Code examples
 - [Finetuning for tool calling](https://huggingface.co/agents-course/notebooks/blob/main/bonus-unit1/bonus-unit1.ipynb)
+- [Tinyagent from HuggingFace](https://github.com/huggingface/huggingface.js/blob/main/packages/mcp-client/src/utils.ts)
 
 ## Agent framework Case Study
+
+## AMIE: Multi-modal health care agent
+![amie](https://storage.googleapis.com/gweb-research2023-media/images/MMAMIE-4-DialogueEvalFin.width-1250.png)
+
 
 ## AI-CO Scientist
 
