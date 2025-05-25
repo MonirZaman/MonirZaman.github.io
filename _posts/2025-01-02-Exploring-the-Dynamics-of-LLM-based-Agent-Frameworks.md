@@ -23,11 +23,13 @@ At its core, a framework is a system composed of multiple interacting intelligen
 ## Code examples
 - [Finetuning for tool calling](https://huggingface.co/agents-course/notebooks/blob/main/bonus-unit1/bonus-unit1.ipynb)
 - [Tinyagent from HuggingFace](https://github.com/huggingface/huggingface.js/blob/main/packages/mcp-client/src/utils.ts)
+- [Health care agent orchestrator](https://github.com/Azure-Samples/healthcare-agent-orchestrator)
 
 ## Agent framework Case Study
 
 ## AMIE: Multi-modal health care agent
 ![amie](https://storage.googleapis.com/gweb-research2023-media/images/MMAMIE-4-DialogueEvalFin.width-1250.png)
+https://research.google/blog/amie-gains-vision-a-research-ai-agent-for-multi-modal-diagnostic-dialogue/
 
 
 ## AI-CO Scientist
