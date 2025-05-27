@@ -21,6 +21,7 @@ At its core, a framework is a system composed of multiple interacting intelligen
 - [Thinking Tool](https://www.anthropic.com/engineering/claude-think-tool)
 
 ## Code examples
+- [Coding agent with workflow](https://github.com/rsrohan99/tig/blob/master/src/tig/prompts/system.py)
 - [Finetuning for tool calling](https://huggingface.co/agents-course/notebooks/blob/main/bonus-unit1/bonus-unit1.ipynb)
 - [Tinyagent from HuggingFace](https://github.com/huggingface/huggingface.js/blob/main/packages/mcp-client/src/utils.ts)
 - [Health care agent orchestrator](https://github.com/Azure-Samples/healthcare-agent-orchestrator)
