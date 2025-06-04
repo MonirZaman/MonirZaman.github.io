@@ -134,6 +134,7 @@ Vanilla policy gradient can over optimize to the Reward model. A per-token KL di
 ## Retrieval augmented generation (RAG)
 ![rag-survey](https://pbs.twimg.com/media/GIACqFfWQAMR7Wb?format=jpg&name=large)
 
+- [Late chunking application in RAG](https://huggingface.co/blog/manu/conteb)
 - [Corrective and self reflection RAG in langchain](https://youtu.be/E2shqsYwxck?si=ilq_iAc61pje2EC4)
 - [Adaptive RAG with mistral and llamaindex](https://github.com/mistralai/cookbook/blob/main/third_party/LlamaIndex/Adaptive_RAG.ipynb)
 - [Q/A with youtube transcription in langchain and pinecone](https://m.youtube.com/watch?v=BrsocJb-fAo)
