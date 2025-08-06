@@ -79,6 +79,7 @@ The Google Sheets-based interactive exercises to experiment with different [prom
 
 **Fine-tuning examples:**
 
+- [Finetune Openai 20b parameter model](https://cookbook.openai.com/articles/gpt-oss/fine-tune-transfomers)
 - [Finetune Mistral7B with QLoRA](https://youtu.be/XpoKB3usmKc?si=0saivyYISTL8wic0)
 
 - [Finetune LLM with multiple LoRA adapter](https://kaitchup.substack.com/p/combine-multiple-lora-adapters-for)
