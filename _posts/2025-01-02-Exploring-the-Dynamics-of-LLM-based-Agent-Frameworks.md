@@ -13,8 +13,13 @@ At its core, a framework is a system composed of multiple interacting intelligen
 ![agent-overview](/images/rlhf/agent.png)
 *Agent system overview ([Source: lilianweng.github.io](https://lilianweng.github.io/posts/2023-06-23-agent/))*
 
-## Resources on agent framework
+## Course on agent framework
+- [Deep research with Langgraph](https://academy.langchain.com/courses/deep-research-with-langgraph)
+- [Deep agent with langgraph](https://academy.langchain.com/courses/deep-agents-with-langgraph)
+- [Langgraph introduction](https://academy.langchain.com/courses/intro-to-langgraph)
 - [LLM-based-agent system course link](https://llmagents-learning.org/f24)
+
+## Resources on agent framework
 - [Advanced LLM-based agent course](https://llmagents-learning.org/sp25)
 - [Building effective agents](https://www.anthropic.com/research/building-effective-agents)
 - [LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/)
@@ -27,6 +32,10 @@ At its core, a framework is a system composed of multiple interacting intelligen
 - [Health care agent orchestrator](https://github.com/Azure-Samples/healthcare-agent-orchestrator)
 
 ## Agent framework Case Study
+
+## Personal Health Agent
+![pha](/images/pha.png)
+https://arxiv.org/pdf/2508.20148
 
 ## AMIE: Multi-modal health care agent
 ![amie](https://storage.googleapis.com/gweb-research2023-media/images/MMAMIE-4-DialogueEvalFin.width-1250.png)
