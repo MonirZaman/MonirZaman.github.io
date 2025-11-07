@@ -15,6 +15,7 @@ At its core, a framework is a system composed of multiple interacting intelligen
 
 ## Course on agent framework
 - [Deep research with Langgraph](https://academy.langchain.com/courses/deep-research-with-langgraph)
+- [Memory agent in Langgraph](https://github.com/langchain-ai/langchain-academy/blob/main/module-5/memory_agent.ipynb)
 - [Deep agent with langgraph](https://academy.langchain.com/courses/deep-agents-with-langgraph)
 - [Langgraph introduction](https://academy.langchain.com/courses/intro-to-langgraph)
 - [LLM-based-agent system course link](https://llmagents-learning.org/f24)
