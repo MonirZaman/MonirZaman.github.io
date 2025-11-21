@@ -26,6 +26,11 @@ At its core, a framework is a system composed of multiple interacting intelligen
 - [LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/)
 - [Thinking Tool](https://www.anthropic.com/engineering/claude-think-tool)
 
+## Guardrails
+- Protection agains Personal identifiable information leakage, jailbreaks, prompt injection attack, block inappropriate content, enforcing business rule and validating output quality.
+- [langchain guardrails](https://docs.langchain.com/oss/python/langchain/guardrails)
+- [AWS guardrails in langchain](https://github.com/aws-samples/amazon-bedrock-samples/tree/main/responsible_ai/bedrock-guardrails)
+
 ## Code examples
 - [Coding agent with workflow](https://github.com/rsrohan99/tig/blob/master/src/tig/prompts/system.py)
 - [Finetuning for tool calling](https://huggingface.co/agents-course/notebooks/blob/main/bonus-unit1/bonus-unit1.ipynb)
