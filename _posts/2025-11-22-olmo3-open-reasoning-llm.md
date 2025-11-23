@@ -1,4 +1,4 @@
-# Olmo 3: A Fully Open Foundation for Next-Generation AI
+The Allen Institute for AI (AI2) has released Olmo 3, an open reasoning LLM. This post outlines an overview.
 
 ![infographic](/images/llm/olmo3-info.png)
 [podcast](https://notebooklm.google.com/notebook/4d8c587a-b738-4fc5-8db6-deb732807e2a?artifactId=600f230b-3a05-4a23-aa19-3757a22631ab)
