@@ -1,6 +1,6 @@
 # Olmo 3: A Fully Open Foundation for Next-Generation AI
 
-[!infographic](./images/llm/olmo3-info.png)
+![infographic](/images/llm/olmo3-info.png)
 [podcast](https://notebooklm.google.com/notebook/4d8c587a-b738-4fc5-8db6-deb732807e2a?artifactId=600f230b-3a05-4a23-aa19-3757a22631ab)
 
 The Allen Institute for AI (AI2) has released [**Olmo 3**](https://www.datocms-assets.com/64837/1763662397-1763646865-olmo_3_technical_report-1.pdf), a new family of **state-of-the-art, fully open language models**. Available at **7B** and **32B** parameter scales, Olmo 3 models are engineered for **long-context reasoning, function calling, coding, instruction following, general chat, and factual recall**.
