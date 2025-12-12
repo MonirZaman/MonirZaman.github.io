@@ -2,7 +2,7 @@
 
 Memory is foundational for building truly context-aware and personalized AI applications. We explore how to construct a robust **Memory Agent, `task_mAIstro`**, that utilizes `langgraph` for orchestration and `Trustcall` for structured memory management,. This agent not only remembers facts but also decides *when* to save new information and *how* to use it.
 
-![memory_agent](/images/rl/memory_agent.png)
+![memory_agent](/images/rlhf/memory_agent.png)
 ---
 
 ### 🧠 Types of Memory
