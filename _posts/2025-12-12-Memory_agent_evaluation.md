@@ -1,6 +1,12 @@
-Memory is foundational for building truly context-aware and personalized AI applications. We explore how to construct a robust **Memory Agent** from [langgraph](https://github.com/langchain-ai/langchain-academy/blob/main/module-5/memory_agent.ipynb), that utilizes `langgraph` for orchestration and `Trustcall` for structured memory management,. This agent not only remembers facts but also decides *when* to save new information and *how* to use it.
+Memory is foundational for building truly context-aware and personalized AI applications. We explore how to construct a robust **Memory Agent** from [langgraph](https://github.com/langchain-ai/langchain-academy/blob/main/module-5/memory_agent.ipynb), that utilizes `langgraph` for orchestration. This agent not only remembers facts but also decides *when* to save new information and *how* to use it.
 
 ![memory_agent](/images/rlhf/memory_agent.png)
+
+This agent performs various memory related functionality. It can be evaluated in the following criteria
+- Routing correctness: how accurate it calls the memory methods such as update memory.
+- Writing correctness: whether the memory after an update matches what user meant
+- Retrieval correctness: whether the agent retrieves the right memories for the given query
+- Temporal correctness: whether time related fields and status transitions are correct
 
 ## 🌐 High-Level Architecture: From Stateless to Stateful
 
