@@ -165,6 +165,8 @@ A memory system is only as good as its accuracy. `task_mAIstro` implements a "Tr
     current_rules = across_thread_memory.get(("instructions", "Lance"))
     ```
 
+(Evaluation code upcoming )
+
 -----
 
 ## 🚀 Conclusion
