@@ -165,7 +165,37 @@ A memory system is only as good as its accuracy. `task_mAIstro` implements a "Tr
     current_rules = across_thread_memory.get(("instructions", "Lance"))
     ```
 
-(Evaluation code upcoming )
+(More evaluation code upcoming )
+
+-----
+
+## ✅ Metrics
+- Write correctness: Agent returns the correct memory after an update
+
+```
+store = InMemoryStore()
+user_id = "u123"
+profile_ns = ("profile", user_id)
+
+# initial write
+graph.invoke(
+  {"messages": [{"role": "user", "content": "My name is Sam"}]},
+  config={"configurable": {"user_id": user_id}, "thread_id": thread_id},
+  store=store
+)
+
+# update profile
+graph.invoke(
+  {"messages": [{"role": "user", "content": "Actually use my full name Samantha"}]},
+  config={"configurable": {"user_id": user_id}, "thread_id": thread_id},
+  store=store
+)
+
+# retrieve the memory
+result = store.search(profile_ns)
+<your-favority-evaluator>(result, {"name": "Samantha"})
+```
+
 
 -----
 
