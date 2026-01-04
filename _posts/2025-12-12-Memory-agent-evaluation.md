@@ -185,6 +185,43 @@ Q: What is the name of my cat?
 
 Expected Answer: Luna
 
+### Code snippet showcasing memory agent evaluation through the benchmark
+
+- Step A: Run a given test case
+```python
+def run_test_case(app, testcase, ..):
+ # get session history
+ qid = testcase['question_id']
+ haystack_sessions = testcase['haystack_sessions']
+
+ # step 1: Replaying session turns
+ for si, session in enumerate(haystack_sessions):
+  # if it is user only mode for evaluation, run each user turn
+    for ti, turn in enumerate(session):
+     _= invoke_app(app, user_id=<user_id>, thread_id=<thread-id>, message=<contex prefix such as date> + turn.get('content', '')) 
+
+  # otherwise ingest session as history
+   _= invoke_app(app, user_id=<user_id>, thread_id=<thread-id>, message=<contex prefix such as date> + <concatenated_session_history>)
+
+ # step 2: Ask the benchmark question in a new turn
+ return {'hypothesis_id': qid,
+         'hypothesis' : ``invoke_app(app, user_id=<user_id>, thread_id=<thread-id-qa>, message=<contex prefix such as date> + testcase['question'])}
+```
+
+- Step B: Iterate over dataset to generate prediction
+```python
+for _, testcase in enumerate(longmemeval_dataset):
+  prediction = run_test_case(app, testcase, ..)
+  file.write(json.dumps(pred) + "\n")
+```
+- Step C: Scoring with LongMemEval LLM-as-judge
+```python
+python3 evaluate_qa.py \
+   gpt-4o \
+   <path-to-predictions.jsonl file> \
+   <path-to-longmemeval benchmark.json file>
+``` 
+This will produce per-item labels and aggregated metrics.
 
 -----
 
