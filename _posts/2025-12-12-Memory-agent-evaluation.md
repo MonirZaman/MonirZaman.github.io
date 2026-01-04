@@ -143,6 +143,8 @@ A memory system is only as good as its accuracy. `task_mAIstro` implements a "Tr
 -----
 
 ## ✅ Metrics
+Let's apply a one metric as an example to showcase evaluation of the memory agent. Recall write correctness metric as following.
+
 - Write correctness: Agent returns the correct memory after an update
 
 ```
@@ -169,11 +171,25 @@ result = store.search(profile_ns)
 <your-favority-evaluator>(result, {"name": "Samantha"})
 ```
 
+-----
+
+## ✅ Memory Benchmark 
+Public benchmark such as [LongMemEval](https://arxiv.org/abs/2410.10813) evaluates long-term interactive memory in chat assistants. It tests whether a system can store, retrieve, update and reason over information that appears across many user-assistant sessions. 
+
+### Example of Information Extraction
+**Session 1**  
+User: My cat Luna is 3 years old and loves salmon treats.
+
+**Session 2**  
+Q: What is the name of my cat? 
+
+Expected Answer: Luna
+
 
 -----
 
 ## 🚀 Conclusion
 
-`task_mAIstro` represents a shift from **reactive** AI to **accumulative** AI. By unifying semantic, episodic, and procedural memory into a single graph-based architecture, we create agents that do not just process tokens—they build relationships and maintain continuity.
+Memory agent represents a shift from **reactive** AI to **accumulative** AI. By unifying semantic, episodic, and procedural memory into a single graph-based architecture, we create agents that do not just process tokens—they build relationships and maintain continuity.
 
 This architecture balances the flexibility of LLMs with the rigidity required for reliable software, ensuring your agent becomes a long-term partner rather than a fleeting conversationalist.
