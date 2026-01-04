@@ -190,22 +190,39 @@ Expected Answer: Luna
 - Step A: Run a given test case
 ```python
 def run_test_case(app, testcase, ..):
- # get session history
- qid = testcase['question_id']
- haystack_sessions = testcase['haystack_sessions']
+    # get session history
+    qid = testcase["question_id"]
+    haystack_sessions = testcase["haystack_sessions"]
 
- # step 1: Replaying session turns
- for si, session in enumerate(haystack_sessions):
-  # if it is user only mode for evaluation, run each user turn
-    for ti, turn in enumerate(session):
-     _= invoke_app(app, user_id=<user_id>, thread_id=<thread-id>, message=<contex prefix such as date> + turn.get('content', '')) 
+    # step 1: Replaying session turns
+    for si, session in enumerate(haystack_sessions):
+        # if it is user-only mode for evaluation, run each user turn
+        for ti, turn in enumerate(session):
+            _ = invoke_app(
+                app,
+                user_id="<user_id>",
+                thread_id="<thread-id>",
+                message="<context prefix such as date>" + turn.get("content", "")
+            )
 
-  # otherwise ingest session as history
-   _= invoke_app(app, user_id=<user_id>, thread_id=<thread-id>, message=<contex prefix such as date> + <concatenated_session_history>)
+        # otherwise ingest session as history
+        _ = invoke_app(
+            app,
+            user_id="<user_id>",
+            thread_id="<thread-id>",
+            message="<context prefix such as date>" + "<concatenated_session_history>"
+        )
 
- # step 2: Ask the benchmark question in a new turn
- return {'hypothesis_id': qid,
-         'hypothesis' : ``invoke_app(app, user_id=<user_id>, thread_id=<thread-id-qa>, message=<contex prefix such as date> + testcase['question'])}
+    # step 2: Ask the benchmark question in a new turn
+    return {
+        "hypothesis_id": qid,
+        "hypothesis": invoke_app(
+            app,
+            user_id="<user_id>",
+            thread_id="<thread-id-qa>",
+            message="<context prefix such as date>" + testcase["question"]
+        )
+    }
 ```
 
 - Step B: Iterate over dataset to generate prediction
