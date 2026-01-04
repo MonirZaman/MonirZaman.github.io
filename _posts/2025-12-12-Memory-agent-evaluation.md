@@ -118,33 +118,6 @@ graph = builder.compile()
 
 -----
 
-## 📊 Visualizing the Logic Flow
-
-The following Mermaid diagram illustrates the cyclical nature of the agent's memory update process. Note the closed feedback loops that ensure the agent remains aware of its own memory modifications.
-
-```mermaid
-graph TD
-    %% Nodes
-    Start((Start)) --> A[task_mAIstro Agent]
-    
-    %% Logic Decision
-    A -->|Decision: Update Profile| B[Node: update_profile]
-    A -->|Decision: Update ToDo| C[Node: update_todos]
-    A -->|Decision: Update Rules| D[Node: update_instructions]
-    A -->|No Update Needed| E((END))
-
-    %% Feedback Loops
-    B --> A
-    C --> A
-    D --> A
-
-    %% Styling
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style E fill:#ccf,stroke:#333,stroke-width:2px
-```
-
------
-
 ## ✅ Trust and Verification
 
 A memory system is only as good as its accuracy. `task_mAIstro` implements a "Trust but Verify" protocol:
