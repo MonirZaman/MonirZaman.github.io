@@ -247,3 +247,8 @@ This will produce per-item labels and aggregated metrics.
 Memory agent represents a shift from **reactive** AI to **accumulative** AI. By unifying semantic, episodic, and procedural memory into a single graph-based architecture, we create agents that do not just process tokens—they build relationships and maintain continuity.
 
 This architecture balances the flexibility of LLMs with the rigidity required for reliable software, ensuring your agent becomes a long-term partner rather than a fleeting conversationalist.
+
+## Additional resource
+- [OpenAI memory cook book]( https://cookbook.openai.com/examples/agents_sdk/context_personalization)
+- [Oracle memory agent](https://github.com/oracle-devrel/oracle-ai-developer-hub/blob/main/notebooks/memory_context_engineering_agents.ipynb)
+
