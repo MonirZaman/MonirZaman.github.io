@@ -1,4 +1,4 @@
-Memory is foundational for building truly context-aware and personalized AI applications. We explore how to construct a robust **Memory Agent** from [langgraph](https://github.com/langchain-ai/langchain-academy/blob/main/module-5/memory_agent.ipynb), that utilizes `langgraph` for orchestration. This agent not only remembers facts but also decides *when* to save new information and *how* to use it.
+Memory-enabled agents typically fail in two ways: they store the wrong information (noise) or they store the right information but cannot reliably retrieve it (access). Memory is foundational for building context-aware, personalized AI. In this post, I walk through a practical approach using a [Memory Agent](https://github.com/langchain-ai/langchain-academy/blob/main/module-5/memory_agent.ipynb) built with LangGraph. This agent doesn't just store facts; it autonomously decides when to commit information to long-term storage and how to surface it. Finally, I’ll demonstrate how to evaluate these behaviors using concrete metrics grounded in the LongMemEval benchmark.
 
 ![memory_agent](/images/rlhf/memory_agent.png)
 
@@ -189,46 +189,39 @@ Expected Answer: Luna
 
 - Step A: Run a given test case
 ```python
-def run_test_case(app, testcase, ..):
+def run_test_case(graph, testcase, ..):
     # get session history
     qid = testcase["question_id"]
     haystack_sessions = testcase["haystack_sessions"]
 
     # step 1: Replaying session turns
     for si, session in enumerate(haystack_sessions):
-        # if it is user-only mode for evaluation, run each user turn
-        for ti, turn in enumerate(session):
-            _ = invoke_app(
-                app,
-                user_id="<user_id>",
-                thread_id="<thread-id>",
-                message="<context prefix such as date>" + turn.get("content", "")
-            )
+       # if it is user-only mode for evaluation, run each user turn
+       for ti, turn in enumerate(session):
+         _ = graph.invoke(
+                  {"messages": [{"role": "user", "content":"<context prefix such as date>" + turn.get("content", "")}]},
+                   config={"configurable": {"user_id": <user_id>}, "thread_id": <thread_id>}, store=<store>)
 
         # otherwise ingest session as history
-        _ = invoke_app(
-            app,
-            user_id="<user_id>",
-            thread_id="<thread-id>",
-            message="<context prefix such as date>" + "<concatenated_session_history>"
-        )
+        _ = graph.invoke(
+                  {"messages": [{"role": "user", "content":"<context prefix such as date>" + "<concatenated_session_history>"}]},
+                   config={"configurable": {"user_id": <user_id>}, "thread_id": <thread_id>}, store=<store>)
+
 
     # step 2: Ask the benchmark question in a new turn
     return {
         "hypothesis_id": qid,
-        "hypothesis": invoke_app(
-            app,
-            user_id="<user_id>",
-            thread_id="<thread-id-qa>",
-            message="<context prefix such as date>" + testcase["question"]
-        )
+        "hypothesis": graph.invoke(
+                  {"messages": [{"role": "user", "content": "<context prefix such as date>" + testcase["question"]}]},
+                   config={"configurable": {"user_id": <user_id>}, "thread_id": <thread_id>}, store=<store>)
+
     }
 ```
 
 - Step B: Iterate over dataset to generate prediction
 ```python
 for _, testcase in enumerate(longmemeval_dataset):
-  prediction = run_test_case(app, testcase, ..)
+  prediction = run_test_case(graph, testcase, ..)
   file.write(json.dumps(pred) + "\n")
 ```
 - Step C: Scoring with LongMemEval LLM-as-judge
