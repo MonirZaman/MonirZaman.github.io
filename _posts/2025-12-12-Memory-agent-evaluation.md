@@ -202,11 +202,7 @@ def run_test_case(graph, testcase, ..):
                   {"messages": [{"role": "user", "content":"<context prefix such as date>" + turn.get("content", "")}]},
                    config={"configurable": {"user_id": <user_id>}, "thread_id": <thread_id>}, store=<store>)
 
-        # otherwise ingest session as history
-        _ = graph.invoke(
-                  {"messages": [{"role": "user", "content":"<context prefix such as date>" + "<concatenated_session_history>"}]},
-                   config={"configurable": {"user_id": <user_id>}, "thread_id": <thread_id>}, store=<store>)
-
+        # alternately, ingest session as history e.g., "content":"<context prefix such as date>" + "<concatenated_session_history>"
 
     # step 2: Ask the benchmark question in a new turn
     return {
@@ -220,16 +216,18 @@ def run_test_case(graph, testcase, ..):
 
 - Step B: Iterate over dataset to generate prediction
 ```python
-for _, testcase in enumerate(longmemeval_dataset):
-  prediction = run_test_case(graph, testcase, ..)
-  file.write(json.dumps(pred) + "\n")
+with open("predictions.jsonl", "w") as f:
+  for _, testcase in enumerate(longmemeval_dataset):
+    pred = run_test_case(app, testcase, memory_evaluator)
+    f.write(json.dumps(pred) + "\n")
 ```
+
 - Step C: Scoring with LongMemEval LLM-as-judge
 ```python
 python3 evaluate_qa.py \
    gpt-4o \
-   <path-to-predictions.jsonl file> \
-   <path-to-longmemeval benchmark.json file>
+   predictions.jsonl \
+   <path to benchmark.json file from longmemeval benchmark>
 ``` 
 This will produce per-item labels and aggregated metrics.
 
