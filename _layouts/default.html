@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    {% include google-analytics.html %}
     <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
 
     {% include meta.html %}
@@ -46,7 +47,5 @@
         </footer>
       </div>
     </div>
-
-    {% include analytics.html %}
   </body>
 </html>
