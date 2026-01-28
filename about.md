@@ -3,13 +3,18 @@ layout: page
 title: About
 permalink: /about/
 ---
-I am a software engineer at Amazon building large-scale AI model and its infrastructure. In the past, I worked at Hewlett Packard Enterprise (HPE), [Enverus (RS Energy Group)](https://www.enverus.com) and [University of Calgary](https://www.live-ucalgary.ucalgary.ca/advancement). I am passionate about Distributed systems, Artificial General Intelligence, Deep Reinforcement Learning and Problem Solving.
 
-Feel free to send me a message on gmail with the alias chat.with.monir
+<div class="intro-section"> 
+  👋 <strong>Hi, I'm Monir Moniruzzaman, a Senior Applied Scientist at Oracle Health.</strong>
+  <p>My passion lies in <strong>applying cutting-edge Artificial Intelligence, Agentic AI, and robotics</strong> to drive advancements in human life and health. I focus on developing scalable, real-world solutions.</p>
+  <p>Previously, I contributed to machine learning research and development at leading organizations including <strong>Amazon Alexa, HPE, and Enverus.</strong></p>
+  <hr>
+  <p>
+    <a href="https://scholar.google.com/citations?user=ECAHt00AAAAJ&hl=en">My Publications</a> | 
+    <a href="https://www.linkedin.com/in/monir1/">Connect on LinkedIn</a>
+  </p>
+</div>
 
-### Publications
-[My Google Scholar page](https://scholar.google.com/citations?user=ECAHt00AAAAJ&hl=en)
 
-### Contact me
 
-[My Linked-In page](https://www.linkedin.com/in/monir1/)
+
