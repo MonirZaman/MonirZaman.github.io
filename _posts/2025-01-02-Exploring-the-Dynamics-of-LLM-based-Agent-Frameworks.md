@@ -13,14 +13,30 @@ At its core, a framework is a system composed of multiple interacting intelligen
 ![agent-overview](/images/rlhf/agent.png)
 *Agent system overview ([Source: lilianweng.github.io](https://lilianweng.github.io/posts/2023-06-23-agent/))*
 
-## Course on agent framework
+## Example
 - [Deep research with Langgraph](https://academy.langchain.com/courses/deep-research-with-langgraph)
 - [Memory agent in Langgraph](https://github.com/langchain-ai/langchain-academy/blob/main/module-5/memory_agent.ipynb)
 - [Deep agent with langgraph](https://academy.langchain.com/courses/deep-agents-with-langgraph)
-- [Langgraph introduction](https://academy.langchain.com/courses/intro-to-langgraph)
-- [LLM-based-agent system course link](https://llmagents-learning.org/f24)
+
+## Evaluation
+- [Deep agent eval](https://blog.langchain.com/evaluating-deep-agents-our-learnings/)
+- [Anthropic blog on eval](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)
+- [Amazon agent core evaluation](https://github.com/awslabs/amazon-bedrock-agentcore-samples/tree/main/01-tutorials/07-AgentCore-evaluations)
+
+## Skills
+- [Anthropic Agent skills](https://claude.com/blog/equipping-agents-for-the-real-world-with-agent-skills)
+
+## Prompt caching
+- [Openai build hour](https://www.youtube.com/watch?v=tECAkJAI_Vk)
+- [Anthropic prompt caching](https://claude.com/blog/prompt-caching?trk=public_post_comment-text)
+
+## Telemetry, A2UI
+- [AG2](https://www.ag2.ai/ecosystem/a2ui)
+- [Langchain blog](https://docs.langchain.com/langsmith/evaluate-with-opentelemetry)
 
 ## Resources on agent framework
+- [Langgraph introduction](https://academy.langchain.com/courses/intro-to-langgraph)
+- [LLM-based-agent system course link](https://llmagents-learning.org/f24)
 - [Advanced LLM-based agent course](https://llmagents-learning.org/sp25)
 - [Building effective agents](https://www.anthropic.com/research/building-effective-agents)
 - [LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/)
@@ -31,7 +47,7 @@ At its core, a framework is a system composed of multiple interacting intelligen
 - [langchain guardrails](https://docs.langchain.com/oss/python/langchain/guardrails)
 - [AWS guardrails in langchain](https://github.com/aws-samples/amazon-bedrock-samples/tree/main/responsible_ai/bedrock-guardrails)
 
-## Code examples
+## Additional examples
 - [Coding agent with workflow](https://github.com/rsrohan99/tig/blob/master/src/tig/prompts/system.py)
 - [Finetuning for tool calling](https://huggingface.co/agents-course/notebooks/blob/main/bonus-unit1/bonus-unit1.ipynb)
 - [Tinyagent from HuggingFace](https://github.com/huggingface/huggingface.js/blob/main/packages/mcp-client/src/utils.ts)
