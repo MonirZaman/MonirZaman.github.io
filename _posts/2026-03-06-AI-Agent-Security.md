@@ -21,7 +21,7 @@ Security concerns arise when agents operate with high levels of autonomy, access
 
 ## � AI Agent Security Workflow
 
-![AI Agent Security Workflow]({{ site.baseurl }}/images/ai-agent-security-workflow.svg)
+![AI Agent Security Workflow](/images/ai-agent-security-workflow.svg)
 
 *Figure 1: High-level workflow for securing AI agents, integrating best practices from research and industry.*
 
