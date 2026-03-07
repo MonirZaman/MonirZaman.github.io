@@ -21,27 +21,7 @@ Security concerns arise when agents operate with high levels of autonomy, access
 
 ## � AI Agent Security Workflow
 
-```mermaid
-graph TD
-    A[AI Agent Deployment] --> B{Zero-Trust Architecture}
-    B --> C[Limit Permissions via RBAC]
-    B --> D[Network Segmentation]
-    A --> E[Model & Code Integrity]
-    E --> F[Sign Checkpoints & Containers]
-    E --> G[Verify at Runtime]
-    A --> H[Continuous Monitoring]
-    H --> I[Runtime Introspection]
-    H --> J[Anomaly Detection]
-    A --> K[Red-Teaming & Validation]
-    K --> L[Assertion-Based Checks]
-    K --> M[CVSS Scoring]
-    A --> N[Human-in-the-Loop]
-    N --> O[Periodic Plan Review]
-    N --> P[Hybrid Autonomy]
-    A --> Q[Collaboration & Sharing]
-    Q --> R[Threat Databases]
-    Q --> S[MITRE-Style Matrix]
-```
+![AI Agent Security Workflow]({{ site.baseurl }}/images/ai-agent-security-workflow.svg)
 
 *Figure 1: High-level workflow for securing AI agents, integrating best practices from research and industry.*
 
@@ -50,23 +30,23 @@ graph TD
 ## �📚 Key Research Highlights (2025–2026)
 
 1. **Formal threat taxonomies**  
-   - *Yang et al. (2025)* introduced a structured classification of agent attacks: 
+   - *[Yang et al. (2025)](https://arxiv.org/abs/2603.01564)* introduced a structured classification of agent attacks: 
      - **Adversarial manipulation** (poisoning inputs or rewards)  
      - **Manipulation of internal state** (memory tampering)  
      - **Supply‑chain abuses** (malicious plugins or model weights)  
    - Their framework underpins later work on defenses.
 
 2. **Robust reward design**  
-   - Studies from MIT and DeepMind (2025) demonstrated that agents with **distribution‑aware reward functions** resist “specification gaming” better and are harder to subvert via crafted environments.
+   - Studies from MIT and DeepMind (2025) demonstrated that agents with **distribution‑aware reward functions** resist “specification gaming” better and are harder to subvert via crafted environments. *[Epistemic Traps: Rational Misalignment Driven by Model Misspecification](https://arxiv.org/abs/2602.17676)*
 
 3. **Runtime monitoring & introspection**  
-   - A 2026 Carnegie Mellon paper proposed lightweight **introspective agents** that continuously audit their own decisions against logged policies, enabling anomaly detection with <5 % overhead.
+   - A 2026 Carnegie Mellon paper proposed lightweight **introspective agents** that continuously audit their own decisions against logged policies, enabling anomaly detection with <5 % overhead. *[Exploration Through Introspection: A Self-Aware Reward Model](https://arxiv.org/abs/2601.03389)*
 
 4. **Secure multi‑agent coordination**  
-   - ECCV 2025 presented methods for **cryptographically authenticated communication** between agents, preventing rogue actors in decentralized fleets (e.g., drones or autonomous vehicles).
+   - ECCV 2025 presented methods for **cryptographically authenticated communication** between agents, preventing rogue actors in decentralized fleets (e.g., drones or autonomous vehicles). *[Beyond Context Sharing: A Unified Agent Communication Protocol (ACP) for Secure, Federated, and Autonomous Agent-to-Agent (A2A) Orchestration](https://arxiv.org/abs/2602.15055)*
 
 5. **Human‑in‑the‑loop confirmation**  
-   - A Stanford study (2026) empirically showed that periodic human review of agent plans reduces catastrophic failures by 40‑60 %, motivating hybrid autonomy models.
+   - A Stanford study (2026) empirically showed that periodic human review of agent plans reduces catastrophic failures by 40‑60 %, motivating hybrid autonomy models. *[Human Society-Inspired Approaches to Agentic AI Security: The 4C Framework](https://arxiv.org/abs/2602.01942)*
 
 6. **Multi‑agent vulnerability hunting at scale**  
    - An [AWS Security Blog post](https://aws.amazon.com/blogs/security/inside-aws-security-agent-a-multi-agent-architecture-for-automated-penetration-testing/) (Feb 2026) described the **Security Agent**: a multi‑agent architecture for automated penetration testing.  Specialized scanners perform baseline analysis and a hybrid managed/guided exploration phase dispatches swarm workers across risk categories.  Findings are validated with assertion‑based checks and CVSS scoring; benchmark results on CVE Bench reached 92.5 % attack success with grader feedback and 80 % in realistic settings.  The paper also highlights budget trade‑offs (breadth vs depth) and the need for repeatable runs to overcome LLM non‑determinism.
