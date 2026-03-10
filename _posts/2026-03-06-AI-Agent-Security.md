@@ -1,11 +1,10 @@
 ---
 layout: post
-title:  "AI Agent Security: Lessons from 2025–2026"
+title:  "AI Agent Security"
 date:   2026-03-06 10:00:00 +0000
 categories: ai security agents
 ---
 
-> _“As intelligent systems gain autonomy, securing the agents that control them becomes the frontier of AI safety.”_
 
 Autonomous AI agents — from warehouse robots to financial trading bots and conversational assistants — have become ubiquitous. In 2025 and early 2026, the research community and industry accelerated efforts to understand and defend against risks unique to these agents.  Alongside academic papers, we’ve seen detailed industry case studies such as AWS’s multi‑agent penetration‑testing architecture and Anthropic’s Mozilla partnership, which together demonstrate both the power and the pitfalls of deploying agentic systems in the wild. This post walks through the most important findings, frameworks, and best practices that practitioners should know today.
 
@@ -19,18 +18,22 @@ Security concerns arise when agents operate with high levels of autonomy, access
 
 ---
 
-## � AI Agent Security Workflow
+## AI Agent Security Workflow
 
-![AI Agent Security Workflow](/images/ai-agent-security-workflow.svg)
+Workflow of securing AI agents has these phase
+1. Design: define goals, threat model risks, constrain with least privilege and guardrails
+2. Evaluate before release: Run security evaluation (injection, tool misuse, memory contamination.
+3. Monitor deployment: Enforce runtime policy enforcement, record telemetry and continous red-teaming/regression testing
+4. Incident response and improve: Detect drift, vulnerabilities, respond to incident and feed findings back into redesign and continously harden system.
 
-*Figure 1: High-level workflow for securing AI agents, integrating best practices from research and industry.*
 
 ---
 
-## �📚 Key Research Highlights (2025–2026)
+## 📚 Key Research Highlights (2025–2026)
 
-1. **Formal threat taxonomies**  
-   - *[Yang et al. (2025)](https://arxiv.org/abs/2603.01564)* introduced a structured classification of agent attacks: 
+1. **Formal threat taxonomies**
+[!taxonomy](/images/agent-sec-taxonomy.png)
+   - *[Deng et al. (2026)](https://arxiv.org/abs/2603.01564)* introduced a structured classification of agent attacks:
      - **Adversarial manipulation** (poisoning inputs or rewards)  
      - **Manipulation of internal state** (memory tampering)  
      - **Supply‑chain abuses** (malicious plugins or model weights)  
@@ -40,13 +43,15 @@ Security concerns arise when agents operate with high levels of autonomy, access
    - Studies from MIT and DeepMind (2025) demonstrated that agents with **distribution‑aware reward functions** resist “specification gaming” better and are harder to subvert via crafted environments. *[Epistemic Traps: Rational Misalignment Driven by Model Misspecification](https://arxiv.org/abs/2602.17676)*
 
 3. **Runtime monitoring & introspection**  
-   - A 2026 Carnegie Mellon paper proposed lightweight **introspective agents** that continuously audit their own decisions against logged policies, enabling anomaly detection with <5 % overhead. *[Exploration Through Introspection: A Self-Aware Reward Model](https://arxiv.org/abs/2601.03389)*
+   - A 2026 paper proposed lightweight **introspective agents** that continuously audit their own decisions against logged policies, outperforms baseline agents. *[Exploration Through Introspection: A Self-Aware Reward Model](https://arxiv.org/abs/2601.03389)*
 
 4. **Secure multi‑agent coordination**  
-   - ECCV 2025 presented methods for **cryptographically authenticated communication** between agents, preventing rogue actors in decentralized fleets (e.g., drones or autonomous vehicles). *[Beyond Context Sharing: A Unified Agent Communication Protocol (ACP) for Secure, Federated, and Autonomous Agent-to-Agent (A2A) Orchestration](https://arxiv.org/abs/2602.15055)*
+   - Another work shows **cryptographically authenticated communication** between agents, preventing rogue actors in decentralized fleets (e.g., drones or autonomous vehicles). *[Beyond Context Sharing: A Unified Agent Communication Protocol (ACP) for Secure, Federated, and Autonomous Agent-to-Agent (A2A) Orchestration](https://arxiv.org/abs/2602.15055)*
 
-5. **Human‑in‑the‑loop confirmation**  
-   - A Stanford study (2026) empirically showed that periodic human review of agent plans reduces catastrophic failures by 40‑60 %, motivating hybrid autonomy models. *[Human Society-Inspired Approaches to Agentic AI Security: The 4C Framework](https://arxiv.org/abs/2602.01942)*
+[!triage_agent](/images/triage_agent.png)
+*[Human Society-Inspired Approaches to Agentic AI Security: The 4C Framework](https://arxiv.org/abs/2602.01942)*
+
+As an example of multi-faceted responsibility in AI systems, consider a triage agent monitoring alerts, a context agent may pull logs and context, then a remediation agent proposes a set of actions, and an oversight agent ensure approvals before any sideeffects. 
 
 6. **Multi‑agent vulnerability hunting at scale**  
    - An [AWS Security Blog post](https://aws.amazon.com/blogs/security/inside-aws-security-agent-a-multi-agent-architecture-for-automated-penetration-testing/) (Feb 2026) described the **Security Agent**: a multi‑agent architecture for automated penetration testing.  Specialized scanners perform baseline analysis and a hybrid managed/guided exploration phase dispatches swarm workers across risk categories.  Findings are validated with assertion‑based checks and CVSS scoring; benchmark results on CVE Bench reached 92.5 % attack success with grader feedback and 80 % in realistic settings.  The paper also highlights budget trade‑offs (breadth vs depth) and the need for repeatable runs to overcome LLM non‑determinism.
@@ -57,7 +62,7 @@ Security concerns arise when agents operate with high levels of autonomy, access
 
 ---
 
-## � Core Techniques from Industry Case Studies
+## Core Techniques from Industry Case Studies
 
 - **LLM‑augmented authentication** – AWS’s Security Agent uses an intelligent sign‑in component that combines LLM reasoning with deterministic logic and browser automation to locate and exercise credentials across varied app architectures.
 - **Hybrid scanning workflow** – baseline scanning is performed by parallel network and code scanners, followed by a two‑phase exploration (managed static tasks and guided context‑driven exploration) orchestrating a swarm of specialized agents.
@@ -70,7 +75,7 @@ Security concerns arise when agents operate with high levels of autonomy, access
 
 ---
 
-## �🛡 Industry Best Practices
+## 🛡 Industry Best Practices
 
 - **Zero‑trust architecture for agents**  
   Treat every agent, even “internal,” as potentially hostile. Limit capabilities with RBAC and network segmentation.
@@ -130,7 +135,7 @@ Security concerns arise when agents operate with high levels of autonomy, access
 ## 🔮 Future Directions
 
 - **Regulation & standards:**  
-  Governments (EU’s AI Act 2026) are beginning to require agent security audits.
+  Governments (EU’s AI Act 2024) are beginning to require agent security audits.
 
 - **Automated incident response:**  
   Research in 2026 explored agents that can quarantine or rollback other agents when compromise is detected.
@@ -138,14 +143,5 @@ Security concerns arise when agents operate with high levels of autonomy, access
 - **Cross‑organization threat sharing:**  
   Expect industry‑wide consortia to publish attack patterns and mitigations, similar to CVE for software.
 
----
 
-Securing AI agents isn’t a one‑time task; it’s an ongoing discipline that must evolve with the agents themselves. By staying abreast of the latest research and embedding defenses into the development lifecycle, we can reap the benefits of autonomy without falling prey to its risks.
-
-Feel free to share your own experiences or questions in the comments below — the conversation around **AI agent security** is only just beginning.
-
-*— Monir Zaman*
-
----
-
-> ⚠️ _Note: this post is informed by public research and best practices as of early 2026. Always check for newer developments before deploying critical systems._
+As a final thought, securing AI agents isn’t a one‑time task; it’s an ongoing discipline that must evolve with the agents themselves. By staying abreast of the latest research and embedding defenses into the development lifecycle, we can reap the benefits of autonomy without falling prey to its risks.
