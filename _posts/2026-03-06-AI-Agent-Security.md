@@ -32,7 +32,7 @@ Workflow of securing AI agents has these phase
 ## 📚 Key Research Highlights (2025–2026)
 
 1. **Formal threat taxonomies**
-[!taxonomy](/images/agent-sec-taxonomy.png)
+![taxonomy](/images/agent_sec_taxonomy.png)
    - *[Deng et al. (2026)](https://arxiv.org/abs/2603.01564)* introduced a structured classification of agent attacks:
      - **Adversarial manipulation** (poisoning inputs or rewards)  
      - **Manipulation of internal state** (memory tampering)  
@@ -48,7 +48,7 @@ Workflow of securing AI agents has these phase
 4. **Secure multi‑agent coordination**  
    - Another work shows **cryptographically authenticated communication** between agents, preventing rogue actors in decentralized fleets (e.g., drones or autonomous vehicles). *[Beyond Context Sharing: A Unified Agent Communication Protocol (ACP) for Secure, Federated, and Autonomous Agent-to-Agent (A2A) Orchestration](https://arxiv.org/abs/2602.15055)*
 
-[!triage_agent](/images/triage_agent.png)
+![triage_agent](/images/triage_agent.png)
 *[Human Society-Inspired Approaches to Agentic AI Security: The 4C Framework](https://arxiv.org/abs/2602.01942)*
 
 As an example of multi-faceted responsibility in AI systems, consider a triage agent monitoring alerts, a context agent may pull logs and context, then a remediation agent proposes a set of actions, and an oversight agent ensure approvals before any sideeffects. 
