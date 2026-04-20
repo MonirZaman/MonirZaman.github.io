@@ -1,4 +1,7 @@
-# Engineering the Glue: The Rise of Autonomous Harness Engineering
+---
+title: "Engineering the Glue: The Rise of Autonomous Harness Engineering"
+date: 2026-04-20
+---
 
 In the rapidly evolving landscape of AI, research suggests that the **harness**—the "glue" or "plumbing" that determines what an LLM stores, retrieves, and sees—can be as critical as the model itself. A well-engineered harness can account for a **6x performance gap** on the same benchmark using the same fixed model weights. Traditionally a manual process of expert trial and error, we are now seeing the emergence of **automatic harness engineering**, where agents autonomously write, test, and refine their own infrastructure.
 
