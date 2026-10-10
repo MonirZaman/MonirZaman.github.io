@@ -5,7 +5,7 @@ date:   2026-03-06 10:00:00 +0000
 categories: ai security agents
 ---
 
-> **Follow-up, October 2026:** [Assume Your Agent Will Misbehave]({% post_url 2026-10-09-assume-your-agent-will-misbehave %}) is a hands-on guide to *containing* agents: limiting what an agent can do when it misbehaves, which is one part of the agent security field this post surveys. It covers the lethal trifecta, the containment designs from NVIDIA, AWS and CrowdStrike, and July 2026's real sandbox escape, with interactive figures. In October I also corrected one research summary below and removed another that misdescribed its paper.
+> **Follow-up:** [Assume Your Agent Will Misbehave]({% post_url 2026-10-09-assume-your-agent-will-misbehave %}) is a hands-on guide to containing agents.
 
 AI agents — from coding assistants to research agents and customer-support bots — have gone from demos to everyday tools. In 2025 and early 2026, the research community and industry accelerated efforts to understand and defend against risks unique to these agents. Alongside academic papers, we've seen detailed industry case studies such as AWS's multi‑agent penetration‑testing architecture and Anthropic's Mozilla partnership, which together demonstrate both the power and the pitfalls of deploying agentic systems in the wild. This post walks through the most important findings, frameworks, and best practices that practitioners should know today.
 
