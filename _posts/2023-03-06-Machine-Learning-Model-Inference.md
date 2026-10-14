@@ -1,3 +1,5 @@
+> **Update, October 2026:** this post covers inference for machine-learning models in general. For what is different about LLMs (prefill and decode, the KV cache, batching, speculative decoding), see [Interactive Guide to LLM Inference](/interactive-guide-to-llm-inference/).
+
 Inference is the process of using machine learning model to predict the outcome of a given input record. Inference typically requires low latency to ensure a smooth customer experience. This post will outline a few options for optimizing inference operation. 
 
 ## Optimization methods
