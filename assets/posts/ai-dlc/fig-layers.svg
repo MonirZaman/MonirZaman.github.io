@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 470" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" role="img" aria-labelledby="t d">
+  <title id="t">Three layers of enforcement in AI-DLC</title>
+  <desc id="d">A tool call from Claude passes the prompt layer, which only asks; the engine layer, which decides the next move; and the hook layer, which can refuse the call. An early write is stopped at the hook layer; an approved write passes all three.</desc>
+  <style>
+    .h{font-size:19px;font-weight:700;fill:#1f2328}.s{font-size:15px;fill:#424a53}.f{font-size:13px;fill:#59636e;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    .tag{font-size:12px;font-weight:700;fill:#fff;letter-spacing:.04em}
+    .o{font-size:15px;font-weight:700}
+    @media (prefers-reduced-motion: reduce){.mv{display:none}}
+  </style>
+  <rect width="440" height="470" fill="#fff"/>
+  <!-- Claude -->
+  <rect x="70" y="10" width="250" height="44" rx="10" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.5"/>
+  <text x="195" y="39" text-anchor="middle" class="h">Claude makes a tool call</text>
+  <!-- layer 1: prompt -->
+  <rect x="12" y="74" width="360" height="94" rx="10" fill="#fff4ec" stroke="#bc4c00" stroke-width="2" stroke-dasharray="7 5"/>
+  <rect x="26" y="88" width="58" height="21" rx="10.5" fill="#bc4c00"/><text x="55" y="103" text-anchor="middle" class="tag">SOFT</text>
+  <text x="94" y="105" class="h">1. The prompt asks</text>
+  <text x="26" y="133" class="s">Skill text: ask, do one move, report.</text>
+  <text x="26" y="155" class="f">.claude/skills/aidlc/SKILL.md</text>
+  <!-- layer 2: engine -->
+  <rect x="12" y="182" width="360" height="94" rx="10" fill="#f5f0ff" stroke="#6d28d9" stroke-width="2"/>
+  <rect x="26" y="196" width="80" height="21" rx="10.5" fill="#6d28d9"/><text x="66" y="211" text-anchor="middle" class="tag">ROUTING</text>
+  <text x="116" y="213" class="h">2. The engine decides</text>
+  <text x="26" y="241" class="s">Picks one next move from the state file.</text>
+  <text x="26" y="263" class="f">aidlc engine orchestrate next|report</text>
+  <!-- layer 3: hooks -->
+  <rect x="12" y="290" width="360" height="94" rx="10" fill="#ddf4ff" stroke="#0969da" stroke-width="3"/>
+  <rect x="26" y="304" width="58" height="21" rx="10.5" fill="#0969da"/><text x="55" y="319" text-anchor="middle" class="tag">HARD</text>
+  <text x="94" y="321" class="h">3. Hooks can refuse</text>
+  <text x="26" y="349" class="s">Before every tool call; exit 2 cancels it.</text>
+  <text x="26" y="371" class="f">.claude/settings.json → PreToolUse</text>
+  <!-- outcomes -->
+  <rect x="12" y="414" width="190" height="44" rx="10" fill="#ffebe9" stroke="#cf222e" stroke-width="1.5"/>
+  <text x="107" y="441" text-anchor="middle" class="o" fill="#cf222e">✕ Early write: refused</text>
+  <rect x="216" y="414" width="214" height="44" rx="10" fill="#eef9f0" stroke="#1a7f37" stroke-width="1.5"/>
+  <text x="323" y="441" text-anchor="middle" class="o" fill="#1a7f37">✓ Approved write: runs</text>
+  <!-- paths down the right-hand margin -->
+  <path id="pr" d="M320 24 H392 V384" stroke="#cf222e" stroke-width="1.6" stroke-dasharray="3 4" fill="none" opacity=".6"/>
+  <path id="pg" d="M320 40 H422 V414" stroke="#1a7f37" stroke-width="1.6" stroke-dasharray="3 4" fill="none" opacity=".6"/>
+  <!-- moving calls (hidden for reduced-motion readers) -->
+  <g class="mv">
+    <circle r="7" fill="#cf222e" stroke="#fff" stroke-width="2">
+      <animateMotion dur="5s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.55;1" calcMode="linear"><mpath href="#pr"/></animateMotion>
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;.6;.7;1" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <text x="392" y="404" text-anchor="middle" font-size="18" font-weight="700" fill="#cf222e" opacity="0">✕
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;.55;.6;.9;1" dur="5s" repeatCount="indefinite"/>
+    </text>
+    <circle r="7" fill="#1a7f37" stroke="#fff" stroke-width="2">
+      <animateMotion dur="5s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;.15;.8;1" calcMode="linear"><mpath href="#pg"/></animateMotion>
+      <animate attributeName="opacity" values="1;1;1;0" keyTimes="0;.8;.9;1" dur="5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
