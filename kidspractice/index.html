@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice Pad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: cheerful, calm, made for a 6-year-old's finger; big targets, few words.
+   IDEA: a classroom whiteboard on a school desk: number line board + flash card deck.
+   PICTURE: the drawing board with the number line, at the top, filling the width.
+   COLOUR and TYPE: school-bus blue field, sunflower yellow stars, teacher-red hops; Andika (made for early readers).
+   LAYOUT: blue header band, tabs, then the working board; answer pad and tools under it; stacks on phones. */
+:root{color-scheme:light dark;--bg:light-dark(#F3F7FF,#0E182B);--paper:light-dark(#FFFFFF,#15223B);--ink:light-dark(#1B2433,#EEF3FB);--muted:light-dark(#4F5B6B,#A9B6CB);--blue:light-dark(#2257C4,#7FA6FF);--band:light-dark(#2257C4,#13306E);--sun:#FFC93C;--red:light-dark(#D23B2A,#FF7A66);--ok:light-dark(#1C7A4B,#62D69C);--line:light-dark(#D3DCEA,#2B3A57);--soft:light-dark(#E9F0FD,#1C2C4C);--trace:light-dark(#CBD5E4,#2F426A)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 Andika,"Comic Sans MS",system-ui,sans-serif;overflow-x:clip}
+button,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;border-radius:14px;min-height:48px;min-width:48px;touch-action:manipulation}
+button:focus-visible,textarea:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+header{background:var(--band);color:#fff;padding:18px max(4vw,16px) 64px}
+.top{max-width:980px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+h1{margin:0;font-size:clamp(30px,6vw,44px);line-height:1.05}
+.stars{display:flex;align-items:center;gap:8px;background:var(--sun);color:#3A2A00;font-weight:700;font-size:22px;padding:6px 16px 6px 10px;border-radius:999px}
+.stars svg{width:30px;height:30px}.stars.pop{animation:pop .5s}
+main{max-width:980px;margin:-48px auto 0;padding:0 max(4vw,16px) 48px}
+.tabs{display:flex;gap:8px;margin-bottom:14px}
+.tabs button{flex:1;font-size:20px;font-weight:700;background:var(--paper);color:var(--blue);box-shadow:0 2px 0 var(--line)}
+.tabs button[aria-selected=true]{background:var(--sun);color:#3A2A00}
+.card{background:var(--paper);border-radius:22px;padding:clamp(14px,3vw,24px);box-shadow:0 3px 0 var(--line)}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.between{justify-content:space-between}
+.q{font-size:clamp(44px,10vw,68px);font-weight:700;line-height:1.1;letter-spacing:.02em}
+.q{display:flex;align-items:center;gap:12px}
+.chip{background:var(--soft);color:var(--ink);padding:0 16px;font-size:16px}
+.chip[aria-pressed=true]{background:var(--blue);color:var(--paper)}
+.icon{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--soft);padding:0 14px;font-size:16px}
+.icon svg{width:24px;height:24px;flex:none}
+.board{position:relative;height:clamp(230px,38vw,330px);margin:12px 0;background:var(--paper);border:2px solid var(--line);border-radius:18px;overflow:hidden;touch-action:none}
+.board>svg,.board>canvas,.wpad>svg,.wpad>canvas{position:absolute;inset:0;width:100%;height:100%}
+.board>canvas,.wpad>canvas{touch-action:none;cursor:crosshair}
+.hint{position:absolute;left:12px;top:10px;font-size:14px;color:var(--muted);pointer-events:none}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.sw{width:48px;border-radius:50%;border:4px solid var(--paper);box-shadow:0 0 0 2px var(--line)}
+.sw[aria-pressed=true]{box-shadow:0 0 0 4px var(--ink)}
+.icon[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.fb{min-height:32px;font-size:20px;font-weight:700;margin:10px 0 6px}
+.fb.ok{color:var(--ok)}.fb.no{color:var(--red)}
+.pad{display:grid;grid-template-columns:repeat(auto-fill,minmax(56px,1fr));gap:8px}
+.pad button{font-size:26px;font-weight:700;background:var(--soft);min-height:56px}
+.pad button.right{background:var(--ok);color:var(--paper)}
+.pad button.wrong{animation:shake .4s;background:light-dark(#FBE1DD,#4A2320)}
+.ans{display:flex;flex-wrap:wrap;gap:12px;align-items:stretch}
+.apad{position:relative;flex:none;width:clamp(120px,24vw,180px);height:clamp(88px,15vw,112px);background:var(--paper);border:3px dashed var(--blue);border-radius:18px;overflow:hidden;touch-action:none}
+.apad canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair}
+.apad.wrong{animation:shake .4s}.apad.right{border-style:solid;border-color:var(--ok);background:light-dark(#E3F6EC,#123326)}
+.arow{margin-top:10px}.arow .next{min-height:52px}
+.aph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:clamp(48px,9vw,64px);color:var(--trace);pointer-events:none}
+.confirm{margin-top:12px;padding:14px;border-radius:16px;background:var(--soft);font-size:19px}
+.confirm b{font-size:28px;color:var(--blue)}
+.next{background:var(--blue);color:var(--paper);font-weight:700;font-size:19px;padding:0 22px}
+.next.go{animation:pulse 1s 2}
+.nl text{font-family:Andika,system-ui,sans-serif;fill:currentColor}
+.hop{fill:none;stroke:var(--red);stroke-width:3.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw .45s ease-out forwards}
+.jump{fill:none;stroke:var(--muted);stroke-width:2.5;stroke-dasharray:6 6}
+.hopn{fill:var(--red);font-weight:700;opacity:0;animation:fade .2s forwards}
+.word{display:flex;align-items:center;justify-content:center;width:100%;min-height:clamp(170px,30vw,230px);margin:12px 0;background:var(--paper);border:2px solid var(--line);border-radius:22px;font-size:clamp(60px,15vw,120px);font-weight:700;line-height:1;box-shadow:0 6px 0 var(--line)}
+.word:active{transform:translateY(3px);box-shadow:0 3px 0 var(--line)}
+.prog{height:14px;background:var(--soft);border-radius:99px;overflow:hidden;margin:6px 0 2px}
+.prog i{display:block;height:100%;background:var(--ok);border-radius:99px;transition:width .4s}
+.small{font-size:15px;color:var(--muted)}
+.big2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.big2 button{font-size:20px;font-weight:700;min-height:60px}
+.again{background:light-dark(#FFE7C2,#4A3714);color:light-dark(#6B4200,#FFD38A)}
+.know{background:var(--ok);color:var(--paper)}
+.wpad{position:relative;height:190px;margin-top:12px;background:var(--paper);border:2px solid var(--line);border-radius:18px;overflow:hidden}
+.trace{position:absolute;left:0;right:0;top:50%;transform:translateY(-58%);text-align:center;font-size:clamp(64px,15vw,104px);font-weight:400;color:var(--trace);pointer-events:none;line-height:1}
+details{margin-top:16px}summary{cursor:pointer;font-weight:700;color:var(--blue);min-height:44px;display:flex;align-items:center}
+textarea{width:100%;min-height:90px;font-size:16px;padding:10px;border-radius:12px;border:2px solid var(--line);background:var(--bg)}
+.empty{padding:40px 10px;text-align:center;color:var(--muted)}
+[hidden]{display:none!important}
+@keyframes draw{to{stroke-dashoffset:0}}@keyframes fade{to{opacity:1}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes pop{50%{transform:scale(1.25)}}@keyframes pulse{50%{transform:scale(1.06)}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-delay:0s!important;transition:none!important}}
+@media (max-width:600px){header{padding-bottom:58px}.q{justify-content:center;width:100%}.qrow{justify-content:center}}
+</style>
+</head>
+<body>
+<header><div class="top"><h1>Practice Pad</h1>
+<div class="stars" id="starBox" aria-live="polite"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z" fill="#fff" stroke="#3A2A00" stroke-width="1.5" stroke-linejoin="round"></path></svg><span id="stars">0</span></div></div></header>
+<main>
+<div class="tabs" role="tablist">
+<button role="tab" id="tab-math" aria-controls="math" aria-selected="true">Number line</button>
+<button role="tab" id="tab-words" aria-controls="words" aria-selected="false">Sight words</button>
+</div>
+
+<section id="math" class="card" role="tabpanel" aria-labelledby="tab-math">
+<div class="row between qrow">
+<div class="q" id="q"><span id="qt" aria-live="polite">3 + 2 =</span><div class="apad" id="apadBox"><canvas id="acv" aria-label="Answer box: write your answer with your finger"></canvas><span class="aph" id="aph">?</span></div></div>
+<div class="row">
+<button class="icon" id="hear" aria-label="Read the problem out loud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"></path><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"></path></svg></button>
+<button class="chip" id="lv6" aria-pressed="true">Up to 6</button>
+<button class="chip" id="lv10" aria-pressed="false">Up to 10</button>
+<button class="chip" id="lv20" aria-pressed="false">Up to 20</button>
+</div></div>
+<div class="row arow"><span class="small">Write your answer in the box, then</span><button class="next" id="acheck">Check</button><button class="icon" id="aundo">Undo</button><button class="icon" id="aclear">Clear</button></div>
+<div class="board" id="board"><svg class="nl" id="nl" aria-label="Number line" role="img"></svg><canvas id="cv" aria-label="Drawing area: draw your hops with your finger"></canvas><div class="hint" id="bhint">Draw your hops here</div></div>
+<div class="tools" aria-label="Drawing tools">
+<button class="sw" data-c="#E0402F" aria-label="Red pen" aria-pressed="true" style="background:#E0402F"></button>
+<button class="sw" data-c="#2F6BEA" aria-label="Blue pen" aria-pressed="false" style="background:#2F6BEA"></button>
+<button class="sw" data-c="#F29100" aria-label="Orange pen" aria-pressed="false" style="background:#F29100"></button>
+<button class="icon" id="eraser" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 16l9-9 6 6-6 6H7z"></path><path d="M9 10l6 6M12 19h9"></path></svg>Eraser</button>
+<button class="icon" id="undo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 14L4 9l5-5"></path><path d="M4 9h10a6 6 0 0 1 0 12h-3"></path></svg>Undo</button>
+<button class="icon" id="clear"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path></svg>Clear</button>
+<button class="icon" id="show"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3z"></path></svg>Show me</button>
+</div>
+<div class="fb" id="fb" aria-live="polite"></div>
+<div class="confirm" id="confirm" hidden><div>I read <b id="readN"></b>. Is that what you wrote?</div><div class="row" style="margin-top:8px"><button class="know" id="cyes" style="padding:0 24px">Yes</button><button class="again" id="cno" style="padding:0 24px">No</button></div></div>
+<div class="confirm" id="fix" hidden><div style="margin-bottom:8px">What did you write? Tap it so I can learn your handwriting.</div><div class="pad" id="fixpad"></div></div>
+<div class="row" style="margin-top:12px"><button class="chip" id="tapToggle" aria-pressed="false">Use number buttons instead</button></div>
+<div class="pad" id="pad" hidden style="margin-top:10px"></div>
+<div class="row" style="margin-top:14px"><button class="next" id="next">Next problem</button></div>
+</section>
+
+<section id="words" class="card" role="tabpanel" aria-labelledby="tab-words" hidden>
+<div class="row" id="lists"></div>
+<div class="prog" aria-hidden="true"><i id="bar" style="width:0"></i></div>
+<div class="small" id="progt"></div>
+<div id="deck">
+<button class="word" id="word" aria-label="Hear the word">the</button>
+<div class="big2"><button class="again" id="again">Practice again</button><button class="know" id="know">I know it!</button></div>
+<div class="row between" style="margin-top:16px"><strong>Write it</strong>
+<div class="row"><button class="icon" id="traceBtn" aria-pressed="true">Trace</button><button class="icon" id="wclear">Clear</button></div></div>
+<div class="wpad"><svg id="wl" aria-hidden="true"></svg><div class="trace" id="trace">the</div><canvas id="wcv" aria-label="Writing area: write the word with your finger"></canvas></div>
+</div>
+<div class="empty" id="empty" hidden>No words yet. Add them below.</div>
+<details id="mineBox"><summary>Use my own word list</summary>
+<p class="small">Type or paste her teacher's words, separated by commas, spaces or new lines.</p>
+<textarea id="mineTxt" aria-label="My words"></textarea>
+<div class="row" style="margin-top:8px"><button class="next" id="mineSave">Save my words</button><span class="small" id="mineMsg"></span></div>
+</details>
+<p class="small">Tap the card to hear the word. Words you miss come back sooner. Lists: Dolch sight words.</p>
+</section>
+</main>
+
+<script>
+{
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const store={get(k,d){try{const v=localStorage.getItem('pp_'+k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem('pp_'+k,JSON.stringify(v))}catch(e){}}};
+const rand=n=>Math.floor(Math.random()*n);
+function say(t){try{const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.85;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+
+let stars=store.get('stars',0);
+$('#stars').textContent=stars;
+function addStar(){stars++;store.set('stars',stars);$('#stars').textContent=stars;const b=$('#starBox');b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop')}
+
+/* ---------- finger drawing pad ---------- */
+function makePad(cv,getPen,onStart,thick){
+  const ctx=cv.getContext('2d');let strokes=[],cur=null,W=1,H=1;
+  const lw=s=>s.er?Math.max(22,W*.045):(thick||Math.max(4,Math.min(W*.009,7)));
+  function style(s){ctx.globalCompositeOperation=s.er?'destination-out':'source-over';ctx.strokeStyle=s.c;ctx.fillStyle=s.c;ctx.lineWidth=lw(s);ctx.lineCap='round';ctx.lineJoin='round'}
+  function draw(s){style(s);const p=s.p;ctx.beginPath();ctx.moveTo(p[0][0]*W,p[0][1]*H);if(p.length===1)ctx.lineTo(p[0][0]*W+.1,p[0][1]*H);for(let i=1;i<p.length;i++)ctx.lineTo(p[i][0]*W,p[i][1]*H);ctx.stroke()}
+  function redraw(){ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,cv.width,cv.height);const d=window.devicePixelRatio||1;ctx.setTransform(d,0,0,d,0,0);strokes.forEach(draw)}
+  function size(){const d=window.devicePixelRatio||1;W=cv.clientWidth||1;H=cv.clientHeight||1;cv.width=Math.round(W*d);cv.height=Math.round(H*d);redraw()}
+  const pt=e=>{const r=cv.getBoundingClientRect();return[(e.clientX-r.left)/r.width,(e.clientY-r.top)/r.height]};
+  cv.addEventListener('pointerdown',e=>{e.preventDefault();try{cv.setPointerCapture(e.pointerId)}catch(_){}const p=getPen();cur={c:p.c,er:p.er,p:[pt(e)]};strokes.push(cur);draw(cur);if(onStart)onStart()});
+  cv.addEventListener('pointermove',e=>{if(!cur)return;e.preventDefault();const evs=e.getCoalescedEvents?e.getCoalescedEvents():[e];for(const ev of (evs.length?evs:[e])){const q=pt(ev),p=cur.p,a=p[p.length-1];style(cur);ctx.beginPath();ctx.moveTo(a[0]*W,a[1]*H);ctx.lineTo(q[0]*W,q[1]*H);ctx.stroke();p.push(q)}});
+  const end=()=>{cur=null};
+  cv.addEventListener('pointerup',end);cv.addEventListener('pointercancel',end);
+  const ro=new ResizeObserver(size);ro.observe(cv);
+  return{clear(){strokes=[];redraw()},undo(){strokes.pop();redraw()},count:()=>strokes.length,raw:()=>strokes.filter(s=>!s.er).map(s=>s.p.map(p=>[p[0]*W,p[1]*H]))};
+}
+
+
+/* ---------- handwriting digit reader ($P point-cloud recognizer) ---------- */
+const NP=32,dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+function prep(strokes){
+  let pts=[];strokes.forEach((s,i)=>s.forEach(p=>pts.push({x:p[0],y:p[1],id:i})));
+  if(pts.length<2)return null;
+  let L=0;for(let i=1;i<pts.length;i++)if(pts[i].id===pts[i-1].id)L+=dist(pts[i-1],pts[i]);
+  if(L<1)return null;
+  const I=L/(NP-1),out=[{...pts[0]}];let D=0;
+  for(let i=1;i<pts.length;i++){if(pts[i].id!==pts[i-1].id)continue;const d=dist(pts[i-1],pts[i]);
+    if(D+d>=I&&d>0){const t=(I-D)/d,q={x:pts[i-1].x+t*(pts[i].x-pts[i-1].x),y:pts[i-1].y+t*(pts[i].y-pts[i-1].y),id:pts[i].id};out.push(q);pts.splice(i,0,q);D=0}else D+=d}
+  while(out.length<NP)out.push({...pts[pts.length-1]});out.length=NP;
+  let x0=Infinity,y0=Infinity,x1=-Infinity,y1=-Infinity;out.forEach(p=>{x0=Math.min(x0,p.x);y0=Math.min(y0,p.y);x1=Math.max(x1,p.x);y1=Math.max(y1,p.y)});
+  const sz=Math.max(x1-x0,y1-y0)||1;out.forEach(p=>{p.x=(p.x-x0)/sz;p.y=(p.y-y0)/sz});
+  let cx=0,cy=0;out.forEach(p=>{cx+=p.x;cy+=p.y});cx/=NP;cy/=NP;out.forEach(p=>{p.x-=cx;p.y-=cy});
+  return out;
+}
+function cloud(a,b,start){const used=new Array(NP).fill(false);let sum=0,i=start;
+  do{let k=-1,m=Infinity;for(let j=0;j<NP;j++)if(!used[j]){const d=dist(a[i],b[j]);if(d<m){m=d;k=j}}used[k]=true;sum+=(1-((i-start+NP)%NP)/NP)*m;i=(i+1)%NP}while(i!==start);return sum}
+function match(a,b){const step=Math.floor(Math.sqrt(NP));let m=Infinity;for(let i=0;i<NP;i+=step)m=Math.min(m,cloud(a,b,i),cloud(b,a,i));return m}
+const arc=(cx,cy,rx,ry,a0,a1)=>{const o=[];for(let k=0;k<=24;k++){const t=(a0+(a1-a0)*k/24)*Math.PI/180;o.push([cx+rx*Math.cos(t),cy+ry*Math.sin(t)])}return o};
+const BASE=[
+ [0,[arc(50,50,30,48,-90,270)]],
+ [1,[[[50,0],[50,100]]]],[1,[[[28,22],[50,0],[50,100]]]],[1,[[[28,22],[50,0],[50,100]],[[28,100],[72,100]]]],
+ [2,[arc(50,30,36,28,200,360).concat([[12,100],[90,100]])]],[2,[arc(50,28,34,26,180,380).concat([[14,100]]),[[14,100],[90,100]]]],
+ [3,[arc(50,26,32,24,200,450).concat(arc(50,75,36,25,270,520))]],
+ [4,[[[60,0],[5,68],[92,68]],[[66,28],[66,100]]]],[4,[[[15,0],[10,55],[88,55]],[[70,0],[70,100]]]],
+ [5,[[[82,0],[20,0],[16,45]].concat(arc(45,70,38,30,220,520))]],[5,[[[20,0],[16,45]].concat(arc(45,70,38,30,220,520)),[[20,0],[82,0]]]],
+ [6,[[[75,2],[45,20],[22,52]].concat(arc(50,72,32,27,180,540))]],
+ [7,[[[5,5],[92,5],[38,100]]]],[7,[[[5,5],[92,5],[38,100]],[[30,55],[80,55]]]],
+ [8,[arc(50,26,24,24,90,450),arc(50,74,30,26,-90,270)]],
+ [9,[arc(48,30,30,28,0,360).concat([[74,100]])]],[9,[arc(48,30,30,28,-20,340).concat([[72,100]])]]
+];
+let learned=store.get('tpl',[]),TPL=[];
+function buildTpl(){TPL=BASE.concat(learned.map(t=>[t.d,t.s])).map(([d,s])=>({d,p:prep(s)})).filter(t=>t.p)}
+buildTpl();
+function readDigit(strokes){const p=prep(strokes);if(!p)return null;let best=null,bs=Infinity;for(const t of TPL){const sc=match(p,t.p);if(sc<bs){bs=sc;best=t.d}}return best}
+function groupStrokes(st){
+  const box=s=>{let a=Infinity,b=-Infinity;s.forEach(p=>{a=Math.min(a,p[0]);b=Math.max(b,p[0])});return[a,b]};
+  const items=st.map(s=>({s,b:box(s)})).sort((x,y)=>x.b[0]-y.b[0]),gs=[];
+  for(const it of items){const g=gs[gs.length-1];if(g&&it.b[0]<=g.max+6){g.s.push(it.s);g.max=Math.max(g.max,it.b[1])}else gs.push({s:[it.s],max:it.b[1]})}
+  return gs.map(g=>g.s);
+}
+function learn(groups,n){const ds=String(n).split('');if(ds.length!==groups.length)return;
+  groups.forEach((g,i)=>{learned.push({d:+ds[i],s:g.map(s=>s.map(p=>[Math.round(p[0]),Math.round(p[1])]))})});
+  const keep=[];for(let d=0;d<=9;d++)keep.push(...learned.filter(t=>t.d===d).slice(-4));learned=keep;store.set('tpl',learned);buildTpl()}
+
+/* ---------- number line ---------- */
+let pen={c:'#E0402F',er:false};
+let max=store.get('max',6),prob=null,tries=0,solved=false,hint=false;
+const pad=makePad($('#cv'),()=>pen,()=>{$('#bhint').hidden=true});
+const apad=makePad($('#acv'),()=>({c:getComputedStyle(document.body).color,er:false}),()=>{$('#aph').hidden=true},6);
+let lastRead=null;
+
+function drawLine(animate){
+  const s=$('#nl'),W=s.clientWidth||600,H=s.clientHeight||280;
+  const m=W<520?20:30,y=Math.round(H*.72),step=(W-2*m)/max,X=n=>m+n*step;
+  const fs=max>10?(W<560?13:17):(W<420?18:22),tick=max>10&&W<420?2:1;
+  let h=`<line x1="6" y1="${y}" x2="${W-6}" y2="${y}" stroke="currentColor" stroke-width="3"></line>`;
+  h+=`<path d="M2 ${y}L14 ${y-7}L14 ${y+7}z" fill="currentColor"></path><path d="M${W-2} ${y}L${W-14} ${y-7}L${W-14} ${y+7}z" fill="currentColor"></path>`;
+  for(let n=0;n<=max;n++){h+=`<line x1="${X(n)}" y1="${y-10}" x2="${X(n)}" y2="${y+10}" stroke="currentColor" stroke-width="2.5"></line>`;if(n%tick===0)h+=`<text x="${X(n)}" y="${y+16+fs}" text-anchor="middle" font-size="${fs}">${n}</text>`}
+  if(prob&&hint){
+    const {a,b}=prob,hh=Math.min(H*.32,step*.8+24);let d=0;
+    if(a>0)h+=`<path class="jump" d="M${X(0)} ${y-6}C${X(0)} ${y-H*.62} ${X(a)} ${y-H*.62} ${X(a)} ${y-8}"></path>`;
+    h+=`<circle cx="${X(a)}" cy="${y}" r="7" fill="var(--blue)"></circle>`;
+    for(let k=0;k<b;k++){const x1=X(a+k),x2=X(a+k+1),dl=animate?(k*.55).toFixed(2):0;
+      h+=`<path class="hop" pathLength="1" style="animation-delay:${dl}s${animate?'':';animation-duration:0s'}" d="M${x1+2} ${y-8}Q${(x1+x2)/2} ${y-hh*1.6} ${x2-2} ${y-9}"></path>`;
+      h+=`<text class="hopn" style="animation-delay:${dl}s" x="${(x1+x2)/2}" y="${y-hh*.8-6}" text-anchor="middle" font-size="${Math.max(13,fs-4)}">${k+1}</text>`}
+  }
+  if(prob&&solved)h+=`<circle cx="${X(prob.a+prob.b)}" cy="${y+10+fs*.65}" r="${fs*.95}" fill="none" stroke="var(--red)" stroke-width="3"></circle>`;
+  s.innerHTML=h;
+}
+const nlro=new ResizeObserver(()=>drawLine(false));nlro.observe($('#board'));
+
+function fb(t,c){const f=$('#fb');f.textContent=t;f.className='fb '+(c||'')}
+function renderPad(){let h='';for(let n=0;n<=max;n++)h+=`<button data-n="${n}" aria-label="Answer ${n}">${n}</button>`;$('#pad').innerHTML=h}
+function newProb(){
+  let a,b;do{a=1+rand(max-1);b=1+rand(max-a)}while(prob&&a===prob.a&&b===prob.b);
+  prob={a,b};tries=0;solved=false;hint=false;
+  $('#qt').textContent=`${a} + ${b} =`;$('#apadBox').classList.remove('right','wrong');
+  pad.clear();$('#bhint').hidden=false;renderPad();drawLine(false);$('#next').classList.remove('go');apad.clear();$('#aph').textContent='?';$('#aph').style.color='';$('#aph').hidden=false;$('#confirm').hidden=true;$('#fix').hidden=true;
+  fb(`Start at ${a}. Hop ${b} ${b===1?'time':'times'}.`,'');
+}
+function check(n,btn){
+  if(solved)return;const {a,b}=prob;$('#confirm').hidden=true;$('#fix').hidden=true;
+  if(!btn)btn=$('#apadBox');
+  if(n===a+b){solved=true;if(btn.dataset.n!=null)btn.classList.add('right');$('#apadBox').classList.add('right');if(!apad.count()){$('#aph').textContent=n;$('#aph').style.color='var(--ok)';$('#aph').hidden=false}fb(`Yes! ${a} + ${b} = ${n}`,'ok');say(`Yes! ${a} plus ${b} equals ${n}!`);addStar();drawLine(false);$('#next').classList.add('go')}
+  else{tries++;btn.classList.remove('wrong');void btn.offsetWidth;btn.classList.add('wrong');
+    if(tries>=2&&!hint){hint=true;drawLine(true);fb('Watch the hops, then try again.','no');countAloud()}
+    else fb('Not quite. Count your hops again!','no')}
+}
+function aread(){const st=apad.raw().filter(s=>s.length);if(!st.length)return null;const groups=groupStrokes(st);const ds=groups.map(readDigit);if(ds.some(d=>d==null))return null;return{n:+ds.join(''),groups}}
+$('#acheck').addEventListener('click',()=>{if(solved||!prob)return;const r=aread();
+  if(!r){fb('Write your answer in the box first.','no');return}
+  lastRead=r;if(r.n===prob.a+prob.b){check(r.n);return}
+  $('#readN').textContent=r.n;$('#confirm').hidden=false;$('#fix').hidden=true;say(`I read ${r.n}. Is that what you wrote?`)});
+$('#cyes').addEventListener('click',()=>{if(lastRead)check(lastRead.n)});
+$('#cno').addEventListener('click',()=>{$('#confirm').hidden=true;let h='';for(let n=0;n<=max;n++)h+=`<button data-n="${n}">${n}</button>`;$('#fixpad').innerHTML=h;$('#fix').hidden=false});
+$('#fixpad').addEventListener('click',e=>{const t=e.target.closest('button');if(!t||!lastRead)return;const n=+t.dataset.n;learn(lastRead.groups,n);$('#fix').hidden=true;check(n)});
+$('#aundo').addEventListener('click',()=>{apad.undo();$('#confirm').hidden=true});
+$('#aclear').addEventListener('click',()=>{if(solved)return;apad.clear();$('#aph').hidden=false;$('#confirm').hidden=true;$('#fix').hidden=true});
+let tapMode=store.get('tap',false);
+function setTap(v){tapMode=v;store.set('tap',v);$('#pad').hidden=!v;$('#tapToggle').setAttribute('aria-pressed',v);$('#tapToggle').textContent=v?'Hide number buttons':'Use number buttons instead'}
+$('#tapToggle').addEventListener('click',()=>setTap(!tapMode));setTap(tapMode);
+function countAloud(){const {a,b}=prob;const seq=[];for(let k=1;k<=b;k++)seq.push(a+k);say(`Start at ${a}. ${seq.join('. ')}.`)}
+$('#pad').addEventListener('click',e=>{const t=e.target.closest('button');if(t)check(+t.dataset.n,t)});
+$('#next').addEventListener('click',newProb);
+$('#hear').addEventListener('click',()=>prob&&say(`${prob.a} plus ${prob.b}`));
+$('#show').addEventListener('click',()=>{hint=true;drawLine(true);countAloud()});
+$('#undo').addEventListener('click',()=>pad.undo());
+$('#clear').addEventListener('click',()=>pad.clear());
+$$('.sw').forEach(b=>b.addEventListener('click',()=>{pen={c:b.dataset.c,er:false};$$('.sw').forEach(x=>x.setAttribute('aria-pressed',x===b));$('#eraser').setAttribute('aria-pressed',false)}));
+$('#eraser').addEventListener('click',()=>{const on=!pen.er;pen={c:pen.c,er:on};$('#eraser').setAttribute('aria-pressed',on)});
+function marks(){[6,10,20].forEach(v=>$('#lv'+v).setAttribute('aria-pressed',max===v))}
+function setMax(v){max=v;store.set('max',v);marks();prob=null;newProb()}
+[6,10,20].forEach(v=>$('#lv'+v).addEventListener('click',()=>setMax(v)));
+
+/* ---------- sight words ---------- */
+const LISTS={
+ pre:{name:'Pre-primer',w:'a and away big blue can come down find for funny go help here I in is it jump little look make me my not one play red run said see the three to two up we where yellow you'.split(' ')},
+ primer:{name:'Primer',w:'all am are at ate be black brown but came did do eat four get good have he into like must new no now on our out please pretty ran ride saw say she so soon that there they this too under want was well went what white who will with yes'.split(' ')},
+ g1:{name:'Grade 1',w:'after again an any as ask by could every fly from give going had has her him his how just know let live may of old once open over put round some stop take thank them then think walk were when'.split(' ')},
+ mine:{name:'My words',w:[]}
+};
+LISTS.mine.w=store.get('mine',[]);
+let list=store.get('list','pre'),boxes=store.get('boxes',{}),queue=[],curW=null;
+if(!LISTS[list])list='pre';
+const wpad=makePad($('#wcv'),()=>({c:'#2F6BEA',er:false}));
+function renderLists(){$('#lists').innerHTML=Object.entries(LISTS).map(([k,v])=>`<button class="chip" data-l="${k}" aria-pressed="${k===list}">${v.name}</button>`).join('')}
+function words(){return LISTS[list].w}
+function build(){const w=words().slice();for(let i=w.length-1;i>0;i--){const j=rand(i+1);[w[i],w[j]]=[w[j],w[i]]}w.sort((x,y)=>(boxes[x]||0)-(boxes[y]||0));queue=w}
+function progress(){const w=words(),k=w.filter(x=>(boxes[x]||0)>=2).length;$('#bar').style.width=(w.length?k/w.length*100:0)+'%';$('#progt').textContent=w.length?`${k} of ${w.length} words known`:''}
+function show(){
+  const w=words();$('#deck').hidden=!w.length;$('#empty').hidden=!!w.length;progress();
+  if(!w.length){$('#mineBox').open=true;return}
+  if(!queue.length)build();
+  curW=queue[0];$('#word').textContent=curW;$('#trace').textContent=curW;wpad.clear();
+}
+function setList(k){list=k;store.set('list',k);queue=[];renderLists();show()}
+$('#lists').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setList(b.dataset.l)});
+$('#word').addEventListener('click',()=>curW&&say(curW));
+$('#know').addEventListener('click',()=>{if(!curW)return;const was=boxes[curW]||0;boxes[curW]=Math.min(was+1,5);store.set('boxes',boxes);if(was<2&&boxes[curW]>=2)addStar();queue.shift();show()});
+$('#again').addEventListener('click',()=>{if(!curW)return;boxes[curW]=0;store.set('boxes',boxes);queue.shift();queue.splice(Math.min(3,queue.length),0,curW);say(curW);show()});
+$('#wclear').addEventListener('click',()=>wpad.clear());
+$('#traceBtn').addEventListener('click',()=>{const t=$('#trace'),on=t.hidden;t.hidden=!on;$('#traceBtn').setAttribute('aria-pressed',on)});
+function drawGuides(){const s=$('#wl'),W=s.clientWidth||600,H=s.clientHeight||190;s.innerHTML=[.22,.5,.78].map((f,i)=>`<line x1="12" x2="${W-12}" y1="${H*f}" y2="${H*f}" stroke="var(--line)" stroke-width="2" ${i===1?'stroke-dasharray="8 8"':''}></line>`).join('')}
+const wro=new ResizeObserver(drawGuides);wro.observe($('#wl'));
+$('#mineTxt').value=LISTS.mine.w.join(', ');
+$('#mineSave').addEventListener('click',()=>{const w=[...new Set($('#mineTxt').value.split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean))];LISTS.mine.w=w;store.set('mine',w);$('#mineMsg').textContent=w.length?`Saved ${w.length} words.`:'List cleared.';setList('mine')});
+
+/* ---------- tabs ---------- */
+function tab(name){const m=name==='words';$('#math').hidden=m;$('#words').hidden=!m;$('#tab-math').setAttribute('aria-selected',!m);$('#tab-words').setAttribute('aria-selected',m);if(location.hash!=='#'+name)try{history.replaceState(null,'','#'+name)}catch(e){}}
+$('#tab-math').addEventListener('click',()=>tab('math'));$('#tab-words').addEventListener('click',()=>tab('words'));
+window.addEventListener('hashchange',()=>tab(location.hash==='#words'?'words':'math'));
+
+if(![6,10,20].includes(max))max=6;marks();
+renderLists();newProb();show();tab(location.hash==='#words'?'words':'math');
+}
+</script>
+</body>
+</html>
