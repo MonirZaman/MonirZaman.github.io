@@ -37,10 +37,14 @@ main{max-width:980px;margin:-48px auto 0;padding:0 max(4vw,16px) 48px}
 .chip[aria-pressed=true]{background:var(--blue);color:var(--paper)}
 .icon{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--soft);padding:0 14px;font-size:16px}
 .icon svg{width:24px;height:24px;flex:none}
-.board{position:relative;height:clamp(230px,38vw,330px);margin:12px 0;background:var(--paper);border:2px solid var(--line);border-radius:18px;overflow:hidden;touch-action:none}
+.board{position:relative;height:clamp(300px,52vh,520px);margin:12px 0;background:var(--paper);border:2px solid var(--line);border-radius:18px;overflow:hidden;touch-action:none}
 .board>svg,.board>canvas,.wpad>svg,.wpad>canvas{position:absolute;inset:0;width:100%;height:100%}
 .board>canvas,.wpad>canvas{touch-action:none;cursor:crosshair}
 .hint{position:absolute;left:12px;top:10px;font-size:14px;color:var(--muted);pointer-events:none}
+.stage.full{position:fixed;inset:0;z-index:50;background:var(--bg);padding:max(12px,env(safe-area-inset-top)) 16px max(12px,env(safe-area-inset-bottom));display:flex;flex-direction:column;overflow:auto}
+.stage.full .board{flex:1 1 auto;height:auto;min-height:280px}
+.stage.full .q{font-size:clamp(40px,7vw,60px)}
+body.locked{overflow:hidden}
 .tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .sw{width:48px;border-radius:50%;border:4px solid var(--paper);box-shadow:0 0 0 2px var(--line)}
 .sw[aria-pressed=true]{box-shadow:0 0 0 4px var(--ink)}
@@ -97,6 +101,7 @@ textarea{width:100%;min-height:90px;font-size:16px;padding:10px;border-radius:12
 </div>
 
 <section id="math" class="card" role="tabpanel" aria-labelledby="tab-math">
+<div class="stage" id="stage">
 <div class="row between qrow">
 <div class="q" id="q"><span id="qt" aria-live="polite">3 + 2 =</span><div class="apad" id="apadBox"><canvas id="acv" aria-label="Answer box: write your answer with your finger"></canvas><span class="aph" id="aph">?</span></div></div>
 <div class="row">
@@ -114,9 +119,11 @@ textarea{width:100%;min-height:90px;font-size:16px;padding:10px;border-radius:12
 <button class="icon" id="eraser" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 16l9-9 6 6-6 6H7z"></path><path d="M9 10l6 6M12 19h9"></path></svg>Eraser</button>
 <button class="icon" id="undo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 14L4 9l5-5"></path><path d="M4 9h10a6 6 0 0 1 0 12h-3"></path></svg>Undo</button>
 <button class="icon" id="clear"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path></svg>Clear</button>
+<button class="icon" id="big" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"></path></svg><span id="bigt">Big board</span></button>
 <button class="icon" id="show"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3z"></path></svg>Show me</button>
 </div>
 <div class="fb" id="fb" aria-live="polite"></div>
+</div>
 <div class="confirm" id="confirm" hidden><div>I read <b id="readN"></b>. Is that what you wrote?</div><div class="row" style="margin-top:8px"><button class="know" id="cyes" style="padding:0 24px">Yes</button><button class="again" id="cno" style="padding:0 24px">No</button></div></div>
 <div class="confirm" id="fix" hidden><div style="margin-bottom:8px">What did you write? Tap it so I can learn your handwriting.</div><div class="pad" id="fixpad"></div></div>
 <div class="row" style="margin-top:12px"><button class="chip" id="tapToggle" aria-pressed="false">Use number buttons instead</button></div>
@@ -141,7 +148,7 @@ textarea{width:100%;min-height:90px;font-size:16px;padding:10px;border-radius:12
 <textarea id="mineTxt" aria-label="My words"></textarea>
 <div class="row" style="margin-top:8px"><button class="next" id="mineSave">Save my words</button><span class="small" id="mineMsg"></span></div>
 </details>
-<p class="small">Tap the card to hear the word. Words you miss come back sooner. Lists: Dolch sight words.</p>
+<p class="small">Tap the card to hear the word. Words you miss come back sooner. Class words are from her class's high frequency words card; the other lists are Dolch sight words.</p>
 </section>
 </main>
 
@@ -283,6 +290,9 @@ $('#next').addEventListener('click',newProb);
 $('#hear').addEventListener('click',()=>prob&&say(`${prob.a} plus ${prob.b}`));
 $('#show').addEventListener('click',()=>{hint=true;drawLine(true);countAloud()});
 $('#undo').addEventListener('click',()=>pad.undo());
+function setBig(v){$('#stage').classList.toggle('full',v);document.body.classList.toggle('locked',v);$('#big').setAttribute('aria-pressed',v);$('#bigt').textContent=v?'Exit big board':'Big board'}
+$('#big').addEventListener('click',()=>setBig(!$('#stage').classList.contains('full')));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')setBig(false)});
 $('#clear').addEventListener('click',()=>pad.clear());
 $$('.sw').forEach(b=>b.addEventListener('click',()=>{pen={c:b.dataset.c,er:false};$$('.sw').forEach(x=>x.setAttribute('aria-pressed',x===b));$('#eraser').setAttribute('aria-pressed',false)}));
 $('#eraser').addEventListener('click',()=>{const on=!pen.er;pen={c:pen.c,er:on};$('#eraser').setAttribute('aria-pressed',on)});
@@ -292,14 +302,15 @@ function setMax(v){max=v;store.set('max',v);marks();prob=null;newProb()}
 
 /* ---------- sight words ---------- */
 const LISTS={
+ cls:{name:'Class words',w:'a the and go had he I see has you we of in am at to as have is it can his him on did girl but for up all look with her what was'.split(' ')},
  pre:{name:'Pre-primer',w:'a and away big blue can come down find for funny go help here I in is it jump little look make me my not one play red run said see the three to two up we where yellow you'.split(' ')},
  primer:{name:'Primer',w:'all am are at ate be black brown but came did do eat four get good have he into like must new no now on our out please pretty ran ride saw say she so soon that there they this too under want was well went what white who will with yes'.split(' ')},
  g1:{name:'Grade 1',w:'after again an any as ask by could every fly from give going had has her him his how just know let live may of old once open over put round some stop take thank them then think walk were when'.split(' ')},
  mine:{name:'My words',w:[]}
 };
 LISTS.mine.w=store.get('mine',[]);
-let list=store.get('list','pre'),boxes=store.get('boxes',{}),queue=[],curW=null;
-if(!LISTS[list])list='pre';
+let list=store.get('list','cls'),boxes=store.get('boxes',{}),queue=[],curW=null;
+if(!LISTS[list])list='cls';
 const wpad=makePad($('#wcv'),()=>({c:'#2F6BEA',er:false}));
 function renderLists(){$('#lists').innerHTML=Object.entries(LISTS).map(([k,v])=>`<button class="chip" data-l="${k}" aria-pressed="${k===list}">${v.name}</button>`).join('')}
 function words(){return LISTS[list].w}
