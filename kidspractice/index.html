@@ -26,7 +26,7 @@ h1{margin:0;font-size:clamp(30px,6vw,44px);line-height:1.05}
 .stars svg{width:30px;height:30px}.stars.pop{animation:pop .5s}
 main{max-width:980px;margin:-48px auto 0;padding:0 max(4vw,16px) 48px}
 .tabs{display:flex;gap:8px;margin-bottom:14px}
-.tabs button{flex:1;font-size:clamp(16px,4vw,20px);padding:0 6px;font-weight:700;background:var(--paper);color:var(--blue);box-shadow:0 2px 0 var(--line)}
+.tabs button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:72px;font-size:clamp(14px,3.6vw,19px);line-height:1.15;padding:6px;font-weight:700;background:var(--paper);color:var(--blue);box-shadow:0 2px 0 var(--line)}
 .tabs button[aria-selected=true]{background:var(--sun);color:#3A2A00}
 .card{background:var(--paper);border-radius:22px;padding:clamp(14px,3vw,24px);box-shadow:0 3px 0 var(--line)}
 .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
@@ -58,15 +58,18 @@ body.locked{overflow:hidden}
 .icon[aria-pressed=true]{background:var(--ink);color:var(--paper)}
 .fb{min-height:32px;font-size:20px;font-weight:700;margin:10px 0 6px}
 .fb.ok{color:var(--ok)}.fb.no{color:var(--red)}
-.pad{display:grid;grid-template-columns:repeat(auto-fill,minmax(56px,1fr));gap:8px}
-.pad button{font-size:26px;font-weight:700;background:var(--soft);min-height:56px}
+.pad{display:grid;grid-template-columns:repeat(auto-fill,minmax(68px,1fr));gap:10px}
+.pad button{font-size:30px;font-weight:700;background:var(--soft);min-height:68px}
 .pad button.right{background:var(--ok);color:var(--paper)}
 .pad button.wrong{animation:shake .4s;background:light-dark(#FBE1DD,#4A2320)}
 .ans{display:flex;flex-wrap:wrap;gap:12px;align-items:stretch}
 .apad{position:relative;flex:none;width:clamp(120px,24vw,180px);height:clamp(88px,15vw,112px);background:var(--paper);border:3px dashed var(--blue);border-radius:18px;overflow:hidden;touch-action:none}
 .apad canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair}
 .apad.wrong{animation:shake .4s}.apad.right{border-style:solid;border-color:var(--ok);background:light-dark(#E3F6EC,#123326)}
-.arow{margin-top:10px}.arow .next{min-height:52px}
+.arow{margin-top:10px}.arow .next{min-height:64px;min-width:120px;font-size:22px}
+.tabs svg{width:30px;height:30px;flex:none}
+#next,#bnext{min-height:64px;font-size:21px}
+.big2 button{min-height:76px!important;font-size:22px!important}
 .aph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:clamp(48px,9vw,64px);color:var(--trace);pointer-events:none}
 .confirm{margin-top:12px;padding:14px;border-radius:16px;background:var(--soft);font-size:19px}
 .confirm b{font-size:28px;color:var(--blue)}
@@ -91,6 +94,43 @@ details{margin-top:16px}summary{cursor:pointer;font-weight:700;color:var(--blue)
 textarea{width:100%;min-height:90px;font-size:16px;padding:10px;border-radius:12px;border:2px solid var(--line);background:var(--bg)}
 .empty{padding:40px 10px;text-align:center;color:var(--muted)}
 [hidden]{display:none!important}
+/* ---------- buddies ---------- */
+.hright{display:flex;align-items:center;gap:8px}
+.fbtn{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--band);font-weight:700;font-size:18px;padding:0 14px;border-radius:999px;min-height:44px}
+.fbtn svg{width:24px;height:24px}
+.buddy{display:flex;align-items:center;gap:12px;background:var(--paper);border-radius:22px;padding:10px 14px;margin-bottom:14px;box-shadow:0 3px 0 var(--line)}
+.bav{width:88px;height:88px;flex:none;border-radius:50%;padding:4px;min-height:0}
+.bav svg,.pav svg,.fgrid svg{width:100%;height:100%;display:block}
+.bav.hop{animation:hop .6s}.bav.wob{animation:wob .5s}
+.bmain{flex:1;display:flex;flex-direction:column;gap:6px}
+.bsay{position:relative;align-self:flex-start;background:var(--soft);border-radius:16px;padding:6px 14px;font-weight:700;font-size:clamp(16px,3.6vw,20px)}
+.bsay::before{content:"";position:absolute;left:-8px;top:14px;border:8px solid transparent;border-left:0;border-right-color:var(--soft)}
+.bmeta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:14px;color:var(--muted)}
+.path{display:flex;gap:4px;align-items:center}
+.path i{width:16px;height:16px;border-radius:50%;background:var(--soft);border:2px solid var(--line)}
+.path i.on{background:var(--ok);border-color:var(--ok)}
+.bav.talk svg{animation:talk .5s infinite alternate}
+@keyframes talk{to{transform:translateY(-3px) scale(1.03)}}
+.fprog{flex:1;min-width:120px;height:10px;background:var(--soft);border-radius:99px;overflow:hidden}
+.fprog b{display:block;height:100%;background:var(--sun);border-radius:99px;transition:width .4s}
+dialog{border:0;border-radius:24px;padding:20px;background:var(--paper);color:var(--ink);width:min(560px,94vw);max-height:90vh}
+dialog::backdrop{background:rgba(10,20,40,.55)}
+dialog h2{margin:0 0 4px;font-size:28px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin:14px 0}
+.fgrid button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 6px;border-radius:18px;font-weight:700;font-size:16px;border:3px solid transparent}
+.fgrid button[aria-pressed=true]{border-color:var(--blue)}
+.fgrid .fpic{width:80px;height:80px}
+.fgrid .locked .fpic{filter:brightness(0);opacity:.18}
+.fgrid .locked{background:var(--soft)!important;color:var(--muted)}
+.party{position:fixed;inset:0;z-index:80;background:rgba(10,20,40,.55);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:16px}
+.pcard{position:relative;z-index:2;background:var(--paper);border-radius:28px;padding:24px;text-align:center;width:min(420px,92vw);animation:pop .5s}
+.pav{width:180px;height:180px;margin:0 auto;border-radius:50%;padding:8px;animation:hop .8s 2}
+.ptext{font-size:clamp(22px,5vw,28px);font-weight:700;margin:12px 0}
+.cf{position:absolute;top:-24px;width:12px;height:16px;border-radius:3px;z-index:1;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(112vh) rotate(600deg)}}
+@keyframes hop{30%{transform:translateY(-14px) scale(1.05)}60%{transform:translateY(0) scale(1.06,.94)}}
+@keyframes wob{25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+@media (max-width:600px){.bav{width:72px;height:72px}.fbtn span{display:none}.fbtn{padding:0 10px}}
 @keyframes draw{to{stroke-dashoffset:0}}@keyframes fade{to{opacity:1}}
 @keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 @keyframes pop{50%{transform:scale(1.25)}}@keyframes pulse{50%{transform:scale(1.06)}}
@@ -100,12 +140,20 @@ textarea{width:100%;min-height:90px;font-size:16px;padding:10px;border-radius:12
 </head>
 <body>
 <header><div class="top"><h1>Practice Pad</h1>
-<div class="stars" id="starBox" aria-live="polite"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z" fill="#fff" stroke="#3A2A00" stroke-width="1.5" stroke-linejoin="round"></path></svg><span id="stars">0</span></div></div></header>
+<div class="hright"><button class="fbtn" id="fopen" aria-label="My friends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><circle cx="17" cy="9" r="2.5"></circle><path d="M16 14.2a5 5 0 0 1 6 4.8"></path></svg><span>Friends</span></button>
+<div class="stars" id="starBox" aria-live="polite"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z" fill="#fff" stroke="#3A2A00" stroke-width="1.5" stroke-linejoin="round"></path></svg><span id="stars">0</span></div></div></div></header>
 <main>
 <div class="tabs" role="tablist">
-<button role="tab" id="tab-math" aria-controls="math" aria-selected="true">Number line</button>
-<button role="tab" id="tab-between" aria-controls="between" aria-selected="false">In between</button>
-<button role="tab" id="tab-words" aria-controls="words" aria-selected="false">Sight words</button>
+<button role="tab" id="tab-math" aria-controls="math" aria-selected="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M3 22h26M7 18v8M16 18v8M25 18v8"></path><path d="M7 16Q11.5 6 16 16Q20.5 6 25 16"></path></svg>Number line</button>
+<button role="tab" id="tab-between" aria-controls="between" aria-selected="false"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="9" width="8" height="14" rx="2"></rect><rect x="12" y="9" width="8" height="14" rx="2" stroke-dasharray="3 2.5"></rect><rect x="22" y="9" width="8" height="14" rx="2"></rect></svg>In between</button>
+<button role="tab" id="tab-words" aria-controls="words" aria-selected="false"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" aria-hidden="true"><path d="M16 8C12 5 7 5 3 6v19c4-1 9-1 13 2 4-3 9-3 13-2V6c-4-1-9-1-13 2z"></path><path d="M16 8v19"></path></svg>Sight words</button>
+</div>
+<div class="buddy">
+<button class="bav" id="budav" aria-label="Tap your buddy"></button>
+<div class="bmain">
+<div class="bsay" id="budsay" aria-live="polite">Hi! Let's play!</div>
+<div class="bmeta"><span class="path" id="path" role="img"></span><span class="fprog" aria-hidden="true"><b id="budbar" style="width:0"></b></span><span id="budnext"></span></div>
+</div>
 </div>
 
 <section id="math" class="card" role="tabpanel" aria-labelledby="tab-math">
@@ -177,16 +225,105 @@ textarea{width:100%;min-height:90px;font-size:16px;padding:10px;border-radius:12
 </section>
 </main>
 
+<dialog id="friends" aria-labelledby="ftitle">
+<h2 id="ftitle">My friends</h2>
+<div class="small" id="fcount"></div>
+<div class="fgrid" id="fgrid"></div>
+<div class="small" id="fmsg" aria-live="polite" style="min-height:22px"></div>
+<div class="row" style="margin-top:8px"><button class="next" id="fclose">Done</button></div>
+</dialog>
+<div class="party" id="party" hidden><div class="pcard" role="dialog" aria-live="assertive" aria-labelledby="ptext"><div class="pav" id="pav"></div><div class="ptext" id="ptext"></div><div class="row" style="justify-content:center"><button class="know" id="pyes" style="padding:0 24px"></button><button class="again" id="pno" style="padding:0 24px">Later</button></div></div></div>
+
 <script>
 {
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const store={get(k,d){try{const v=localStorage.getItem('pp_'+k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem('pp_'+k,JSON.stringify(v))}catch(e){}}};
 const rand=n=>Math.floor(Math.random()*n);
-function say(t){try{const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.85;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+function say(t){try{const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.85;const av=document.querySelector('#budav');u.onstart=()=>av&&av.classList.add('talk');u.onend=u.onerror=()=>av&&av.classList.remove('talk');speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
 
-let stars=store.get('stars',0);
+const toCount=v=>{v=Math.floor(Number(v));return Number.isFinite(v)&&v>0?v:0};
+let stars=toCount(store.get('stars',0));
 $('#stars').textContent=stars;
-function addStar(){stars++;store.set('stars',stars);$('#stars').textContent=stars;const b=$('#starBox');b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop')}
+window.addEventListener('storage',e=>{if(e.key==='pp_stars'){let v=0;try{v=JSON.parse(e.newValue||'0')}catch(_){}stars=Math.max(stars,toCount(v));$('#stars').textContent=stars;if(typeof budRender==='function')budRender()}});
+/* one star per solved problem; re-read storage first so two open tabs never lose a star */
+function addStar(){stars=Math.max(stars,toCount(store.get('stars',0)))+1;store.set('stars',stars);$('#stars').textContent=stars;const b=$('#starBox');b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');const met=checkMeet();budCheer(!!met);return met}
+const FR_SVG={bao:`<g fill="none" stroke="#B9A9C9" stroke-width="6" stroke-linecap="round"><path d="M160 95 Q145 75 160 60 Q175 45 160 25"></path><path d="M240 95 Q255 75 240 60 Q225 45 240 25"></path></g><ellipse cx="200" cy="335" rx="135" ry="18" fill="#F2C9C9"></ellipse><path d="M70 290 Q60 175 200 120 Q340 175 330 290 Q200 340 70 290 Z" fill="#FFF8EC" stroke="#2A2140" stroke-width="6" stroke-linejoin="round"></path><g fill="none" stroke="#2A2140" stroke-width="5" stroke-linecap="round"><path d="M200 122 Q175 150 130 168"></path><path d="M200 122 Q225 150 270 168"></path><path d="M200 122 Q190 150 170 160"></path><path d="M200 122 Q210 150 230 160"></path></g><circle cx="200" cy="120" r="9" fill="#FFF8EC" stroke="#2A2140" stroke-width="5"></circle><g fill="none" stroke="#2A2140" stroke-width="6" stroke-linecap="round"><path d="M150 238 Q165 222 180 238"></path><path d="M220 238 Q235 222 250 238"></path><path d="M188 262 Q200 274 212 262"></path></g><ellipse cx="138" cy="262" rx="18" ry="11" fill="#FF9BB0"></ellipse><ellipse cx="262" cy="262" rx="18" ry="11" fill="#FF9BB0"></ellipse><ellipse cx="120" cy="215" rx="14" ry="22" fill="#FFFFFF" opacity="0.8" transform="rotate(25 120 215)"></ellipse>`,
+berry:`<ellipse cx="200" cy="355" rx="110" ry="14" fill="#F7C6C6"></ellipse><path d="M200 345 Q85 300 85 190 Q85 120 200 120 Q315 120 315 190 Q315 300 200 345 Z" fill="#FF5A5F" stroke="#2A2140" stroke-width="6" stroke-linejoin="round"></path><g fill="#FFE27A"><ellipse cx="130" cy="200" rx="4" ry="6"></ellipse><ellipse cx="270" cy="200" rx="4" ry="6"></ellipse><ellipse cx="120" cy="250" rx="4" ry="6"></ellipse><ellipse cx="280" cy="250" rx="4" ry="6"></ellipse><ellipse cx="160" cy="295" rx="4" ry="6"></ellipse><ellipse cx="240" cy="295" rx="4" ry="6"></ellipse><ellipse cx="200" cy="315" rx="4" ry="6"></ellipse><ellipse cx="150" cy="150" rx="4" ry="6"></ellipse><ellipse cx="250" cy="150" rx="4" ry="6"></ellipse></g><path d="M200 135 L150 115 L170 100 L145 80 L185 90 L200 65 L215 90 L255 80 L230 100 L250 115 Z" fill="#5BBF5B" stroke="#2A2140" stroke-width="5" stroke-linejoin="round"></path><path d="M200 70 Q205 50 220 42" fill="none" stroke="#2A2140" stroke-width="6" stroke-linecap="round"></path><circle cx="168" cy="200" r="20" fill="#FFFFFF" stroke="#2A2140" stroke-width="5"></circle><circle cx="232" cy="200" r="20" fill="#FFFFFF" stroke="#2A2140" stroke-width="5"></circle><circle cx="171" cy="204" r="10" fill="#2A2140"></circle><circle cx="229" cy="204" r="10" fill="#2A2140"></circle><circle cx="174" cy="200" r="3.5" fill="#FFFFFF"></circle><circle cx="232" cy="200" r="3.5" fill="#FFFFFF"></circle><path d="M172 240 Q200 272 228 240 Z" fill="#8E1B3A" stroke="#2A2140" stroke-width="5" stroke-linejoin="round"></path><ellipse cx="140" cy="235" rx="13" ry="8" fill="#FFB3C7"></ellipse><ellipse cx="260" cy="235" rx="13" ry="8" fill="#FFB3C7"></ellipse>`,
+tumble:`<ellipse cx="200" cy="350" rx="130" ry="14" fill="#BFE3B0"></ellipse><path d="M290 280 Q350 290 370 250 Q345 300 285 315 Z" fill="#7BCB6A" stroke="#2A2140" stroke-width="6" stroke-linejoin="round"></path><g fill="#FF9F43" stroke="#2A2140" stroke-width="5" stroke-linejoin="round"><path d="M150 95 L170 60 L190 92 Z"></path><path d="M195 88 L220 52 L240 90 Z"></path><path d="M245 100 L275 75 L282 115 Z"></path><path d="M285 140 L318 128 L305 165 Z"></path></g><ellipse cx="205" cy="215" rx="115" ry="125" fill="#7BCB6A" stroke="#2A2140" stroke-width="6"></ellipse><ellipse cx="205" cy="265" rx="70" ry="68" fill="#D8F2C9"></ellipse><ellipse cx="150" cy="340" rx="32" ry="16" fill="#7BCB6A" stroke="#2A2140" stroke-width="6"></ellipse><ellipse cx="260" cy="340" rx="32" ry="16" fill="#7BCB6A" stroke="#2A2140" stroke-width="6"></ellipse><path d="M105 245 Q85 255 92 275" fill="none" stroke="#2A2140" stroke-width="6" stroke-linecap="round"></path><path d="M305 245 Q325 255 318 275" fill="none" stroke="#2A2140" stroke-width="6" stroke-linecap="round"></path><circle cx="170" cy="165" r="20" fill="#FFFFFF" stroke="#2A2140" stroke-width="5"></circle><circle cx="240" cy="165" r="20" fill="#FFFFFF" stroke="#2A2140" stroke-width="5"></circle><circle cx="174" cy="168" r="10" fill="#2A2140"></circle><circle cx="236" cy="168" r="10" fill="#2A2140"></circle><circle cx="177" cy="164" r="3.5" fill="#FFFFFF"></circle><circle cx="239" cy="164" r="3.5" fill="#FFFFFF"></circle><path d="M165 205 Q205 245 245 205 Z" fill="#C2185B" stroke="#2A2140" stroke-width="5" stroke-linejoin="round"></path><ellipse cx="140" cy="200" rx="13" ry="8" fill="#FF9BB0"></ellipse><ellipse cx="270" cy="200" rx="13" ry="8" fill="#FF9BB0"></ellipse><circle cx="190" cy="270" r="6" fill="#A8DA94"></circle><circle cx="222" cy="290" r="5" fill="#A8DA94"></circle>`,
+splash:`<g fill="#7FD3F7" stroke="#2A2140" stroke-width="5" stroke-linejoin="round"><path d="M170 110 Q150 70 120 80 Q145 85 160 115 Z"></path><path d="M200 105 Q200 55 200 40 Q205 70 210 105 Z"></path><path d="M230 110 Q250 70 280 80 Q255 85 240 115 Z"></path></g><circle cx="115" cy="68" r="8" fill="#7FD3F7" stroke="#2A2140" stroke-width="4"></circle><circle cx="285" cy="68" r="8" fill="#7FD3F7" stroke="#2A2140" stroke-width="4"></circle><path d="M300 230 Q345 200 360 165 Q370 200 345 215 Q380 225 375 255 Q345 240 300 260 Z" fill="#3B9AE1" stroke="#2A2140" stroke-width="6" stroke-linejoin="round"></path><ellipse cx="195" cy="225" rx="120" ry="110" fill="#3B9AE1" stroke="#2A2140" stroke-width="6"></ellipse><path d="M100 270 Q195 345 290 270 Q270 320 195 330 Q120 320 100 270 Z" fill="#CDEBFF"></path><path d="M120 275 Q95 300 105 320 Q130 305 140 285 Z" fill="#2F7FC0" stroke="#2A2140" stroke-width="5" stroke-linejoin="round"></path><circle cx="160" cy="205" r="18" fill="#FFFFFF" stroke="#2A2140" stroke-width="5"></circle><circle cx="230" cy="205" r="18" fill="#FFFFFF" stroke="#2A2140" stroke-width="5"></circle><circle cx="163" cy="208" r="9" fill="#2A2140"></circle><circle cx="227" cy="208" r="9" fill="#2A2140"></circle><circle cx="166" cy="204" r="3" fill="#FFFFFF"></circle><circle cx="230" cy="204" r="3" fill="#FFFFFF"></circle><path d="M175 245 Q195 262 215 245" fill="none" stroke="#2A2140" stroke-width="6" stroke-linecap="round"></path><ellipse cx="132" cy="240" rx="13" ry="8" fill="#FFB3C7"></ellipse><ellipse cx="258" cy="240" rx="13" ry="8" fill="#FFB3C7"></ellipse><path d="M20 355 Q55 335 90 355 Q125 375 160 355 Q195 335 230 355 Q265 375 300 355 Q335 335 380 355" fill="none" stroke="#3B9AE1" stroke-width="7" stroke-linecap="round"></path>`,
+puff:`<g fill="none" stroke-width="12" stroke-linecap="round"><path d="M110 300 Q200 220 290 300" stroke="#FF6B6B"></path><path d="M126 306 Q200 242 274 306" stroke="#FFD23F"></path><path d="M142 312 Q200 264 258 312" stroke="#5BC0EB"></path></g><path d="M95 250 Q55 250 58 210 Q62 172 102 175 Q105 120 160 120 Q190 85 235 105 Q290 95 300 150 Q345 155 342 205 Q340 250 295 250 Z" fill="#FFFFFF" stroke="#2A2140" stroke-width="6" stroke-linejoin="round"></path><g fill="none" stroke="#2A2140" stroke-width="6" stroke-linecap="round"><path d="M150 195 Q165 208 180 195"></path><path d="M220 195 Q235 208 250 195"></path><path d="M190 222 Q200 230 210 222"></path></g><ellipse cx="135" cy="218" rx="15" ry="9" fill="#FFB3C7"></ellipse><ellipse cx="265" cy="218" rx="15" ry="9" fill="#FFB3C7"></ellipse><g fill="#FFD23F" stroke="#2A2140" stroke-width="3" stroke-linejoin="round"><path d="M330 80 l5 12 l13 1 l-10 8 l3 13 l-11 -7 l-11 7 l3 -13 l-10 -8 l13 -1 z"></path><path d="M60 100 l4 9 l10 1 l-8 6 l3 10 l-9 -5 l-9 5 l3 -10 l-8 -6 l10 -1 z"></path></g><text x="310" y="130" font-family="Andika, sans-serif" font-size="26" font-weight="700" fill="#7B8CC9">z</text><text x="328" y="110" font-family="Andika, sans-serif" font-size="20" font-weight="700" fill="#7B8CC9">z</text>`,
+gloop:`<g fill="none" stroke="#2A2140" stroke-width="5" stroke-linecap="round"><path d="M45 230 Q35 250 45 270"></path><path d="M25 220 Q12 250 25 280"></path><path d="M355 230 Q365 250 355 270"></path><path d="M375 220 Q388 250 375 280"></path></g><ellipse cx="200" cy="335" rx="140" ry="16" fill="#A8E6DD"></ellipse><path d="M75 270 Q55 150 200 125 Q345 150 325 270 Q315 328 200 328 Q85 328 75 270 Z" fill="#4FCFBF" fill-opacity="0.85" stroke="#2A2140" stroke-width="6" stroke-linejoin="round"></path><g fill="#FFFFFF" fill-opacity="0.45"><circle cx="110" cy="285" r="10"></circle><circle cx="135" cy="300" r="6"></circle><circle cx="290" cy="290" r="12"></circle><circle cx="270" cy="160" r="7"></circle><circle cx="305" cy="215" r="5"></circle></g><ellipse cx="140" cy="175" rx="34" ry="16" fill="#FFFFFF" fill-opacity="0.75" transform="rotate(-25 140 175)"></ellipse><circle cx="165" cy="225" r="26" fill="#FFFFFF" stroke="#2A2140" stroke-width="5"></circle><circle cx="235" cy="225" r="26" fill="#FFFFFF" stroke="#2A2140" stroke-width="5"></circle><circle cx="168" cy="230" r="14" fill="#2A2140"></circle><circle cx="232" cy="230" r="14" fill="#2A2140"></circle><circle cx="173" cy="224" r="5" fill="#FFFFFF"></circle><circle cx="237" cy="224" r="5" fill="#FFFFFF"></circle><ellipse cx="200" cy="278" rx="12" ry="14" fill="#1F5F58" stroke="#2A2140" stroke-width="4"></ellipse><ellipse cx="128" cy="262" rx="14" ry="8" fill="#FF9BB0"></ellipse><ellipse cx="272" cy="262" rx="14" ry="8" fill="#FF9BB0"></ellipse>`,
+melody:`<g fill="#7B5CD6"><circle cx="70" cy="120" r="11"></circle><rect x="77" y="70" width="6" height="52"></rect><path d="M83 70 Q100 78 98 95 Q92 84 83 84 Z"></path><circle cx="330" cy="95" r="10"></circle><rect x="336" y="50" width="6" height="47"></rect><circle cx="345" cy="170" r="9"></circle><rect x="350" y="130" width="5" height="42"></rect><rect x="336" y="50" width="19" height="7"></rect></g><path d="M60 240 l6 14 l15 1 l-12 9 l4 15 l-13 -8 l-13 8 l4 -15 l-12 -9 l15 -1 z" fill="#FFD23F" stroke="#2A2140" stroke-width="3" stroke-linejoin="round"></path><ellipse cx="160" cy="85" rx="26" ry="70" fill="#E6DAFF" stroke="#2A2140" stroke-width="6" transform="rotate(-12 160 85)"></ellipse><ellipse cx="160" cy="92" rx="12" ry="48" fill="#FFB3C7" transform="rotate(-12 160 92)"></ellipse><ellipse cx="240" cy="85" rx="26" ry="70" fill="#E6DAFF" stroke="#2A2140" stroke-width="6" transform="rotate(12 240 85)"></ellipse><ellipse cx="240" cy="92" rx="12" ry="48" fill="#FFB3C7" transform="rotate(12 240 92)"></ellipse><path d="M140 345 Q140 290 200 285 Q260 290 260 345 Z" fill="#7B5CD6" stroke="#2A2140" stroke-width="6" stroke-linejoin="round"></path><circle cx="200" cy="215" r="88" fill="#E6DAFF" stroke="#2A2140" stroke-width="6"></circle><path d="M118 190 Q200 105 282 190" fill="none" stroke="#FF5C8A" stroke-width="12" stroke-linecap="round"></path><rect x="100" y="185" width="30" height="50" rx="14" fill="#FF5C8A" stroke="#2A2140" stroke-width="5"></rect><rect x="270" y="185" width="30" height="50" rx="14" fill="#FF5C8A" stroke="#2A2140" stroke-width="5"></rect><ellipse cx="170" cy="205" rx="17" ry="21" fill="#2A2140"></ellipse><ellipse cx="230" cy="205" rx="17" ry="21" fill="#2A2140"></ellipse><circle cx="176" cy="197" r="6" fill="#FFFFFF"></circle><circle cx="236" cy="197" r="6" fill="#FFFFFF"></circle><circle cx="166" cy="212" r="3" fill="#FFFFFF"></circle><circle cx="226" cy="212" r="3" fill="#FFFFFF"></circle><ellipse cx="148" cy="240" rx="14" ry="8" fill="#FFB3C7"></ellipse><ellipse cx="252" cy="240" rx="14" ry="8" fill="#FFB3C7"></ellipse><ellipse cx="200" cy="252" rx="14" ry="12" fill="#C2185B" stroke="#2A2140" stroke-width="4"></ellipse><rect x="232" y="268" width="14" height="60" rx="7" fill="#9A9AB0" stroke="#2A2140" stroke-width="5" transform="rotate(25 239 298)"></rect><circle cx="225" cy="268" r="20" fill="#C9C9D9" stroke="#2A2140" stroke-width="5"></circle><ellipse cx="255" cy="312" rx="16" ry="12" fill="#E6DAFF" stroke="#2A2140" stroke-width="5"></ellipse>`,
+zoomi:`<g stroke="#2A2140" stroke-width="6" stroke-linecap="round" fill="none"><line x1="20" y1="170" x2="80" y2="170"></line><line x1="35" y1="215" x2="85" y2="215"></line><line x1="25" y1="260" x2="80" y2="260"></line></g><path d="M150 255 Q100 250 70 285 Q105 275 120 290 Q125 270 160 275 Z" fill="#FF8A3D" stroke="#2A2140" stroke-width="5" stroke-linejoin="round"></path><line x1="185" y1="300" x2="180" y2="325" stroke="#2A2140" stroke-width="6" stroke-linecap="round"></line><line x1="245" y1="300" x2="255" y2="325" stroke="#2A2140" stroke-width="6" stroke-linecap="round"></line><circle cx="215" cy="200" r="110" fill="#FFD23F" stroke="#2A2140" stroke-width="6"></circle><path d="M205 92 Q190 55 215 45 Q212 68 232 72 Q215 78 222 92" fill="#FFD23F" stroke="#2A2140" stroke-width="5" stroke-linejoin="round"></path><path d="M160 230 Q130 215 120 245 Q140 260 170 250 Z" fill="#F7B500" stroke="#2A2140" stroke-width="5" stroke-linejoin="round"></path><path d="M150 250 Q190 262 235 250 Q250 245 262 252" fill="none" stroke="#FF8A3D" stroke-width="16" stroke-linecap="round"></path><ellipse cx="240" cy="180" rx="20" ry="24" fill="#FFFFFF" stroke="#2A2140" stroke-width="5"></ellipse><ellipse cx="288" cy="180" rx="18" ry="22" fill="#FFFFFF" stroke="#2A2140" stroke-width="5"></ellipse><circle cx="248" cy="182" r="9" fill="#2A2140"></circle><circle cx="295" cy="182" r="8" fill="#2A2140"></circle><circle cx="251" cy="178" r="3" fill="#FFFFFF"></circle><circle cx="297" cy="178" r="3" fill="#FFFFFF"></circle><path d="M300 208 L348 222 L300 236 Z" fill="#FF8A3D" stroke="#2A2140" stroke-width="5" stroke-linejoin="round"></path><ellipse cx="232" cy="222" rx="13" ry="8" fill="#FF8FA3"></ellipse><rect x="140" y="322" width="80" height="22" rx="11" fill="#E94F4F" stroke="#2A2140" stroke-width="5"></rect><rect x="225" y="322" width="80" height="22" rx="11" fill="#E94F4F" stroke="#2A2140" stroke-width="5"></rect><g fill="#FFFFFF" stroke="#2A2140" stroke-width="4"><circle cx="158" cy="354" r="10"></circle><circle cx="202" cy="354" r="10"></circle><circle cx="243" cy="354" r="10"></circle><circle cx="287" cy="354" r="10"></circle></g>`};
+
+/* ---------- buddies (characters, today's practice path, friend unlocks) ----------
+   Research notes: buddy praise is about effort and strategy (process praise), mistakes never cost
+   anything, the big pop-up is rare (new friend, end of a practice set), and every 10 problems the
+   buddy offers a natural stopping point and asks her to show a grown-up. No timers, no daily lures. */
+const FRIENDS=[
+ {id:'bao',name:'Bao',need:0,bg:'#FFE6E6',cheer:['You counted so carefully!','Nice slow, careful work!','You figured it out!'],oops:['Let’s count again, nice and slow.','Try counting with your finger.']},
+ {id:'puff',name:'Puff',need:0,bg:'#DDEBFF',cheer:['You went slow and got it!','Calm and careful. Lovely!','You kept going!'],oops:['Take a slow breath and try again.','No rush. Count again.']},
+ {id:'melody',name:'Melody',need:0,bg:'#EEE7FF',cheer:['La la la, you worked it out!','You practiced so well!','That was careful work!'],oops:['Let’s try that one again!','Count with me, one by one.']},
+ {id:'tumble',name:'Tumble',need:5,bg:'#E6F6DC',cheer:['Stomp stomp! You worked hard!','You didn’t give up!','Great counting!'],oops:['I trip too! Get up and try again.','Oops is okay! One more try.']},
+ {id:'splash',name:'Splash',need:10,bg:'#DFF3FF',cheer:['Splash! You figured it out!','You took your time. Nice!','Good thinking!'],oops:['Dive back in and count again!','Try the hops one by one.']},
+ {id:'berry',name:'Berry',need:20,bg:'#FFE3E0',cheer:['Yay! You kept trying!','Yay! You checked your work!','You worked that out!'],oops:['Mistakes help us learn. Try again!','Look again. You can do it!']},
+ {id:'gloop',name:'Gloop',need:30,bg:'#DDF7F2',cheer:['Boing! You bounced back!','You tried and tried!','Squish-tastic work!'],oops:['Wobble wobble... try again!','Bounce back! One more go.']},
+ {id:'zoomi',name:'Zoomi',need:45,bg:'#FFF1C2',cheer:['You slowed down and got it!','Zoom! You kept trying!','Careful and correct!'],oops:['Slow down and count again!','Let’s go step by step.']}
+];
+const SET=10;
+const pick=a=>a[rand(a.length)];
+const F=id=>FRIENDS.find(f=>f.id===id)||FRIENDS[0];
+const isMet=f=>stars>=f.need;
+const svgOf=id=>`<svg viewBox="0 0 400 400" aria-hidden="true">${FR_SVG[id]}</svg>`;
+const HOME={math:'bao',between:'puff',words:'melody'},TASK={math:'Let\u2019s hop on the number line!',between:'Let\u2019s find the missing number!',words:'Let\u2019s read some words!'};
+let curTab='math',buddies=Object.assign({},HOME,store.get('buddies',{})),done=0,partyT=null,partyMode=null,partyFriend=null,pendingSet=false;
+for(const k in HOME)if(!isMet(F(buddies[k])))buddies[k]=HOME[k];
+const bud=()=>F(buddies[curTab]);
+function budTab(t){if(!HOME[t]||t===curTab&&$('#budav').innerHTML)return;curTab=t;budRender();budAnim('hop');budTalk(`I'm ${bud().name}. ${TASK[t]}`)}
+function budRender(){
+  const f=bud(),av=$('#budav');av.innerHTML=svgOf(f.id);av.style.background=f.bg;av.setAttribute('aria-label',`Tap ${f.name} to hear hello`);
+  const nx=FRIENDS.find(x=>!isMet(x)),prev=Math.max(...FRIENDS.filter(isMet).map(x=>x.need));
+  $('#budbar').style.width=(nx?(stars-prev)/(nx.need-prev)*100:100)+'%';
+  $('#budnext').textContent=nx?`${nx.need-stars} more ${nx.need-stars===1?'star':'stars'} to a new friend`:'You found all your friends!';
+  const k=done%SET||(done?SET:0);
+  $('#path').innerHTML=Array.from({length:SET},(_,i)=>`<i class="${i<k?'on':''}"></i>`).join('');
+  $('#path').setAttribute('aria-label',`Today: ${k} of ${SET} done`);
+}
+function budAnim(c){const a=$('#budav');a.classList.remove('hop','wob');void a.offsetWidth;a.classList.add(c)}
+function budTalk(t){$('#budsay').textContent=t}
+function confetti(){const box=$('#party'),C=['#FFC93C','#FF5A5F','#3B9AE1','#7BCB6A','#7B5CD6','#FF9F43'];
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  for(let i=0;i<24;i++){const s=document.createElement('span');s.className='cf';s.style.left=rand(100)+'%';s.style.background=C[i%C.length];s.style.animationDuration=(1.4+Math.random()*1.2)+'s';s.style.animationDelay=(Math.random()*.3)+'s';box.appendChild(s);setTimeout(()=>s.remove(),3000)}}
+function party(f,text,mode,yes,no){
+  clearTimeout(partyT);partyMode=mode;partyFriend=f;
+  $('#pav').innerHTML=svgOf(f.id);$('#pav').style.background=f.bg;$('#ptext').textContent=text;
+  $('#pyes').textContent=yes;$('#pno').textContent=no;
+  $('#party').hidden=false;if(mode==='meet')confetti();$('#pyes').focus();
+}
+function closeParty(){clearTimeout(partyT);$('#party').hidden=true;if(pendingSet){pendingSet=false;setTimeout(showSet,500)}}
+function showSet(){party(bud(),`You did ${SET} today! Go show a grown-up what you learned.`,'set','Keep playing','Take a break');say(`You did ${SET} today! Show a grown-up what you learned.`)}
+$('#pyes').addEventListener('click',()=>{if(partyMode==='meet')setBuddy(partyFriend.id);closeParty()});
+$('#pno').addEventListener('click',()=>{if(partyMode==='set'){budTalk('Great practice today! See you next time.');say('Great practice today! See you next time.')}closeParty()});
+$('#party').addEventListener('click',e=>{if(e.target.id==='party')closeParty()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeParty()});
+function checkMeet(){const f=FRIENDS.find(x=>x.need>0&&x.need===stars);if(!f)return null;
+  party(f,`You found a new friend: ${f.name}!`,'meet',`Play with ${f.name}`,'Later');setTimeout(()=>say(`You found a new friend, ${f.name}!`),2400);return f}
+function budCheer(met){
+  done++;budAnim('hop');budTalk(pick(bud().cheer));budRender();
+  if(done%SET===0){if(met)pendingSet=true;else setTimeout(showSet,1600)}
+}
+function oops(){budAnim('wob');const t=pick(bud().oops);budTalk(t);say(t)}
+function setBuddy(id){buddies[curTab]=id;store.set('buddies',buddies);budRender();budAnim('hop');budTalk(`Hi! I'm ${F(id).name}!`);say(`Hi! I'm ${F(id).name}!`)}
+$('#budav').addEventListener('click',()=>{const f=bud();budAnim('hop');const t=`Hi! I'm ${f.name}! ${TASK[curTab]}`;budTalk(t);say(t)});
+function renderFriends(){
+  const n=FRIENDS.filter(isMet).length;$('#ftitle').textContent=`Pick a buddy for ${$('#tab-'+curTab).textContent.trim()}`;$('#fcount').textContent=`You found ${n} of ${FRIENDS.length} friends. Practice to find more!`;$('#fmsg').textContent='';
+  $('#fgrid').innerHTML=FRIENDS.map(f=>{const m=isMet(f);return `<button data-f="${f.id}" class="${m?'':'locked'}" style="background:${f.bg}" aria-pressed="${f.id===buddies[curTab]}" aria-label="${m?f.name:'Secret friend, needs '+f.need+' stars'}"><span class="fpic">${svgOf(f.id)}</span><span>${m?f.name:'★ '+f.need}</span></button>`}).join('');
+}
+$('#fopen').addEventListener('click',()=>{renderFriends();try{$('#friends').showModal()}catch(e){$('#friends').setAttribute('open','')}});
+$('#fclose').addEventListener('click',()=>$('#friends').close());
+$('#fgrid').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const f=F(b.dataset.f);
+  if(!isMet(f)){const t=`Get ${f.need-stars} more ${f.need-stars===1?'star':'stars'} to meet this friend!`;$('#fmsg').textContent=t;say(t);return}
+  setBuddy(f.id);$('#friends').close()});
 
 /* ---------- finger drawing pad ---------- */
 function makePad(cv,getPen,onStart,thick){
@@ -292,7 +429,7 @@ function check(n,btn){
   if(solved)return;const {a,b}=prob;$('#confirm').hidden=true;$('#fix').hidden=true;
   if(!btn)btn=$('#apadBox');
   if(n===a+b){solved=true;if(btn.dataset.n!=null)btn.classList.add('right');$('#apadBox').classList.add('right');if(!apad.count()){$('#aph').textContent=n;$('#aph').style.color='var(--ok)';$('#aph').hidden=false}fb(`Yes! ${a} + ${b} = ${n}`,'ok');say(`Yes! ${a} plus ${b} equals ${n}!`);addStar();drawLine(false);$('#next').classList.add('go')}
-  else{tries++;btn.classList.remove('wrong');void btn.offsetWidth;btn.classList.add('wrong');
+  else{tries++;oops();btn.classList.remove('wrong');void btn.offsetWidth;btn.classList.add('wrong');
     if(tries>=2&&!hint){hint=true;drawLine(true);fb('Watch the hops, then try again.','no');countAloud()}
     else fb('Not quite. Count your hops again!','no')}
 }
@@ -349,7 +486,7 @@ function bCheck(v,btn){
   if(bsolved)return;$('#bconfirm').hidden=true;$('#bfix').hidden=true;
   if(v===bq.n){bsolved=true;bbox.classList.add('right');if(btn)btn.classList.add('right');if(!bpad.count()){bph.textContent=v;bph.style.color='var(--ok)';bph.hidden=false}
     bfb('Yes! '+bDone(),'ok');say('Yes! '+bDone());addStar();bChart();$('#bnext').classList.add('go')}
-  else{btries++;const el=btn||bbox;el.classList.remove('wrong');void el.offsetWidth;el.classList.add('wrong');
+  else{btries++;oops();const el=btn||bbox;el.classList.remove('wrong');void el.offsetWidth;el.classList.add('wrong');
     if(btries>=2&&!bchart){bchart=true;bChart();bfb('Look at the number chart, then try again.','no');say('Look at the number chart. Count to find the missing number.')}
     else bfb('Not quite. Count up and try again!','no')}
 }
@@ -379,6 +516,8 @@ const LISTS={
 };
 LISTS.mine.w=store.get('mine',[]);
 let list=store.get('list','cls'),boxes=store.get('boxes',{}),queue=[],curW=null;
+/* words that already earned their star: "Practice again" then "I know it" twice must not pay out again */
+let earned=store.get('earned',null);if(!Array.isArray(earned)){earned=Object.keys(boxes).filter(w=>boxes[w]>=2);store.set('earned',earned)}
 if(!LISTS[list])list='cls';
 const wpad=makePad($('#wcv'),()=>({c:'#2F6BEA',er:false}));
 function renderLists(){$('#lists').innerHTML=Object.entries(LISTS).map(([k,v])=>`<button class="chip" data-l="${k}" aria-pressed="${k===list}">${v.name}</button>`).join('')}
@@ -394,7 +533,7 @@ function show(){
 function setList(k){list=k;store.set('list',k);queue=[];renderLists();show()}
 $('#lists').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setList(b.dataset.l)});
 $('#word').addEventListener('click',()=>curW&&say(curW));
-$('#know').addEventListener('click',()=>{if(!curW)return;const was=boxes[curW]||0;boxes[curW]=Math.min(was+1,5);store.set('boxes',boxes);if(was<2&&boxes[curW]>=2)addStar();queue.shift();show()});
+$('#know').addEventListener('click',()=>{if(!curW)return;const was=boxes[curW]||0;boxes[curW]=Math.min(was+1,5);store.set('boxes',boxes);if(was<2&&boxes[curW]>=2&&!earned.includes(curW)){earned.push(curW);store.set('earned',earned);addStar()}else budCheer(false);queue.shift();show()});
 $('#again').addEventListener('click',()=>{if(!curW)return;boxes[curW]=0;store.set('boxes',boxes);queue.shift();queue.splice(Math.min(3,queue.length),0,curW);say(curW);show()});
 $('#wclear').addEventListener('click',()=>wpad.clear());
 $('#traceBtn').addEventListener('click',()=>{const t=$('#trace'),on=t.hidden;t.hidden=!on;$('#traceBtn').setAttribute('aria-pressed',on)});
@@ -405,7 +544,7 @@ $('#mineSave').addEventListener('click',()=>{const w=[...new Set($('#mineTxt').v
 
 /* ---------- tabs ---------- */
 const TABS=['math','between','words'];
-function tab(name){if(!TABS.includes(name))name='math';TABS.forEach(t=>{$('#'+t).hidden=t!==name;$('#tab-'+t).setAttribute('aria-selected',t===name)});if(location.hash!=='#'+name)try{history.replaceState(null,'','#'+name)}catch(e){}}
+function tab(name){if(!TABS.includes(name))name='math';TABS.forEach(t=>{$('#'+t).hidden=t!==name;$('#tab-'+t).setAttribute('aria-selected',t===name)});if(location.hash!=='#'+name)try{history.replaceState(null,'','#'+name)}catch(e){}budTab(name)}
 TABS.forEach(t=>$('#tab-'+t).addEventListener('click',()=>tab(t)));
 window.addEventListener('hashchange',()=>tab(location.hash.slice(1)));
 
