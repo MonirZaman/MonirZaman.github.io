@@ -13,6 +13,13 @@ from pathlib import Path
 import pytest
 from playwright.sync_api import sync_playwright
 
+STUB = (
+    "window.__said=[];"
+    "Object.defineProperty(window,'speechSynthesis',{configurable:true,value:{"
+    "speak(u){window.__said.push({text:u.text,pitch:u.pitch,rate:u.rate})},"
+    "cancel(){},getVoices(){return window.__voices||[]},addEventListener(){}}});"
+)
+
 PAGE = (Path(__file__).resolve().parents[1] / "kidspractice" / "index.html").as_uri()
 
 
@@ -28,7 +35,7 @@ def browser():
 def page(browser):
     ctx = browser.new_context(viewport={"width": 400, "height": 860})
     # speechSynthesis is noisy and timing-dependent in headless runs: stub it.
-    ctx.add_init_script("window.speechSynthesis={speak(){},cancel(){}};")
+    ctx.add_init_script(STUB)
     pg = ctx.new_page()
     pg.errors = []
     pg.on("pageerror", lambda e: pg.errors.append(str(e)))
@@ -205,7 +212,7 @@ def test_bad_saved_value_is_safe(page, bad):
 
 def test_two_open_tabs_do_not_lose_stars(browser):
     ctx = browser.new_context()
-    ctx.add_init_script("window.speechSynthesis={speak(){},cancel(){}};")
+    ctx.add_init_script(STUB)
     a, b = ctx.new_page(), ctx.new_page()
     a.goto(PAGE)
     b.goto(PAGE)
@@ -268,3 +275,53 @@ def test_break_prompt_after_ten_problems(page):
     page.click("#pno")
     assert page.is_hidden("#party")
     assert stars(page) == 41
+
+
+# ---------- voice ----------
+VOICES = [
+    {"name": "Microsoft David - English (United States)", "lang": "en-US"},
+    {"name": "Microsoft Zira - English (United States)", "lang": "en-US"},
+    {"name": "Microsoft Jenny Online (Natural) - English (United States)", "lang": "en-US"},
+    {"name": "Microsoft Ana Online (Natural) - English (United States)", "lang": "en-US"},
+    {"name": "Google UK English Female", "lang": "en-GB"},
+    {"name": "Microsoft Pablo - Spanish (Spain)", "lang": "es-ES"},
+]
+
+
+def pick(pg, voices):
+    return pg.evaluate("v=>{const p=pickVoice(v);return p&&p.name}", voices)
+
+
+def test_prefers_natural_voice_over_old_system_voice(page):
+    assert pick(page, VOICES) == "Microsoft Ana Online (Natural) - English (United States)"
+    assert pick(page, VOICES[:2] + VOICES[4:]) == "Google UK English Female"
+    assert pick(page, VOICES[:2]) is not None  # old voices are still better than nothing
+
+
+def test_never_picks_a_non_english_voice(page):
+    assert pick(page, [VOICES[5]]) is None
+    assert pick(page, []) is None
+
+
+def test_grown_up_voice_choice_is_kept(page):
+    seed(page, voice="Microsoft Zira - English (United States)")
+    assert pick(page, VOICES) == "Microsoft Zira - English (United States)"
+
+
+def test_voice_picker_lists_english_voices_best_first(page):
+    page.evaluate("v=>{window.__voices=v;loadVoice()}", VOICES)
+    page.click("#fopen")
+    page.click(".grown summary")
+    opts = page.eval_on_selector_all("#vsel option", "o=>o.map(x=>x.value)")
+    assert len(opts) == 5 and "Pablo" not in " ".join(opts)
+    assert opts[0].startswith("Microsoft Ana")
+    page.select_option("#vsel", "Microsoft Zira - English (United States)")
+    assert stored(page, "voice") == "Microsoft Zira - English (United States)"
+
+
+def test_speech_is_warmer_than_default(page):
+    use_math_buttons(page)
+    solve_math(page)
+    said = page.evaluate("window.__said")
+    assert said and said[0]["text"].startswith("Yes!")
+    assert said[0]["pitch"] > 1 and said[0]["rate"] < 1
