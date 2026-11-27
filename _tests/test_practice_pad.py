@@ -373,18 +373,15 @@ def test_phonics_mode_hides_the_right_letter(page, mode, pos):
         assert tiles[pos] == "?" and tiles.count("?") == 1
         choices = [b.get_attribute("data-l") for b in page.query_selector_all("#pchoices button")]
         assert ph_answer(page) in choices
-        assert len(choices) == (5 if mode == "middle" else 4) and len(set(choices)) == len(choices)
+        assert len(choices) == (5 if mode == "middle" else 21) and len(set(choices)) == len(choices)
         page.click("#pnext")
 
 
-def test_phonics_choices_are_fair(page):
-    bad = page.evaluate("""()=>{const words=new Set(__ph.bank.map(x=>x[0])),out=[];
-      for(const [w] of __ph.bank)for(const pos of [0,2])for(let k=0;k<20;k++){const c=__ph.choices(w,pos);
-        if(!c.includes(w[pos]))out.push(w+':missing answer');
-        for(const l of c)if(l!==w[pos]&&words.has(w.slice(0,pos)+l+w.slice(pos+1)))out.push(w+':'+l);
-        if(w[pos]==='b'&&!c.includes('d'))out.push(w+':no d');if(w[pos]==='d'&&!c.includes('b'))out.push(w+':no b')}
-      return out}""")
-    assert bad == []
+def test_phonics_offers_the_whole_letter_set(page):
+    out = page.evaluate("""()=>{const r=[];for(const [w] of __ph.bank)for(const pos of [0,1,2])r.push([w,pos,__ph.choices(w,pos).join('')]);return r}""")
+    for w, pos, c in out:
+        assert c == ("aeiou" if pos == 1 else "bcdfghjklmnpqrstvwxyz"), (w, pos)
+        assert w[pos] in c
 
 
 def test_phonics_word_bank_is_cvc(page):

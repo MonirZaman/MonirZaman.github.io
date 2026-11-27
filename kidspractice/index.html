@@ -53,7 +53,8 @@ body.locked{overflow:hidden}
 .pword{display:flex;justify-content:center;gap:10px;margin:14px 0}
 .ptile{width:clamp(72px,20vw,104px);height:clamp(80px,22vw,112px);display:flex;align-items:center;justify-content:center;font-size:clamp(48px,13vw,72px);font-weight:700;background:var(--soft);border-radius:16px}
 .ptile.miss{background:transparent;border:3px dashed var(--blue);color:var(--blue)}.ptile.got{background:light-dark(#E3F6EC,#123326);color:var(--ok);border:3px solid var(--ok)}
-.pchoices{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.pchoices{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:560px;margin:0 auto}
+.pchoices.cons button{width:clamp(52px,14vw,64px);height:clamp(56px,14vw,66px);font-size:clamp(30px,8vw,38px);border-radius:14px}
 .pchoices button{width:clamp(56px,15vw,84px);height:clamp(72px,18vw,88px);font-size:clamp(38px,10vw,48px);font-weight:700;background:var(--soft);border-radius:18px}
 .pchoices button.right{background:var(--ok);color:var(--paper)}.pchoices button.wrongl{opacity:.35}.pchoices button.phint{outline:4px solid var(--sun);animation:hop .8s 2}
 .tile.miss{background:transparent}.tile .apad{width:100%;height:100%}
@@ -603,8 +604,7 @@ $('#mineSave').addEventListener('click',()=>{const w=[...new Set($('#mineTxt').v
    Modeled on her school worksheets: say the picture's name, find the missing sound.
    Pictures are emoji so every word stays recognizable; any emoji this device can't draw is
    left out automatically. Middle sounds offer all five vowels (a e i o u), like the sheets.
-   First/last sounds offer 4 letters; when the answer is b or d the other one is always a
-   choice, because b/d mix-ups show up on her sheets. */
+ */
 const PH_WORDS=[
  ['cat','🐱'],['bat','🦇'],['rat','🐀'],['hat','🎩'],['map','🗺️'],['bag','👜'],['cap','🧢'],['can','🥫'],['pan','🍳'],['cab','🚕'],['van','🚐'],['ham','🍖'],['tag','🏷️'],['nap','😴'],['tap','🚰'],
  ['bed','🛏️'],['net','🥅'],['jet','✈️'],['web','🕸️'],['hen','🐔'],['pen','🖊️'],['ten','🔟'],['leg','🦵'],
@@ -613,21 +613,15 @@ const PH_WORDS=[
  ['sun','☀️'],['bus','🚌'],['cup','☕'],['nut','🥜'],['tub','🛁'],['bug','🐛'],['hut','🛖'],['run','🏃']
 ];
 const PH_POS={first:0,middle:1,last:2},PH_MODE_NAME={first:'first',middle:'middle',last:'last'};
-const VOWELS=['a','e','i','o','u'],CONS='bcdfghjklmnprstvwxz'.split('');
+const VOWELS=['a','e','i','o','u'],CONS='bcdfghjklmnpqrstvwxyz'.split('');
 function emojiOk(e){try{const c=document.createElement('canvas');c.width=c.height=24;const x=c.getContext('2d');if(!x)return true;
   x.textBaseline='top';x.font='20px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';x.fillText(e,0,0);
   const d=x.getImageData(0,0,24,24).data;let colored=0;for(let i=0;i<d.length;i+=4)if(d[i+3]>40&&(Math.abs(d[i]-d[i+1])>30||Math.abs(d[i+1]-d[i+2])>30))colored++;
   return colored>8}catch(e){return true}}
 const PH_BANK=PH_WORDS.filter(([,e])=>emojiOk(e));
-function phChoices(word,pos){
-  const ans=word[pos];
-  if(pos===1)return VOWELS.slice();
-  /* skip letters that would spell another word in the bank: the picture decides, but no trick questions */
-  const others=new Set(PH_BANK.map(([w])=>w)),ok=CONS.filter(l=>l!==ans&&!others.has(word.slice(0,pos)+l+word.slice(pos+1)));
-  const pick=[];if(ans==='b'&&ok.includes('d'))pick.push('d');if(ans==='d'&&ok.includes('b'))pick.push('b');
-  while(pick.length<3){const l=ok[rand(ok.length)];if(!pick.includes(l))pick.push(l)}
-  const all=[ans,...pick];for(let i=all.length-1;i>0;i--){const j=rand(i+1);[all[i],all[j]]=[all[j],all[i]]}return all;
-}
+/* Worksheet level: the whole set every time, in alphabet order, so she has to find the
+   sound herself instead of picking from a few. Vowels for the middle, consonants otherwise. */
+function phChoices(word,pos){return (pos===1?VOWELS:CONS).slice()}
 let phMode=store.get('phMode','mix'),phDeck=[],phCur=null,phPos=0,phSolved=false,phTries=0;
 function phDeal(){phDeck=PH_BANK.map(x=>x.slice());for(let i=phDeck.length-1;i>0;i--){const j=rand(i+1);[phDeck[i],phDeck[j]]=[phDeck[j],phDeck[i]]}}
 function phNew(){
@@ -637,7 +631,7 @@ function phNew(){
   const m=phMode==='mix'?['first','middle','last'][rand(3)]:phMode;phPos=PH_POS[m];
   $('#pemoji').textContent=phCur[1];$('#ppic').setAttribute('aria-label',`Hear the word`);
   phRenderWord(false);
-  $('#pchoices').innerHTML=phChoices(phCur[0],phPos).map(l=>`<button data-l="${l}" aria-label="Letter ${l}">${l}</button>`).join('');
+  $('#pchoices').classList.toggle('cons',phPos!==1);$('#pchoices').innerHTML=phChoices(phCur[0],phPos).map(l=>`<button data-l="${l}" aria-label="Letter ${l}">${l}</button>`).join('');
   $('#pfb').textContent='';$('#pfb').className='fb';
   $('#pq').textContent=`What is the ${PH_MODE_NAME[Object.keys(PH_POS)[phPos]]} sound?`;
 }
