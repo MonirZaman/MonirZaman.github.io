@@ -48,6 +48,14 @@ main{max-width:980px;margin:-48px auto 0;padding:0 max(4vw,16px) 48px}
 body.locked{overflow:hidden}
 .seq{display:flex;gap:clamp(8px,2.5vw,18px);justify-content:center;margin:18px 0 6px}
 .tile{width:clamp(92px,25vw,150px);height:clamp(92px,22vw,130px);display:flex;align-items:center;justify-content:center;font-size:clamp(46px,11vw,76px);font-weight:700;background:var(--soft);border-radius:18px}
+.pq{font-size:clamp(18px,4.4vw,22px);font-weight:700;text-align:center;margin:12px 0 4px}
+.ppic{display:block;margin:6px auto;width:clamp(150px,40vw,210px);height:clamp(150px,40vw,210px);border-radius:50%;background:var(--soft);font-size:clamp(84px,24vw,128px);line-height:1;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
+.pword{display:flex;justify-content:center;gap:10px;margin:14px 0}
+.ptile{width:clamp(72px,20vw,104px);height:clamp(80px,22vw,112px);display:flex;align-items:center;justify-content:center;font-size:clamp(48px,13vw,72px);font-weight:700;background:var(--soft);border-radius:16px}
+.ptile.miss{background:transparent;border:3px dashed var(--blue);color:var(--blue)}.ptile.got{background:light-dark(#E3F6EC,#123326);color:var(--ok);border:3px solid var(--ok)}
+.pchoices{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.pchoices button{width:clamp(56px,15vw,84px);height:clamp(72px,18vw,88px);font-size:clamp(38px,10vw,48px);font-weight:700;background:var(--soft);border-radius:18px}
+.pchoices button.right{background:var(--ok);color:var(--paper)}.pchoices button.wrongl{opacity:.35}.pchoices button.phint{outline:4px solid var(--sun);animation:hop .8s 2}
 .tile.miss{background:transparent}.tile .apad{width:100%;height:100%}
 .chart{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:5px;margin-top:12px}
 .chart span{display:flex;align-items:center;justify-content:center;height:clamp(32px,7vw,46px);border-radius:8px;background:var(--soft);font-weight:700;font-size:clamp(14px,3.4vw,20px)}
@@ -149,6 +157,7 @@ dialog h2{margin:0 0 4px;font-size:28px}
 <button role="tab" id="tab-math" aria-controls="math" aria-selected="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M3 22h26M7 18v8M16 18v8M25 18v8"></path><path d="M7 16Q11.5 6 16 16Q20.5 6 25 16"></path></svg>Number line</button>
 <button role="tab" id="tab-between" aria-controls="between" aria-selected="false"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="9" width="8" height="14" rx="2"></rect><rect x="12" y="9" width="8" height="14" rx="2" stroke-dasharray="3 2.5"></rect><rect x="22" y="9" width="8" height="14" rx="2"></rect></svg>In between</button>
 <button role="tab" id="tab-words" aria-controls="words" aria-selected="false"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" aria-hidden="true"><path d="M16 8C12 5 7 5 3 6v19c4-1 9-1 13 2 4-3 9-3 13-2V6c-4-1-9-1-13 2z"></path><path d="M16 8v19"></path></svg>Sight words</button>
+<button role="tab" id="tab-phonics" aria-controls="phonics" aria-selected="false"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="9" width="8" height="14" rx="2"></rect><rect x="12" y="9" width="8" height="14" rx="2" stroke-dasharray="3 2.5"></rect><rect x="22" y="9" width="8" height="14" rx="2"></rect><path d="M14.5 14a1.6 1.6 0 1 1 2.2 1.5c-.5.2-.7.6-.7 1.1M16 19.2v.1"></path></svg>Phonics</button>
 </div>
 <div class="buddy">
 <button class="bav" id="budav" aria-label="Tap your buddy"></button>
@@ -225,6 +234,20 @@ dialog h2{margin:0 0 4px;font-size:28px}
 </details>
 <p class="small">Tap the card to hear the word. Words you miss come back sooner. Class words are from her class's high frequency words card; the other lists are Dolch sight words.</p>
 </section>
+
+<section id="phonics" class="card" role="tabpanel" aria-labelledby="tab-phonics" hidden>
+<div class="row between">
+<div class="row" id="pmodes"><button class="chip" data-m="first">First sound</button><button class="chip" data-m="middle">Middle sound</button><button class="chip" data-m="last">Last sound</button><button class="chip" data-m="mix">Mix</button></div>
+<button class="icon" id="phear" aria-label="Read the question out loud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"></path><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"></path></svg></button>
+</div>
+<div class="pq" id="pq"></div>
+<button class="ppic" id="ppic" aria-label="Hear the word"><span id="pemoji" aria-hidden="true"></span></button>
+<div class="pword" id="pword" role="img" aria-live="polite"></div>
+<div class="pchoices" id="pchoices"></div>
+<div class="fb" id="pfb" aria-live="polite"></div>
+<div class="row" style="margin-top:14px"><button class="next" id="pnext">Next picture</button></div>
+<p class="small">Tap the picture to hear the word, then tap the missing sound. Short-vowel words like her school sheets: first, middle and last sounds.</p>
+</section>
 </main>
 
 <dialog id="friends" aria-labelledby="ftitle">
@@ -291,18 +314,18 @@ const FRIENDS=[
  {id:'bao',name:'Bao',need:0,bg:'#FFE6E6',cheer:['You counted so carefully!','Nice slow, careful work!','You figured it out!'],oops:['Let’s count again, nice and slow.','Try counting with your finger.']},
  {id:'puff',name:'Puff',need:0,bg:'#DDEBFF',cheer:['You went slow and got it!','Calm and careful. Lovely!','You kept going!'],oops:['Take a slow breath and try again.','No rush. Count again.']},
  {id:'melody',name:'Melody',need:0,bg:'#EEE7FF',cheer:['La la la, you worked it out!','You practiced so well!','That was careful work!'],oops:['Let’s try that one again!','Count with me, one by one.']},
+ {id:'berry',name:'Berry',need:0,bg:'#FFE3E0',cheer:['Yay! You kept trying!','Yay! You checked your work!','You worked that out!'],oops:['Mistakes help us learn. Try again!','Look again. You can do it!']},
  {id:'tumble',name:'Tumble',need:5,bg:'#E6F6DC',cheer:['Stomp stomp! You worked hard!','You didn’t give up!','Great counting!'],oops:['I trip too! Get up and try again.','Oops is okay! One more try.']},
  {id:'splash',name:'Splash',need:10,bg:'#DFF3FF',cheer:['Splash! You figured it out!','You took your time. Nice!','Good thinking!'],oops:['Dive back in and count again!','Try the hops one by one.']},
- {id:'berry',name:'Berry',need:20,bg:'#FFE3E0',cheer:['Yay! You kept trying!','Yay! You checked your work!','You worked that out!'],oops:['Mistakes help us learn. Try again!','Look again. You can do it!']},
- {id:'gloop',name:'Gloop',need:30,bg:'#DDF7F2',cheer:['Boing! You bounced back!','You tried and tried!','Squish-tastic work!'],oops:['Wobble wobble... try again!','Bounce back! One more go.']},
- {id:'zoomi',name:'Zoomi',need:45,bg:'#FFF1C2',cheer:['You slowed down and got it!','Zoom! You kept trying!','Careful and correct!'],oops:['Slow down and count again!','Let’s go step by step.']}
+ {id:'gloop',name:'Gloop',need:20,bg:'#DDF7F2',cheer:['Boing! You bounced back!','You tried and tried!','Squish-tastic work!'],oops:['Wobble wobble... try again!','Bounce back! One more go.']},
+ {id:'zoomi',name:'Zoomi',need:35,bg:'#FFF1C2',cheer:['You slowed down and got it!','Zoom! You kept trying!','Careful and correct!'],oops:['Slow down and count again!','Let’s go step by step.']}
 ];
 const SET=10;
 const pick=a=>a[rand(a.length)];
 const F=id=>FRIENDS.find(f=>f.id===id)||FRIENDS[0];
 const isMet=f=>stars>=f.need;
 const svgOf=id=>`<svg viewBox="0 0 400 400" aria-hidden="true">${FR_SVG[id]}</svg>`;
-const HOME={math:'bao',between:'puff',words:'melody'},TASK={math:'Let\u2019s hop on the number line!',between:'Let\u2019s find the missing number!',words:'Let\u2019s read some words!'};
+const HOME={math:'bao',between:'puff',words:'melody',phonics:'berry'},TASK={phonics:'Let\u2019s find the missing sound!',math:'Let\u2019s hop on the number line!',between:'Let\u2019s find the missing number!',words:'Let\u2019s read some words!'};
 let curTab='math',buddies=Object.assign({},HOME,store.get('buddies',{})),done=0,partyT=null,partyMode=null,partyFriend=null,pendingSet=false;
 for(const k in HOME)if(!isMet(F(buddies[k])))buddies[k]=HOME[k];
 const bud=()=>F(buddies[curTab]);
@@ -575,7 +598,70 @@ $('#mineTxt').value=LISTS.mine.w.join(', ');
 $('#mineSave').addEventListener('click',()=>{const w=[...new Set($('#mineTxt').value.split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean))];LISTS.mine.w=w;store.set('mine',w);$('#mineMsg').textContent=w.length?`Saved ${w.length} words.`:'List cleared.';setList('mine')});
 
 /* ---------- tabs ---------- */
-const TABS=['math','between','words'];
+
+/* ---------- phonics: missing first / middle / last sound in short-vowel (CVC) words ----------
+   Modeled on her school worksheets: say the picture's name, find the missing sound.
+   Pictures are emoji so every word stays recognizable; any emoji this device can't draw is
+   left out automatically. Middle sounds offer all five vowels (a e i o u), like the sheets.
+   First/last sounds offer 4 letters; when the answer is b or d the other one is always a
+   choice, because b/d mix-ups show up on her sheets. */
+const PH_WORDS=[
+ ['cat','🐱'],['bat','🦇'],['rat','🐀'],['hat','🎩'],['map','🗺️'],['bag','👜'],['cap','🧢'],['can','🥫'],['pan','🍳'],['cab','🚕'],['van','🚐'],['ham','🍖'],['tag','🏷️'],['nap','😴'],['tap','🚰'],
+ ['bed','🛏️'],['net','🥅'],['jet','✈️'],['web','🕸️'],['hen','🐔'],['pen','🖊️'],['ten','🔟'],['leg','🦵'],
+ ['pig','🐷'],['pin','📌'],['six','6️⃣'],['zip','🤐'],['lip','👄'],['kid','🧒'],
+ ['dog','🐶'],['log','🪵'],['pot','🍲'],['box','📦'],['fox','🦊'],['dot','⚫'],
+ ['sun','☀️'],['bus','🚌'],['cup','☕'],['nut','🥜'],['tub','🛁'],['bug','🐛'],['hut','🛖'],['run','🏃']
+];
+const PH_POS={first:0,middle:1,last:2},PH_MODE_NAME={first:'first',middle:'middle',last:'last'};
+const VOWELS=['a','e','i','o','u'],CONS='bcdfghjklmnprstvwxz'.split('');
+function emojiOk(e){try{const c=document.createElement('canvas');c.width=c.height=24;const x=c.getContext('2d');if(!x)return true;
+  x.textBaseline='top';x.font='20px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';x.fillText(e,0,0);
+  const d=x.getImageData(0,0,24,24).data;let colored=0;for(let i=0;i<d.length;i+=4)if(d[i+3]>40&&(Math.abs(d[i]-d[i+1])>30||Math.abs(d[i+1]-d[i+2])>30))colored++;
+  return colored>8}catch(e){return true}}
+const PH_BANK=PH_WORDS.filter(([,e])=>emojiOk(e));
+function phChoices(word,pos){
+  const ans=word[pos];
+  if(pos===1)return VOWELS.slice();
+  /* skip letters that would spell another word in the bank: the picture decides, but no trick questions */
+  const others=new Set(PH_BANK.map(([w])=>w)),ok=CONS.filter(l=>l!==ans&&!others.has(word.slice(0,pos)+l+word.slice(pos+1)));
+  const pick=[];if(ans==='b'&&ok.includes('d'))pick.push('d');if(ans==='d'&&ok.includes('b'))pick.push('b');
+  while(pick.length<3){const l=ok[rand(ok.length)];if(!pick.includes(l))pick.push(l)}
+  const all=[ans,...pick];for(let i=all.length-1;i>0;i--){const j=rand(i+1);[all[i],all[j]]=[all[j],all[i]]}return all;
+}
+let phMode=store.get('phMode','mix'),phDeck=[],phCur=null,phPos=0,phSolved=false,phTries=0;
+function phDeal(){phDeck=PH_BANK.map(x=>x.slice());for(let i=phDeck.length-1;i>0;i--){const j=rand(i+1);[phDeck[i],phDeck[j]]=[phDeck[j],phDeck[i]]}}
+function phNew(){
+  if(!phDeck.length)phDeal();
+  if(phCur&&phDeck.length>1&&phDeck[0][0]===phCur[0])phDeck.push(phDeck.shift());
+  phCur=phDeck.shift();phSolved=false;phTries=0;
+  const m=phMode==='mix'?['first','middle','last'][rand(3)]:phMode;phPos=PH_POS[m];
+  $('#pemoji').textContent=phCur[1];$('#ppic').setAttribute('aria-label',`Hear the word`);
+  phRenderWord(false);
+  $('#pchoices').innerHTML=phChoices(phCur[0],phPos).map(l=>`<button data-l="${l}" aria-label="Letter ${l}">${l}</button>`).join('');
+  $('#pfb').textContent='';$('#pfb').className='fb';
+  $('#pq').textContent=`What is the ${PH_MODE_NAME[Object.keys(PH_POS)[phPos]]} sound?`;
+}
+function phRenderWord(done){$('#pword').innerHTML=[...phCur[0]].map((c,i)=>i===phPos&&!done?`<span class="ptile miss" aria-label="missing letter">?</span>`:`<span class="ptile${i===phPos?' got':''}">${c}</span>`).join('');
+  $('#pword').setAttribute('aria-label',done?phCur[0]:[...phCur[0]].map((c,i)=>i===phPos?'blank':c).join(' '))}
+function phSayQ(){const w=phCur[0],where=['start','middle','end'][phPos];say(`${w}. What sound is at the ${where} of ${w}?`)}
+$('#ppic').addEventListener('click',()=>say(phCur[0]));
+$('#phear').addEventListener('click',phSayQ);
+$('#pchoices').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||phSolved)return;const l=b.dataset.l,w=phCur[0];
+  if(l===w[phPos]){phSolved=true;b.classList.add('right');phRenderWord(true);
+    const msg=phPos===0?`${w} starts with ${l}.`:phPos===2?`${w} ends with ${l}.`:`${w} has ${l} in the middle.`;
+    $('#pfb').textContent=`Yes! ${msg}`;$('#pfb').className='fb ok';say(`Yes! ${w}. ${msg}`);addStar()}
+  else{phTries++;b.classList.add('wrongl');b.disabled=true;oops();
+    $('#pfb').className='fb no';
+    if(phTries>=2){const r=$(`#pchoices button[data-l="${w[phPos]}"]`);r&&r.classList.add('phint');$('#pfb').textContent=`Listen: ${w}. Try the glowing letter.`;setTimeout(()=>say(`Listen. ${w}. ${w}.`),900)}
+    else $('#pfb').textContent='Not quite. Tap the picture and listen again.'}});
+$('#pnext').addEventListener('click',phNew);
+function phModes(){$$('#pmodes .chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.m===phMode))}
+$('#pmodes').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;phMode=c.dataset.m;store.set('phMode',phMode);phModes();phNew()});
+phModes();phNew();
+/* read-only hook for _tests/test_practice_pad.py */
+window.__ph={words:PH_WORDS,get bank(){return PH_BANK},get word(){return phCur[0]},get pos(){return phPos},choices:phChoices};
+
+const TABS=['math','between','words','phonics'];
 function tab(name){if(!TABS.includes(name))name='math';TABS.forEach(t=>{$('#'+t).hidden=t!==name;$('#tab-'+t).setAttribute('aria-selected',t===name)});if(location.hash!=='#'+name)try{history.replaceState(null,'','#'+name)}catch(e){}budTab(name)}
 TABS.forEach(t=>$('#tab-'+t).addEventListener('click',()=>tab(t)));
 window.addEventListener('hashchange',()=>tab(location.hash.slice(1)));

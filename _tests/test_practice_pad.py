@@ -235,7 +235,7 @@ def test_new_friend_unlocks_at_exactly_five(page):
 
 
 def test_each_tab_has_its_own_buddy(page):
-    expected = {"math": "Bao", "between": "Puff", "words": "Melody"}
+    expected = {"math": "Bao", "between": "Puff", "words": "Melody", "phonics": "Berry"}
     for tab, name in expected.items():
         page.click(f"#tab-{tab}")
         assert name in page.get_attribute("#budav", "aria-label")
@@ -257,13 +257,13 @@ def test_picking_a_buddy_changes_only_that_tab(page):
 def test_locked_friend_cannot_be_picked(page):
     page.click("#fopen")
     page.click('#fgrid button[data-f="zoomi"]')
-    assert "45 more stars" in page.text_content("#fmsg")
+    assert "35 more stars" in page.text_content("#fmsg")
     page.click("#fclose")
     assert "Bao" in page.get_attribute("#budav", "aria-label")
 
 
 def test_break_prompt_after_ten_problems(page):
-    seed(page, stars=31)  # no friend unlocks between 31 and 41
+    seed(page, stars=36)  # no friend unlocks between 36 and 46
     use_math_buttons(page)
     for i in range(10):
         solve_math(page)
@@ -274,7 +274,7 @@ def test_break_prompt_after_ten_problems(page):
     assert "show a grown-up" in page.text_content("#ptext")
     page.click("#pno")
     assert page.is_hidden("#party")
-    assert stars(page) == 41
+    assert stars(page) == 46
 
 
 # ---------- voice ----------
@@ -325,3 +325,78 @@ def test_speech_is_warmer_than_default(page):
     said = page.evaluate("window.__said")
     assert said and said[0]["text"].startswith("Yes!")
     assert said[0]["pitch"] > 1 and said[0]["rate"] < 1
+
+
+# ---------- phonics ----------
+def ph_answer(pg):
+    return pg.evaluate("__ph.word[__ph.pos]")
+
+
+def ph_mode(pg, mode):
+    pg.click("#tab-phonics")
+    pg.click(f'#pmodes .chip[data-m="{mode}"]')
+
+
+def test_phonics_correct_letter_gives_one_star(page):
+    ph_mode(page, "first")
+    page.click(f'#pchoices button[data-l="{ph_answer(page)}"]')
+    assert stars(page) == 1
+    for b in page.query_selector_all("#pchoices button"):
+        b.click(force=True)
+    assert stars(page) == 1
+    word = page.evaluate("__ph.word")
+    assert "".join(t.text_content() for t in page.query_selector_all("#pword .ptile")) == word
+
+
+def test_phonics_wrong_letter_no_star_then_hint(page):
+    ph_mode(page, "last")
+    ans = ph_answer(page)
+    wrong = [b.get_attribute("data-l") for b in page.query_selector_all("#pchoices button")
+             if b.get_attribute("data-l") != ans]
+    page.click(f'#pchoices button[data-l="{wrong[0]}"]')
+    assert stars(page) == 0
+    assert page.is_disabled(f'#pchoices button[data-l="{wrong[0]}"]')
+    page.click(f'#pchoices button[data-l="{wrong[1]}"]')
+    assert "phint" in page.get_attribute(f'#pchoices button[data-l="{ans}"]', "class")
+    box = page.locator(f'#pchoices button[data-l="{ans}"]').bounding_box()
+    row = page.locator("#pchoices").bounding_box()
+    assert row["y"] - 20 <= box["y"] <= row["y"] + row["height"]  # hint stays in the row
+    page.click(f'#pchoices button[data-l="{ans}"]')
+    assert stars(page) == 1
+
+
+@pytest.mark.parametrize("mode,pos", [("first", 0), ("middle", 1), ("last", 2)])
+def test_phonics_mode_hides_the_right_letter(page, mode, pos):
+    ph_mode(page, mode)
+    for _ in range(8):
+        tiles = [t.text_content() for t in page.query_selector_all("#pword .ptile")]
+        assert tiles[pos] == "?" and tiles.count("?") == 1
+        choices = [b.get_attribute("data-l") for b in page.query_selector_all("#pchoices button")]
+        assert ph_answer(page) in choices
+        assert len(choices) == (5 if mode == "middle" else 4) and len(set(choices)) == len(choices)
+        page.click("#pnext")
+
+
+def test_phonics_choices_are_fair(page):
+    bad = page.evaluate("""()=>{const words=new Set(__ph.bank.map(x=>x[0])),out=[];
+      for(const [w] of __ph.bank)for(const pos of [0,2])for(let k=0;k<20;k++){const c=__ph.choices(w,pos);
+        if(!c.includes(w[pos]))out.push(w+':missing answer');
+        for(const l of c)if(l!==w[pos]&&words.has(w.slice(0,pos)+l+w.slice(pos+1)))out.push(w+':'+l);
+        if(w[pos]==='b'&&!c.includes('d'))out.push(w+':no d');if(w[pos]==='d'&&!c.includes('b'))out.push(w+':no b')}
+      return out}""")
+    assert bad == []
+
+
+def test_phonics_word_bank_is_cvc(page):
+    bank = page.evaluate("__ph.words.map(x=>x[0])")
+    assert len(bank) >= 40 and len(set(bank)) == len(bank)
+    vowels = set("aeiou")
+    for w in bank:
+        assert len(w) == 3 and w[0] not in vowels and w[1] in vowels and w[2] not in vowels, w
+
+
+def test_phonics_mode_is_remembered(page):
+    ph_mode(page, "middle")
+    page.reload()
+    page.click("#tab-phonics")
+    assert page.get_attribute('#pmodes .chip[data-m="middle"]', "aria-pressed") == "true"
